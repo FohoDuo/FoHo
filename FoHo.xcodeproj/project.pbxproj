@@ -13,6 +13,9 @@
 		4662BD981E99FAE200899F25 /* RecipeSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4662BD961E99FAE200899F25 /* RecipeSearchTableViewController.xib */; };
 		840226817A7B121687E7DFFB /* Pods_FoHoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FFAFA5632EDCA02E3BB5A58 /* Pods_FoHoUITests.framework */; };
 		895A067B1E99C29400B3C4D3 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 895A067A1E99C29400B3C4D3 /* heart.png */; };
+		8983A9F61E9ED7C700E0B790 /* RecipeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */; };
+		8983A9F81E9EE09B00E0B790 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9F71E9EE09B00E0B790 /* Recipes.swift */; };
+		8983A9FC1E9EE3EA00E0B790 /* RecipeSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9FB1E9EE3EA00E0B790 /* RecipeSearchData.swift */; };
 		89FDA1EF1E99BBB600043820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDA1EE1E99BBB600043820 /* AppDelegate.swift */; };
 		89FDA1F11E99BBB600043820 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDA1F01E99BBB600043820 /* ViewController.swift */; };
 		89FDA1F41E99BBB600043820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FDA1F21E99BBB600043820 /* Main.storyboard */; };
@@ -68,6 +71,9 @@
 		4928BD11CA424939A8577260 /* Pods_FoHo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoHo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB91AD463A5EB6C0B0D69EC /* Pods-FoHoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoHoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoHoUITests/Pods-FoHoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		895A067A1E99C29400B3C4D3 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = SOURCE_ROOT; };
+		8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchModel.swift; sourceTree = "<group>"; };
+		8983A9F71E9EE09B00E0B790 /* Recipes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
+		8983A9FB1E9EE3EA00E0B790 /* RecipeSearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchData.swift; sourceTree = "<group>"; };
 		89FDA1EB1E99BBB600043820 /* FoHo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoHo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FDA1EE1E99BBB600043820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89FDA1F01E99BBB600043820 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +134,9 @@
 		89FDA1E21E99BBB600043820 = {
 			isa = PBXGroup;
 			children = (
+				8983A9FB1E9EE3EA00E0B790 /* RecipeSearchData.swift */,
+				8983A9F71E9EE09B00E0B790 /* Recipes.swift */,
+				8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */,
 				89FDA1ED1E99BBB600043820 /* FoHo */,
 				89FDA2051E99BBB600043820 /* FoHoTests */,
 				89FDA2101E99BBB700043820 /* FoHoUITests */,
@@ -490,6 +499,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				89FDA1F11E99BBB600043820 /* ViewController.swift in Sources */,
+				8983A9FC1E9EE3EA00E0B790 /* RecipeSearchData.swift in Sources */,
+				8983A9F61E9ED7C700E0B790 /* RecipeSearchModel.swift in Sources */,
+				8983A9F81E9EE09B00E0B790 /* Recipes.swift in Sources */,
 				4662BD971E99FAE200899F25 /* RecipeSearchTableViewController.swift in Sources */,
 				89FDA1EF1E99BBB600043820 /* AppDelegate.swift in Sources */,
 				89FDA1F71E99BBB600043820 /* FoHo.xcdatamodeld in Sources */,
