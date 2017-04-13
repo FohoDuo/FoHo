@@ -7,7 +7,6 @@ target 'FoHo' do
 
   # Pods for FoHo
     pod 'FaveButton', '~> 2.0.3'
-    pod 'Alamofire', '~> 4.4'
 
   target 'FoHoTests' do
     inherit! :search_paths
