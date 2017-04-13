@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4662BD921E99FAA800899F25 /* RecipeSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662BD901E99FAA800899F25 /* RecipeSearchTableViewCell.swift */; };
-		4662BD931E99FAA800899F25 /* RecipeSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4662BD911E99FAA800899F25 /* RecipeSearchTableViewCell.xib */; };
-		4662BD971E99FAE200899F25 /* RecipeSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4662BD951E99FAE200899F25 /* RecipeSearchTableViewController.swift */; };
-		4662BD981E99FAE200899F25 /* RecipeSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4662BD961E99FAE200899F25 /* RecipeSearchTableViewController.xib */; };
+		464F0B221E9EDB7A0002B914 /* RecipeSearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464F0B211E9EDB7A0002B914 /* RecipeSearchCollectionViewController.swift */; };
+		464F0B241E9EDD720002B914 /* RecipeSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464F0B231E9EDD720002B914 /* RecipeSearchCollectionViewCell.swift */; };
 		840226817A7B121687E7DFFB /* Pods_FoHoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FFAFA5632EDCA02E3BB5A58 /* Pods_FoHoUITests.framework */; };
 		895A067B1E99C29400B3C4D3 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 895A067A1E99C29400B3C4D3 /* heart.png */; };
 		89FDA1EF1E99BBB600043820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FDA1EE1E99BBB600043820 /* AppDelegate.swift */; };
@@ -61,10 +59,8 @@
 		108707AF2074639DCB4337C1 /* Pods-FoHoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoHoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoHoTests/Pods-FoHoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2FFAFA5632EDCA02E3BB5A58 /* Pods_FoHoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoHoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		447BF90B674045B18184C2D0 /* Pods-FoHoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoHoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoHoTests/Pods-FoHoTests.release.xcconfig"; sourceTree = "<group>"; };
-		4662BD901E99FAA800899F25 /* RecipeSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewCell.swift; sourceTree = "<group>"; };
-		4662BD911E99FAA800899F25 /* RecipeSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeSearchTableViewCell.xib; sourceTree = "<group>"; };
-		4662BD951E99FAE200899F25 /* RecipeSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewController.swift; sourceTree = "<group>"; };
-		4662BD961E99FAE200899F25 /* RecipeSearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeSearchTableViewController.xib; sourceTree = "<group>"; };
+		464F0B211E9EDB7A0002B914 /* RecipeSearchCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchCollectionViewController.swift; sourceTree = "<group>"; };
+		464F0B231E9EDD720002B914 /* RecipeSearchCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		4928BD11CA424939A8577260 /* Pods_FoHo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoHo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB91AD463A5EB6C0B0D69EC /* Pods-FoHoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoHoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoHoUITests/Pods-FoHoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		895A067A1E99C29400B3C4D3 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = SOURCE_ROOT; };
@@ -117,10 +113,8 @@
 		4662BD941E99FAAF00899F25 /* RecipeSearch */ = {
 			isa = PBXGroup;
 			children = (
-				4662BD901E99FAA800899F25 /* RecipeSearchTableViewCell.swift */,
-				4662BD951E99FAE200899F25 /* RecipeSearchTableViewController.swift */,
-				4662BD911E99FAA800899F25 /* RecipeSearchTableViewCell.xib */,
-				4662BD961E99FAE200899F25 /* RecipeSearchTableViewController.xib */,
+				464F0B211E9EDB7A0002B914 /* RecipeSearchCollectionViewController.swift */,
+				464F0B231E9EDD720002B914 /* RecipeSearchCollectionViewCell.swift */,
 			);
 			name = RecipeSearch;
 			sourceTree = "<group>";
@@ -321,8 +315,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4662BD931E99FAA800899F25 /* RecipeSearchTableViewCell.xib in Resources */,
-				4662BD981E99FAE200899F25 /* RecipeSearchTableViewController.xib in Resources */,
 				895A067B1E99C29400B3C4D3 /* heart.png in Resources */,
 				89FDA1FC1E99BBB600043820 /* LaunchScreen.storyboard in Resources */,
 				89FDA1F91E99BBB600043820 /* Assets.xcassets in Resources */,
@@ -490,10 +482,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				89FDA1F11E99BBB600043820 /* ViewController.swift in Sources */,
-				4662BD971E99FAE200899F25 /* RecipeSearchTableViewController.swift in Sources */,
+				464F0B221E9EDB7A0002B914 /* RecipeSearchCollectionViewController.swift in Sources */,
 				89FDA1EF1E99BBB600043820 /* AppDelegate.swift in Sources */,
 				89FDA1F71E99BBB600043820 /* FoHo.xcdatamodeld in Sources */,
-				4662BD921E99FAA800899F25 /* RecipeSearchTableViewCell.swift in Sources */,
+				464F0B241E9EDD720002B914 /* RecipeSearchCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

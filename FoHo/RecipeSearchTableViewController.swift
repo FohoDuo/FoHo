@@ -41,9 +41,8 @@ class RecipeSearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
         if let theCell = cell as? RecipeSearchTableViewCell{
-            theCell.setCell(uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_Hid3NE2q6d65tFaXw8l9D-EL_ek1Zl6HwBcXD1BcT015BMyf", label: "Cookie")
-
-           
+            //theCell.setCell(uri: "https://lh3.googleusercontent.com/D36cUXzg0nWMhpP0IrmSd-kAin41Z9Kk1cseZlYCbM3jliYuOqhA-CrBYlqvGxWRxu1OlCFY1gkURB6IbPjXkA=s90-c", label: "Cookie")
+          //  theCell.backgroundColor = UIColor.purple
         }
 
         // Configure the cell...
