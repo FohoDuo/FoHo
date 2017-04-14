@@ -34,6 +34,8 @@ class RecipeSearchTableViewCell: UITableViewCell {
                 recipeImage.image = image
         }
         recipeName.text = label
+       // self.layer.contents = (id)[UIImage imageNamed:recipeImage].CGImage;
+        recipeImage.contentMode = .scaleAspectFit
        // recipeName.bringSubview(toFront: label)
         //heartButton.view.layer.zPosition = 1;
         let y = recipeName.frame.origin.y + recipeName.font.ascender + 15

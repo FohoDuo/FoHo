@@ -41,9 +41,6 @@ class RecipeSearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
         if let theCell = cell as? RecipeSearchTableViewCell{
-            theCell.setCell(uri: "http://cdn-jpg.thedailymeal.net/sites/default/files/2-chocolate%20chip%20cookies-anne%20peterson-flickr.jpg", label: "Cookie")
-
-           
         }
 
         // Configure the cell...
