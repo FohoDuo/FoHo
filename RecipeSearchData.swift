@@ -13,9 +13,19 @@ class RecipeSearchData: NSObject {
     
     var recipe: AnyObject
     
+    
+    
     //constructor
-    init(recipe: AnyObject) {
-        self.recipe = recipe
+    init(recipeData: Any) {
+        
+        //make constructor happy
+        recipe = recipeData as AnyObject
+        
+        //probably redundent but eh...
+        if let dictionary = recipeData as? Dictionary<String, AnyObject> {
+            recipe = dictionary as! AnyObject
+        }
+        
         super.init()
     }
     

@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Alamofire
 
 private let reuseIdentifier = "RecipeCell"
 
 class RecipeSearchCollectionViewController: UICollectionViewController{
+    let appID = "42432972"
+    let appKey = "ec024a2414433825635ad1d304916ee2"
+    let query = "buddha+bowl"
+    var recipes: Recipes?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +24,38 @@ class RecipeSearchCollectionViewController: UICollectionViewController{
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(RecipeSearchCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.register(RecipeSearchCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+ 
 
         // Do any additional setup after loading the view.
+        
+        //construct the URL used to call
+        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(query)&maxResult=50&start=50"
+        
+        //Magically calls the API and gets the data
+        Alamofire.request(url).responseJSON { response in
+            //print(response.request)  // original URL request
+            //print(response.response) // HTTP URL response
+            //print(response.data)     // server data
+            //print(response.result)   // result of response serialization
+            
+            if let JSON = response.result.value {
+                //print("JSON: \(JSON)")
+                
+                //might need this here dunno...?
+                self.collectionView?.reloadData()
+                
+                //Populate our recipes instance with the data from the API call
+                self.recipes = Recipes(dataSource: JSON)
+            }
+        }
+2
+        //Needed after API call to populate images
+        self.collectionView?.reloadData()
+        
+        self.collectionView?.delegate = self
+        self.collectionView?.dataSource = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,21 +83,46 @@ class RecipeSearchCollectionViewController: UICollectionViewController{
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 2
+        
+        //if the API has returned, set the number of section to the number of recipes
+        if recipes != nil {
+            return (recipes?.numRecipes())!
+        }
+        //else just give it a default value of 1
+        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-      if let theCell = cell as? RecipeSearchCollectionViewCell{
-            theCell.setCell(uri: "https://lh3.googleusercontent.com/D36cUXzg0nWMhpP0IrmSd-kAin41Z9Kk1cseZlYCbM3jliYuOqhA-CrBYlqvGxWRxu1OlCFY1gkURB6IbPjXkA=s90-c", label: "Cookie")
-          // return theCell
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RecipeSearchCollectionViewCell
+        
+        //If the API call has gone through, populate the view with images
+        if recipes != nil {
+            cell.setCell(image: (recipes?.at(indexPath.row).recipeImage())!,
+                            label:(recipes?.at(indexPath.row).recipeName())!)
+        }
+            
+        //use some default image otherwise here
+        else {
+            cell.setCell(image: UIImage(named: "loading")!, label: "Loading...")
         }
         
-    
         // Configure the cell
         cell.backgroundColor = UIColor.purple
     
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailedRecipe" {
+            print("segueing")
+            let cell = sender as! RecipeSearchCollectionViewCell
+            if let indexPath = collectionView?.indexPath(for: cell), let ds = recipes {
+                let vc = segue.destination as! RecipeDataViewController
+                vc.setRecipeID(id: ds.at(indexPath.row).recipeID())
+            }
+            
+        }
     }
 
     
