@@ -9,19 +9,39 @@
 import UIKit
 
 private let reuseIdentifier = "RecipeCell"
+var screenSize: CGRect!
+var screenWidth: CGFloat!
 
-class RecipeSearchCollectionViewController: UICollectionViewController{
+
+class RecipeSearchCollectionViewController: UICollectionViewController, RecipeSearchLayoutDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //screenSize = UIScreen.main.bounds
+        //screenWidth = screenSize.width
+       // let screenHeight = screenSize.height
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(RecipeSearchCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+       // self.collectionView!.register(RecipeSearchCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView?.delegate = self
+        self.collectionView?.dataSource = self
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.minimumInteritemSpacing = 8
+        layout.minimumLineSpacing = 8
+        layout.headerReferenceSize = CGSize(width: 0, height: 40)
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+       // collectionView?.collectionViewLayout = layout
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,12 +73,13 @@ class RecipeSearchCollectionViewController: UICollectionViewController{
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-      if let theCell = cell as? RecipeSearchCollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RecipeSearchCollectionViewCell
+       // cell.setCell(uri: "https://lh3.googleusercontent.com/D36cUXzg0nWMhpP0IrmSd-kAin41Z9Kk1cseZlYCbM3jliYuOqhA-CrBYlqvGxWRxu1OlCFY1gkURB6IbPjXkA=s90-c", label: "Cookie")
+    /*  if let theCell = cell as? RecipeSearchCollectionViewCell{
             theCell.setCell(uri: "https://lh3.googleusercontent.com/D36cUXzg0nWMhpP0IrmSd-kAin41Z9Kk1cseZlYCbM3jliYuOqhA-CrBYlqvGxWRxu1OlCFY1gkURB6IbPjXkA=s90-c", label: "Cookie")
           // return theCell
         }
-        
+        */
     
         // Configure the cell
         cell.backgroundColor = UIColor.purple

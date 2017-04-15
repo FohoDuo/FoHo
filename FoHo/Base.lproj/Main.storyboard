@@ -13,18 +13,13 @@
         <scene sceneID="oEg-PV-Wai">
             <objects>
                 <collectionViewController id="GRu-TZ-DUP" customClass="RecipeSearchCollectionViewController" customModule="FoHo" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2Ts-wI-Ihh">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" dataMode="prototypes" id="2Ts-wI-Ihh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vY9-pG-cvV">
-                            <size key="itemSize" width="182" height="189"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
+                        <collectionViewLayout key="collectionViewLayout" id="3d5-fC-hs9" customClass="RecipeSearchCollectionViewLayout" customModule="FoHo" customModuleProvider="target"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecipeCell" id="WoW-qW-aph" customClass="RecipeSearchCollectionViewCell" customModule="FoHo" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="RecipeCell" id="WoW-qW-aph" customClass="RecipeSearchCollectionViewCell" customModule="FoHo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="182" height="189"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -37,8 +32,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LTP-qq-5WJ">
-                                            <rect key="frame" x="11" y="0.0" width="136" height="139"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LTP-qq-5WJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="173" height="184"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -48,7 +43,7 @@
                                 </constraints>
                                 <size key="customSize" width="182" height="189"/>
                                 <connections>
-                                    <outlet property="recipeImage" destination="LTP-qq-5WJ" id="iL1-4q-QtA"/>
+                                    <outlet property="recipeImage" destination="LTP-qq-5WJ" id="XgO-dt-6sQ"/>
                                     <outlet property="recipeName" destination="E8f-y9-jle" id="kK1-56-IQr"/>
                                 </connections>
                             </collectionViewCell>
