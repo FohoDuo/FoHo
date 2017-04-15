@@ -50,6 +50,7 @@ class RecipeSearchModel: NSObject {
         var urls = (recipe["smallImageUrls"] as! NSArray) as Array
         let uriString = urls[0]
         let uri = uriString as! String
+        //return uri
         if let url = URL(string: uri),
             let data = try? Data(contentsOf: url),
             let image = UIImage(data: data) {
@@ -57,6 +58,8 @@ class RecipeSearchModel: NSObject {
         }
         return nil
     }
+    
+
     
     /*
     //gets the array of ingredients from the dictionary

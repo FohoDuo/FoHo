@@ -20,15 +20,15 @@ class RecipeSearchCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func setCell(uri: String, label: String){
-        print(label)
-        print(uri)
-        if let url = URL(string: uri),
-            let data = try? Data(contentsOf: url),
-            let image = UIImage(data: data) {
-            print(image)
-            recipeImage?.image = image
-        }
+    func setCell(image: UIImage, label: String){
+        //print(label)
+        //print(uri)
+        //if let url = URL(string: uri),
+            //let data = try? Data(contentsOf: url),
+            //let image = UIImage(data: data) {
+            //print(image)
+        recipeImage?.image = image
+       // }
         recipeName?.text = label
         // self.layer.contents = (id)[UIImage imageNamed:recipeImage].CGImage;
         recipeImage?.contentMode = .scaleAspectFit

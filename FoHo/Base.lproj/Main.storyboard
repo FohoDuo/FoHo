@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dsf-aU-49o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dsf-aU-49o">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -50,6 +50,7 @@
                                 <connections>
                                     <outlet property="recipeImage" destination="LTP-qq-5WJ" id="iL1-4q-QtA"/>
                                     <outlet property="recipeName" destination="E8f-y9-jle" id="kK1-56-IQr"/>
+                                    <segue destination="lr5-VV-MUZ" kind="show" identifier="toDetailedRecipe" id="Vc3-9D-Rwy"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -63,6 +64,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zwz-wO-5T7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="341.60000000000002" y="1161.7691154422789"/>
+        </scene>
+        <!--Recipe Data View Controller-->
+        <scene sceneID="YCI-RJ-g04">
+            <objects>
+                <viewController id="lr5-VV-MUZ" customClass="RecipeDataViewController" customModule="FoHo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ukd-FT-95L"/>
+                        <viewControllerLayoutGuide type="bottom" id="pZs-gf-byH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KjV-qg-Qyk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoL-zz-bxI">
+                                <rect key="frame" x="0.0" y="423" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="See Instructions"/>
+                                <connections>
+                                    <action selector="didTabButton:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="YZR-Ul-WSp"/>
+                                    <segue destination="s27-oN-WzC" kind="show" id="4KN-go-cz0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="instructionButton" destination="FoL-zz-bxI" id="RhL-dt-lA6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eCe-BG-Fz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1284" y="1138"/>
+        </scene>
+        <!--Recipe Web View Controller-->
+        <scene sceneID="oua-AR-tId">
+            <objects>
+                <viewController id="s27-oN-WzC" customClass="RecipeWebViewController" customModule="FoHo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iBW-Ov-yP1"/>
+                        <viewControllerLayoutGuide type="bottom" id="3qW-qQ-ca0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SPq-Lg-Yoo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rnh-ts-jq4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Rnh-ts-jq4" id="86A-NG-hDp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Cf-JW-9Pe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2181.5999999999999" y="1138.3808095952024"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LO2-qL-jel">
