@@ -13,6 +13,7 @@
 		892174D71EA1A8A2003A9889 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 892174D61EA1A8A2003A9889 /* loading.png */; };
 		892174D91EA1AC16003A9889 /* RecipeDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892174D81EA1AC16003A9889 /* RecipeDataViewController.swift */; };
 		892174DB1EA1AC5B003A9889 /* RecipeWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892174DA1EA1AC5B003A9889 /* RecipeWebViewController.swift */; };
+		892174DD1EA1CDB6003A9889 /* TestTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892174DC1EA1CDB6003A9889 /* TestTableTableViewController.swift */; };
 		895A067B1E99C29400B3C4D3 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 895A067A1E99C29400B3C4D3 /* heart.png */; };
 		8983A9F61E9ED7C700E0B790 /* RecipeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */; };
 		8983A9F81E9EE09B00E0B790 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9F71E9EE09B00E0B790 /* Recipes.swift */; };
@@ -72,6 +73,7 @@
 		892174D61EA1A8A2003A9889 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		892174D81EA1AC16003A9889 /* RecipeDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDataViewController.swift; sourceTree = "<group>"; };
 		892174DA1EA1AC5B003A9889 /* RecipeWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeWebViewController.swift; sourceTree = "<group>"; };
+		892174DC1EA1CDB6003A9889 /* TestTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableTableViewController.swift; sourceTree = "<group>"; };
 		895A067A1E99C29400B3C4D3 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = SOURCE_ROOT; };
 		8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeSearchModel.swift; path = ../RecipeSearchModel.swift; sourceTree = "<group>"; };
 		8983A9F71E9EE09B00E0B790 /* Recipes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				89FDA1EE1E99BBB600043820 /* AppDelegate.swift */,
 				89FDA1F01E99BBB600043820 /* ViewController.swift */,
+				892174DC1EA1CDB6003A9889 /* TestTableTableViewController.swift */,
 				4662BD941E99FAAF00899F25 /* RecipeSearch */,
 				460462AA1EA0393D007707F2 /* Models */,
 				89FDA1F21E99BBB600043820 /* Main.storyboard */,
@@ -516,6 +519,7 @@
 				8983A9F61E9ED7C700E0B790 /* RecipeSearchModel.swift in Sources */,
 				892174DB1EA1AC5B003A9889 /* RecipeWebViewController.swift in Sources */,
 				8983A9F81E9EE09B00E0B790 /* Recipes.swift in Sources */,
+				892174DD1EA1CDB6003A9889 /* TestTableTableViewController.swift in Sources */,
 				89FDA1EF1E99BBB600043820 /* AppDelegate.swift in Sources */,
 				89FDA1F71E99BBB600043820 /* FoHo.xcdatamodeld in Sources */,
 				464F0B241E9EDD720002B914 /* RecipeSearchCollectionViewCell.swift in Sources */,

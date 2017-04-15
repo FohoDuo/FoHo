@@ -73,11 +73,26 @@ class RecipeSearchData: NSObject {
     ///TO-DO test if this returns corrctly
     func ingredients() -> [String] {
         if let list = recipe["ingredientLines"] {
+            print("here")
             return (list as? [String])!
         }
         return [] //return an empty array
     }
     
+    func webUrl() -> String? {
+        if let dict = recipe["source"] {
+            if let dictionary = dict as? Dictionary<String, AnyObject> {
+                return dictionary["sourceRecipeUrl"] as? String
+            }
+        }
+        return nil
+    }
+    
+    
+    
+    
+    
+
     
 //more complex json thingies
     //nutritionEstimates looks like a dictionary of dictionaries, should

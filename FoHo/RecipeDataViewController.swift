@@ -9,7 +9,8 @@
 import UIKit
 import Alamofire
 
-
+//View controller class for displaying the detailed information for
+//a recipe once it has been selected from the search results
 class RecipeDataViewController: UIViewController {
     let appID = "42432972"
     let appKey = "ec024a2414433825635ad1d304916ee2"
@@ -21,32 +22,23 @@ class RecipeDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//set recipe key here with old data
-        
-        
+        //"Get" call to API for specific recipe info
         let url = "http://api.yummly.com/v1/api/recipe/\(recipeKey!)?_app_id=\(appID)&_app_key=\(appKey)"
-        print(url)
         
         //Magically calls the API and gets the data
         Alamofire.request(url).responseJSON { response in
-            //print(response.request)  // original URL request
-            //print(response.response) // HTTP URL response
-            //print(response.data)     // server data
-            //print(response.result)   // result of response serialization
-            
             if let JSON = response.result.value {
-                print("JSON: \(JSON)")
-                
-                //might need this here dunno...?
-                
+                //print("JSON: \(JSON)")
                 
                 //Populate our recipes instance with the data from the API call
                 self.recipe = RecipeSearchData(recipeData: JSON)
                 print(self.recipe?.recipeName())
-                
+                print(self.recipe?.ingredients())
             }
         }
        
+        
+        //print(recipe?.ingredients())
         //Needed after API call to populate images
         //self.collectionView?.reloadData()
         
@@ -54,19 +46,25 @@ class RecipeDataViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //Set the current recipe's ID from the previous view
     func setRecipeID(id: String?) {
         print("passed id is: ", id)
         recipeKey = id
     }
     
-
+    //Clicking the "See Instructions" button
+//DOESNT DO ANYTHING SPECIAL CURRENTLY
     @IBAction func didTabButton(_ sender: UIButton) {
         print("YAYYAYAY")
+        print(recipe?.webUrl())
     }
     
+    //Sets the webview page up one we move to it
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let webPage = segue.destination as! RecipeWebViewController
+        webPage.setUrl(url: (recipe?.webUrl())!)
+    }
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

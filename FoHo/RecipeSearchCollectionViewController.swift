@@ -49,7 +49,7 @@ class RecipeSearchCollectionViewController: UICollectionViewController{
                 self.recipes = Recipes(dataSource: JSON)
             }
         }
-2
+
         //Needed after API call to populate images
         self.collectionView?.reloadData()
         
@@ -113,15 +113,14 @@ class RecipeSearchCollectionViewController: UICollectionViewController{
         return cell
     }
     
+    //checks which recipe was selected and passes up its ID to the next view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailedRecipe" {
-            print("segueing")
             let cell = sender as! RecipeSearchCollectionViewCell
             if let indexPath = collectionView?.indexPath(for: cell), let ds = recipes {
                 let vc = segue.destination as! RecipeDataViewController
                 vc.setRecipeID(id: ds.at(indexPath.row).recipeID())
             }
-            
         }
     }
 

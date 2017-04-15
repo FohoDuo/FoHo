@@ -8,23 +8,32 @@
 
 import UIKit
 
+//View controller class for displaying a recipe's instructions since
+//the yummily API only provides the url to the instructions
 class RecipeWebViewController: UIViewController {
+    
+    var webUrl: String?
 
     @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         
-       // let recipeURL = ...
-        let uri = "https://stackoverflow.com/questions/8799503/how-to-call-the-local-image-file-and-display-into-the-imageviewcontroller"
-        let url = URL(string: uri)
+        //cast the specific url string
+        let url = URL(string: webUrl!)
+        
+        //load the web page
         webView.loadRequest(URLRequest(url: url!))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //set the web url from the previous view
+    func setUrl(url: String) {
+        webUrl = url
     }
     
 

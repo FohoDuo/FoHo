@@ -14,9 +14,25 @@ class ViewControllerTEST: UIViewController {
 
     @IBOutlet weak var b1: UIButton!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    //By initializing UISearchController without a searchResultsController, you are telling the search controller that you want use the same view that you’re searching to display the results. If you specify a different view controller here, that will be used to display the results instead.
+    //let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
       
         super.viewDidLoad()
+     
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
     //sample fave button usage
         let faveButton = FaveButton(
             frame: CGRect(x:200, y:200, width: 44, height: 44),
