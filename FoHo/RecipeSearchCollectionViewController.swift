@@ -11,14 +11,26 @@ import Alamofire
 
 private let reuseIdentifier = "RecipeCell"
 
-class RecipeSearchCollectionViewController: UICollectionViewController{
+class RecipeSearchCollectionViewController: UICollectionViewController {
     let appID = "42432972"
     let appKey = "ec024a2414433825635ad1d304916ee2"
     let query = "buddha+bowl"
     var recipes: Recipes?
+    
+ 
+
+    /*
+    var searchParameters: String?
+    var searchActive: Bool = false
+    var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+
+    var header: UICollectionReusableView = UICollectionReusableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+ */
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -75,6 +87,11 @@ class RecipeSearchCollectionViewController: UICollectionViewController{
 
     // MARK: UICollectionViewDataSource
 
+    
+
+
+    
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -155,5 +172,6 @@ class RecipeSearchCollectionViewController: UICollectionViewController{
     
     }
     */
+    
 
 }
