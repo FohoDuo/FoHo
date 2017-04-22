@@ -10,17 +10,11 @@ import UIKit
 import CoreData
 import MGSwipeTableCell
 
-
-//clang import MGSwipeTableCell
-
-
-
-
 //Load the ingredients saved from the shopping cart database.
 //allow the user to delete them as needed
 //maybe allow manual entry?
 //https://www.raywenderlich.com/145809/getting-started-core-data-tutorial
-class ShoppingCartTableViewController: UITableViewController {
+class ShoppingCartTableViewController: UITableViewController, MGSwipeTableCellDelegate {
     
     var items: [NSManagedObject] = []
     
@@ -64,7 +58,84 @@ class ShoppingCartTableViewController: UITableViewController {
     }
     
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let reuseIdentifier = "Cell"
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MGSwipeTableCell
+        let item = items[indexPath.row]
+        cell.textLabel!.text = item.value(forKeyPath: "name") as? String
+   //     cell.detailTextLabel!.text = "Detail text"
+        cell.delegate = self as! MGSwipeTableCellDelegate //optional
+        
+        //configure left buttons
+        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"unCheckMark.png"), backgroundColor: .green),
+                            MGSwipeButton(title: "", icon: UIImage(named:"fav.png"), backgroundColor: .blue)]
+        //
+        cell.leftButtons[0].tag = 10
+        
+        cell.leftSwipeSettings.transition = .rotate3D
+        
+        //configure right buttons
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red),
+                             MGSwipeButton(title: "More",backgroundColor: .lightGray)]
+        cell.rightSwipeSettings.transition = .rotate3D
+        
+        return cell
+    }
     
+    
+//swipe delegates
+    
+    
+    /**
+     * Called when the user clicks a swipe button or when a expandable button is automatically triggered
+     * @return YES to autohide the current swipe buttons
+     **/
+    func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+        //if direction.rawValue == 0, then the user swiped left
+           //button 0 is the green button
+           //button 1 is the blue button
+        //if direction.rawValue == 1, then the user swiped right
+           //button 1 is the gray button
+           //button 0 is the red button
+        print("direction swiped is: ", direction.rawValue)
+        print("button pressed: ", index)
+        
+        if direction.rawValue == 0 && index == 0 {
+            print("green")
+            if cell.leftButtons[0].tag == 10 {
+                cell.leftButtons[0] = MGSwipeButton(title: "", icon: UIImage(named:"checkMark.png"), backgroundColor: .green)
+                cell.leftButtons[0].tag = 11
+                print("assigned")
+            }
+            else if cell.leftButtons[0].tag == 11 {
+                cell.leftButtons[0] = MGSwipeButton(title: "", icon: UIImage(named:"unCheckMark.png"), backgroundColor: .green)
+                cell.leftButtons[0].tag = 10
+                print("unassigned")
+            }
+        }
+        cell.refreshButtons(false)
+        cell.refreshContentView()
+        
+        return false
+    }
+    
+    
+    
+    
+    
+    
+    /*
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+     let item = items[indexPath.row]
+     cell.textLabel?.text = item.value(forKeyPath: "name") as? String
+     return cell
+     
+     }
+     */
+    
+
     
     //some crazy function to set up the "+" item button
     @IBAction func addItem(_ sender: UIBarButtonItem) {
@@ -130,14 +201,7 @@ class ShoppingCartTableViewController: UITableViewController {
         return items.count
     }
 
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let item = items[indexPath.row]
-        cell.textLabel?.text = item.value(forKeyPath: "name") as? String
-        return cell
-        
-    }
+
     
 
     /*

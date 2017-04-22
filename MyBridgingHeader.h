@@ -9,7 +9,6 @@
 #ifndef MyBridgingHeader_h
 #define MyBridgingHeader_h
 
-//#import "MGSwipeTableCell.h"
-//#import "MGSwipeButton.h"
+#import "/Users/scottwilliams/Desktop/FoHoGit/FoHo-ryn2/Pods/MGSwipeTableCell/MGSwipeTableCell/MGSwipeButton.h"
 
 #endif /* MyBridgingHeader_h */

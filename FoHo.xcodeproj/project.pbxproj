@@ -16,6 +16,8 @@
 		892174D71EA1A8A2003A9889 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 892174D61EA1A8A2003A9889 /* loading.png */; };
 		892174D91EA1AC16003A9889 /* RecipeDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892174D81EA1AC16003A9889 /* RecipeDataViewController.swift */; };
 		892174DB1EA1AC5B003A9889 /* RecipeWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892174DA1EA1AC5B003A9889 /* RecipeWebViewController.swift */; };
+		8929BA031EAAED6B00A44AB7 /* checkMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8929BA021EAAED6B00A44AB7 /* checkMark.png */; };
+		8929BA051EAAEF4200A44AB7 /* unCheckMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8929BA041EAAEF4200A44AB7 /* unCheckMark.png */; };
 		893889211EAAB92200777BE0 /* ShoppingCartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893889201EAAB92200777BE0 /* ShoppingCartTableViewController.swift */; };
 		895A067B1E99C29400B3C4D3 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 895A067A1E99C29400B3C4D3 /* heart.png */; };
 		8983A9F61E9ED7C700E0B790 /* RecipeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */; };
@@ -79,6 +81,8 @@
 		892174D61EA1A8A2003A9889 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		892174D81EA1AC16003A9889 /* RecipeDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDataViewController.swift; sourceTree = "<group>"; };
 		892174DA1EA1AC5B003A9889 /* RecipeWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeWebViewController.swift; sourceTree = "<group>"; };
+		8929BA021EAAED6B00A44AB7 /* checkMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkMark.png; sourceTree = "<group>"; };
+		8929BA041EAAEF4200A44AB7 /* unCheckMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unCheckMark.png; sourceTree = "<group>"; };
 		893889201EAAB92200777BE0 /* ShoppingCartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewController.swift; sourceTree = "<group>"; };
 		895A067A1E99C29400B3C4D3 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = SOURCE_ROOT; };
 		8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeSearchModel.swift; path = ../RecipeSearchModel.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 				89FDA1FD1E99BBB600043820 /* Info.plist */,
 				89FDA1F51E99BBB600043820 /* FoHo.xcdatamodeld */,
 				892174D61EA1A8A2003A9889 /* loading.png */,
+				8929BA041EAAEF4200A44AB7 /* unCheckMark.png */,
+				8929BA021EAAED6B00A44AB7 /* checkMark.png */,
 				895A067A1E99C29400B3C4D3 /* heart.png */,
 			);
 			path = FoHo;
@@ -356,7 +362,9 @@
 			files = (
 				892174D71EA1A8A2003A9889 /* loading.png in Resources */,
 				895A067B1E99C29400B3C4D3 /* heart.png in Resources */,
+				8929BA051EAAEF4200A44AB7 /* unCheckMark.png in Resources */,
 				89FDA1FC1E99BBB600043820 /* LaunchScreen.storyboard in Resources */,
+				8929BA031EAAED6B00A44AB7 /* checkMark.png in Resources */,
 				89FDA1F91E99BBB600043820 /* Assets.xcassets in Resources */,
 				89FDA1F41E99BBB600043820 /* Main.storyboard in Resources */,
 			);
