@@ -91,7 +91,7 @@
 		895A067A1E99C29400B3C4D3 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = SOURCE_ROOT; };
 		8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeSearchModel.swift; path = ../RecipeSearchModel.swift; sourceTree = "<group>"; };
 		8983A9F71E9EE09B00E0B790 /* Recipes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
-		8983A9FB1E9EE3EA00E0B790 /* RecipeSearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeSearchData.swift; path = ../RecipeSearchData.swift; sourceTree = "<group>"; };
+		8983A9FB1E9EE3EA00E0B790 /* RecipeSearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchData.swift; sourceTree = "<group>"; };
 		89FDA1EB1E99BBB600043820 /* FoHo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoHo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89FDA1EE1E99BBB600043820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89FDA1F01E99BBB600043820 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +141,7 @@
 		460462AA1EA0393D007707F2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8983A9FB1E9EE3EA00E0B790 /* RecipeSearchData.swift */,
 				8983A9F71E9EE09B00E0B790 /* Recipes.swift */,
 			);
 			name = Models;
@@ -150,7 +151,6 @@
 		4662BD941E99FAAF00899F25 /* RecipeSearch */ = {
 			isa = PBXGroup;
 			children = (
-				8983A9FB1E9EE3EA00E0B790 /* RecipeSearchData.swift */,
 				8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */,
 				46C5E38D1EA347D000284E80 /* RecipeSearchTableViewController.swift */,
 				46C5E38F1EA3481D00284E80 /* RecipeSearchTableViewCell.swift */,
@@ -159,6 +159,45 @@
 				892174DA1EA1AC5B003A9889 /* RecipeWebViewController.swift */,
 			);
 			name = RecipeSearch;
+			sourceTree = "<group>";
+		};
+		46FE71A91EABFF0C00604B7C /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				893889201EAAB92200777BE0 /* ShoppingCartTableViewController.swift */,
+			);
+			name = ShoppingCart;
+			sourceTree = "<group>";
+		};
+		46FE71AA1EABFF3F00604B7C /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Favorites;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		46FE71AB1EABFF5200604B7C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Profile;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		46FE71AC1EABFF8800604B7C /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				892174D61EA1A8A2003A9889 /* loading.png */,
+				46FE71A51EABF8A400604B7C /* home.png */,
+				46FE71A81EABF8AC00604B7C /* person.png */,
+				46FE71991EABF84900604B7C /* plus.png */,
+				46FE719A1EABF84900604B7C /* search.png */,
+				46FE719B1EABF84900604B7C /* settings.png */,
+				46FE719C1EABF84900604B7C /* shopping_cart.png */,
+				895A067A1E99C29400B3C4D3 /* heart.png */,
+			);
+			name = Pictures;
 			sourceTree = "<group>";
 		};
 		89FDA1E21E99BBB600043820 = {
@@ -186,24 +225,19 @@
 		89FDA1ED1E99BBB600043820 /* FoHo */ = {
 			isa = PBXGroup;
 			children = (
+				46FE71AB1EABFF5200604B7C /* Profile */,
+				46FE71AA1EABFF3F00604B7C /* Favorites */,
+				46FE71A91EABFF0C00604B7C /* ShoppingCart */,
 				89FDA1EE1E99BBB600043820 /* AppDelegate.swift */,
 				89FDA1F01E99BBB600043820 /* ViewController.swift */,
-				893889201EAAB92200777BE0 /* ShoppingCartTableViewController.swift */,
 				4662BD941E99FAAF00899F25 /* RecipeSearch */,
 				460462AA1EA0393D007707F2 /* Models */,
 				89FDA1F21E99BBB600043820 /* Main.storyboard */,
 				89FDA1FA1E99BBB600043820 /* LaunchScreen.storyboard */,
 				89FDA1F81E99BBB600043820 /* Assets.xcassets */,
 				89FDA1FD1E99BBB600043820 /* Info.plist */,
+				46FE71AC1EABFF8800604B7C /* Pictures */,
 				89FDA1F51E99BBB600043820 /* FoHo.xcdatamodeld */,
-				892174D61EA1A8A2003A9889 /* loading.png */,
-				46FE71A51EABF8A400604B7C /* home.png */,
-				46FE71A81EABF8AC00604B7C /* person.png */,
-				46FE71991EABF84900604B7C /* plus.png */,
-				46FE719A1EABF84900604B7C /* search.png */,
-				46FE719B1EABF84900604B7C /* settings.png */,
-				46FE719C1EABF84900604B7C /* shopping_cart.png */,
-				895A067A1E99C29400B3C4D3 /* heart.png */,
 			);
 			path = FoHo;
 			sourceTree = "<group>";
