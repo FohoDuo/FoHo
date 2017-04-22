@@ -13,65 +13,77 @@ import FaveButton
 
 class RecipeSearchTableViewCell: UITableViewCell {
     
-    @IBOutlet var Image1: UIButton!
-    @IBOutlet var Image2: UIButton!
+    @IBOutlet var leftImage: UIButton!
+
+    @IBOutlet var rightImage: UIButton!
     
-    var tappedOne: Bool = false
-    var tappedTwo: Bool = false
+    var tappedLeft: Bool = false
+    var tappedRight: Bool = false
+    var left_Recipe: RecipeSearchModel?
+    var right_Recipe: RecipeSearchModel?
+    var leftPair: (RecipeSearchModel, Bool)?
+    var rightPair: (RecipeSearchModel, Bool)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    @IBAction func didTapImage1(_ sender: UIButton) {
-        tappedOne = true
+    @IBAction func didTapLeftButton(_ sender: Any) {
+        tappedLeft = true
     }
     
-    
-    @IBAction func didTapImage2(_ sender: UIButton) {
-        tappedTwo = true
-    }
-    
-    func setCell(image: UIImage, image2: UIImage, label: String, label2: String){
-        
-        Image1.setImage(image, for: UIControlState.normal)
-        Image2.setImage(image2, for: UIControlState.normal)
-       // Image1.isTouchInside
-        //print(label)
-        //print(uri)
-        //if let url = URL(string: uri),
-        //let data = try? Data(contentsOf: url),
-        //let image = UIImage(data: data) {
-        //print(image)
-       // recipeImage?.image = image
-        // }
-        //recipeName?.text = label
-        // self.layer.contents = (id)[UIImage imageNamed:recipeImage].CGImage;
-        //recipeImage?.contentMode = .scaleAspectFit
-        // recipeName.bringSubview(toFront: label)
-        //heartButton.view.layer.zPosition = 1;
-        //let y = recipeName?.frame.origin.y + recipeName?.font.ascender + 15
-        /*let heartButton = FaveButton(
-         frame: CGRect(x:30, y:40, width: 33, height: 35),
-         faveIconNormal: UIImage(named: "heart")
-         )
-         heartButton.delegate = self
-         superview?.addSubview(heartButton)*/
-        // superview?.bringSubview(toFront: recipeName)
-        //superview?.bringSubview(toFront: heartButton)
-        
-    }
-    
-    func returnButtons() -> [(UIButton, Bool)]{
-        return [(Image1, tappedOne), (Image2, tappedTwo)]
-        
-    }
 
+    @IBAction func didTapRightButton(_ sender: Any) {
+         tappedRight = true
+    }
+    
+    
+    func setRecipes(recipe1: RecipeSearchModel, recipe2: RecipeSearchModel){
+       leftImage.backgroundRect(forBounds: CGRect(x: 0, y: 0, width: 186, height: 158))
+    
+    
+        //(frame: CGRect(x: 0, y: 0, width: 186, height: 158))
+        leftImage.imageView?.contentMode = .scaleAspectFit
+        leftImage.setImage(recipe1.recipeImage(), for: UIControlState.normal)
+       
+        leftImage.imageView?.contentMode = .scaleAspectFit
+        // leftImage.tag = index
+        
+        //Image1.contentMode= .scaleAspectFill
+        // Image1.titleEdgeInsets = UIEdgeInsetsMake(0, , 0, 0)
+        rightImage.imageView?.contentMode = .scaleAspectFit
+        rightImage.setImage(recipe2.recipeImage(), for: UIControlState.normal)
+        //rightImage.tag = index + 1
+        //Image2.imageView?.contentMode = .scaleAspectFit
+        leftPair = (recipe1, tappedLeft)
+        rightPair = (recipe2, tappedRight)
+        
+        
+    }
+    
+    func leftButton()->UIButton?{
+        return leftImage
+    }
+    
+    func rightButton()->UIButton?{
+        return rightImage
+    }
+    
+    func returnLeftPair() -> (RecipeSearchModel, Bool)?{
+        return leftPair!
+        
+    }
+    
+    func returnRightPair() -> (RecipeSearchModel, Bool)?{
+        return rightPair!
+        
+    }
 }
+

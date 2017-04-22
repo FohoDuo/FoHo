@@ -6,8 +6,16 @@
 //  Copyright © 2017 FohoDuo. All rights reserved.
 //
 import UIKit
+import Alamofire
 
 class RecipeSearchTableViewController: UITableViewController {
+    let appID = "42432972"
+    let appKey = "ec024a2414433825635ad1d304916ee2"
+    let query = "buddha+bowl"
+    var recipes: Recipes?
+    var setLeftRecipes: [(RecipeSearchModel, Bool)] = []
+    var setRightRecipes: [(RecipeSearchModel, Bool)] = []
+    var clickedButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +24,28 @@ class RecipeSearchTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(query)&maxResult=50&start=50"
+        
+        //Magically calls the API and gets the data
+        Alamofire.request(url).responseJSON { response in
+            //print(response.request)  // original URL request
+            //print(response.response) // HTTP URL response
+            //print(response.data)     // server data
+            //print(response.result)   // result of response serialization
+            
+            if let JSON = response.result.value {
+                //print("JSON: \(JSON)")
+                
+                //might need this here dunno...?
+                self.tableView?.reloadData()
+                
+                //Populate our recipes instance with the data from the API call
+                self.recipes = Recipes(dataSource: JSON)
+                self.tableView?.reloadData()
+            }
+        }
+        self.tableView?.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,20 +56,55 @@ class RecipeSearchTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+     
+
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if recipes != nil {
+            return (recipes?.numRecipes())! / 2
+        }
+        //else just give it a default value of 1
         return 1
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath) as! RecipeSearchTableViewCell
-    
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TwoRecipes", for: indexPath) as! RecipeSearchTableViewCell
+        if recipes != nil {
+            print("Setting shit")
+            cell.setRecipes(recipe1: (recipes?.at(indexPath.row))!,
+                            recipe2:(recipes?.at(indexPath.row + 1))!)
+            setLeftRecipes.insert(cell.returnLeftPair()!, at: indexPath.row)
+            setRightRecipes.insert(cell.returnRightPair()!, at: indexPath.row)
+            /*cell.leftButton()?.removeTarget(nil, action: nil, for: .allEvents)
+            cell.leftButton()?.addTarget(self, action: "buttonAction", for: UIControlEvents.touchUpInside)
+           cell.rightButton()?.removeTarget(nil, action: nil, for: .allEvents)
+            cell.rightButton()?.addTarget(self, action: "buttonAction", for: UIControlEvents.touchUpInside)
+            cell.leftButton()?.tag = indexPath.row
+            cell.rightButton()?.tag = indexPath.row + 1
+           // cell.leftButton().*/
+            
+            
+        }
+        else{
+            print("Waiting")
+        }
+        
+        cell.backgroundColor = UIColor.purple
+
         // Configure the cell...
         return cell
+    }
+    
+    func buttonAction(sender: UIButton){
+        //if let button = sender as! UIButton{
+       // clickedButton = sender as! UIButton
+        clickedButton = sender
+        
+        //}
     }
     
     
@@ -77,13 +142,64 @@ class RecipeSearchTableViewController: UITableViewController {
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! RecipeDataViewController
+        vc.setRecipeID(id: recipes?.at((clickedButton?.tag)!).recipeID())
+        
+        
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
-     }
-     */
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        /*if segue.identifier == "leftRecipeSegue" {
+            for recipe in setLeftRecipes{
+                if recipe.1 == true{
+                    print(recipe.0)
+                    print("Here")
+                    let vc = segue.destination as! RecipeDataViewController
+                    vc.setRecipeID(id: recipe.0.recipeID())
+                }
+            }
+            
+            /*  print("segueing")
+             let cell = sender as! RecipeSearchTableViewCell
+             if let indexPath = tableView?.indexPath(for: cell), let ds = setRecipes {
+             let vc = segue.destination as! RecipeDataViewController
+             let index = checkWhichButtonWasTapped(recipes: ds[indexPath.row])
+             vc.setRecipeID(id: ds[indexPath.row][index].0.recipeID())
+             
+             }
+             
+             }
+             if segue.identifier == "rightRecipeSegue" {
+             print("segueing")
+             let cell = sender as! RecipeSearchTableViewCell
+             if let indexPath = tableView?.indexPath(for: cell), let ds = setRecipes {
+             let vc = segue.destination as! RecipeDataViewController
+             let index = checkWhichButtonWasTapped(recipes: ds[indexPath.row])
+             vc.setRecipeID(id: ds[indexPath.row][index].0.recipeID())
+             
+             }
+             
+             }*/
+            
+            
+            
+        }
+        else{ //if segue.identifier == "rightRecipeSegue" {
+            for recipe in setRightRecipes{
+                if recipe.1 == true{
+                    let vc = segue.destination as! RecipeDataViewController
+                    vc.setRecipeID(id: recipe.0.recipeID())
+                }
+            }
+        }
+        
+    }*/
+    }
+    
     
 }

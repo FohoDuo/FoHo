@@ -54,6 +54,7 @@ class RecipeSearchModel: NSObject {
         if let url = URL(string: uri),
             let data = try? Data(contentsOf: url),
             let image = UIImage(data: data) {
+            image.stretchableImage(withLeftCapWidth: 186, topCapHeight: 155)
             return image
         }
         return nil

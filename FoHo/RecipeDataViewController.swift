@@ -32,7 +32,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         //initialize tableview delegates
         ingredients.delegate = self
         ingredients.dataSource = self
-
+        print(recipeKey)
         let url = "http://api.yummly.com/v1/api/recipe/\(recipeKey!)?_app_id=\(appID)&_app_key=\(appKey)"
         
         //Magically calls the API and gets the data

@@ -27,7 +27,7 @@ class IngredientsTableViewCell: UITableViewCell {
     func setCell(item: String){
         listItem.text = item
         addButton.backgroundColor = UIColor.purple
-        addButton.layer.cornerRadius = 8
+        addButton.layer.cornerRadius = 10
     }
     
     
