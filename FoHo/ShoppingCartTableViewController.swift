@@ -68,17 +68,18 @@ class ShoppingCartTableViewController: UITableViewController, MGSwipeTableCellDe
         cell.delegate = self as! MGSwipeTableCellDelegate //optional
         
         //configure left buttons
-        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"unCheckMark.png"), backgroundColor: .green),
-                            MGSwipeButton(title: "", icon: UIImage(named:"fav.png"), backgroundColor: .blue)]
+        cell.leftButtons = [MGSwipeButton(title: "", icon: UIImage(named:"unCheckMark.png"), backgroundColor: .green)]
         //
         cell.leftButtons[0].tag = 10
         
         cell.leftSwipeSettings.transition = .rotate3D
         
         //configure right buttons
-        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red),
-                             MGSwipeButton(title: "More",backgroundColor: .lightGray)]
+        cell.rightButtons = [MGSwipeButton(title: "Delete", backgroundColor: .red)]
         cell.rightSwipeSettings.transition = .rotate3D
+        
+        cell.selectionStyle = .none
+
         
         return cell
     }
@@ -210,7 +211,24 @@ class ShoppingCartTableViewController: UITableViewController, MGSwipeTableCellDe
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+     */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.backgroundColor == UIColor.green {
+            print("change to green")
+            cell?.backgroundColor = UIColor.white
+            //cell?.textLabel?.layer.backgroundColor = UIColor.green.cgColor
+        }
+        else {
+            print("change back")
+            cell?.backgroundColor = UIColor.green
+        }
+        //tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.purple
+        print("section: \(indexPath.section)")
+        print("row: \(indexPath.row)")
+        
+    }
 
     /*
     // Override to support editing the table view.
@@ -222,7 +240,8 @@ class ShoppingCartTableViewController: UITableViewController, MGSwipeTableCellDe
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+ */
+    
 
     /*
     // Override to support rearranging the table view.
