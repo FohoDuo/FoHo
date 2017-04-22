@@ -13,6 +13,7 @@ import Alamofire
 //Using the recipeID from the first API call in the search view controller, we make
 //a second API call that gives us the more detailed information needed to populate this view
 class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet var navBar: UINavigationBar!
     let appID = "42432972"
     let appKey = "ec024a2414433825635ad1d304916ee2"
     var recipeKey: String? //"Buddha-Bowl-1238769"
@@ -22,7 +23,6 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var ingredients: UITableView!
     @IBOutlet weak var instructionButton: UIButton!
 
-    @IBOutlet weak var recipeName: UILabel!
     @IBOutlet weak var recipeImage: UIImageView!
   
     
@@ -43,7 +43,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.recipe = RecipeSearchData(recipeData: JSON)
                 
                 //set up the view outlets
-                self.recipeName.text = self.recipe?.recipeName()
+             //   self.recipeName.text = self.recipe?.recipeName()
                 self.recipeImage.image = self.recipe?.recipeImage()
             }
             //self.instructionButton.layer.borderColor = UIColor.darkGray as! CGColor
@@ -51,6 +51,11 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
        
         ingredients.reloadData()
         self.view.addSubview(ingredients)
+      //  navBar.items.Title = recipe?.recipeName()
+        //navBar.titleTextAttributes = recipe?.recipeName()
+
+        //self.title = recipe?.recipeName()
+       // self.navigationItem.title = recipe?.recipeName()
     }
     
     //set recipe key here with old data
