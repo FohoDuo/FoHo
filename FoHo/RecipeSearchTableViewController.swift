@@ -13,9 +13,7 @@ class RecipeSearchTableViewController: UITableViewController {
     let appKey = "ec024a2414433825635ad1d304916ee2"
     let query = "buddha+bowl"
     var recipes: Recipes?
-    var setLeftRecipes: [(RecipeSearchModel, Bool)] = []
-    var setRightRecipes: [(RecipeSearchModel, Bool)] = []
-    var clickedButton: UIButton?
+    var clickedRecipe: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,18 +72,15 @@ class RecipeSearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TwoRecipes", for: indexPath) as! RecipeSearchTableViewCell
         if recipes != nil {
-            print("Setting shit")
             cell.setRecipes(recipe1: (recipes?.at(indexPath.row))!,
                             recipe2:(recipes?.at(indexPath.row + 1))!)
-            setLeftRecipes.insert(cell.returnLeftPair()!, at: indexPath.row)
-            setRightRecipes.insert(cell.returnRightPair()!, at: indexPath.row)
-            /*cell.leftButton()?.removeTarget(nil, action: nil, for: .allEvents)
-            cell.leftButton()?.addTarget(self, action: "buttonAction", for: UIControlEvents.touchUpInside)
+            cell.leftButton()?.removeTarget(nil, action: nil, for: .allEvents)
+            cell.leftButton()?.addTarget(self, action: #selector(buttonAction(sender:)), for: UIControlEvents.touchUpInside)
            cell.rightButton()?.removeTarget(nil, action: nil, for: .allEvents)
-            cell.rightButton()?.addTarget(self, action: "buttonAction", for: UIControlEvents.touchUpInside)
+            cell.rightButton()?.addTarget(self, action: #selector(buttonAction(sender:)), for: UIControlEvents.touchUpInside)
             cell.leftButton()?.tag = indexPath.row
             cell.rightButton()?.tag = indexPath.row + 1
-           // cell.leftButton().*/
+           // cell.leftButton().
             
             
         }
@@ -100,9 +95,11 @@ class RecipeSearchTableViewController: UITableViewController {
     }
     
     func buttonAction(sender: UIButton){
+        print("In action")
         //if let button = sender as! UIButton{
        // clickedButton = sender as! UIButton
-        clickedButton = sender
+        clickedRecipe = sender.tag
+       performSegue(withIdentifier: "leftRecipeSegue", sender: clickedRecipe)
         
         //}
     }
@@ -147,58 +144,8 @@ class RecipeSearchTableViewController: UITableViewController {
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! RecipeDataViewController
-        vc.setRecipeID(id: recipes?.at((clickedButton?.tag)!).recipeID())
+        vc.setRecipeID(id: recipes?.at((clickedRecipe)!).recipeID())
         
-        
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        /*if segue.identifier == "leftRecipeSegue" {
-            for recipe in setLeftRecipes{
-                if recipe.1 == true{
-                    print(recipe.0)
-                    print("Here")
-                    let vc = segue.destination as! RecipeDataViewController
-                    vc.setRecipeID(id: recipe.0.recipeID())
-                }
-            }
-            
-            /*  print("segueing")
-             let cell = sender as! RecipeSearchTableViewCell
-             if let indexPath = tableView?.indexPath(for: cell), let ds = setRecipes {
-             let vc = segue.destination as! RecipeDataViewController
-             let index = checkWhichButtonWasTapped(recipes: ds[indexPath.row])
-             vc.setRecipeID(id: ds[indexPath.row][index].0.recipeID())
-             
-             }
-             
-             }
-             if segue.identifier == "rightRecipeSegue" {
-             print("segueing")
-             let cell = sender as! RecipeSearchTableViewCell
-             if let indexPath = tableView?.indexPath(for: cell), let ds = setRecipes {
-             let vc = segue.destination as! RecipeDataViewController
-             let index = checkWhichButtonWasTapped(recipes: ds[indexPath.row])
-             vc.setRecipeID(id: ds[indexPath.row][index].0.recipeID())
-             
-             }
-             
-             }*/
-            
-            
-            
-        }
-        else{ //if segue.identifier == "rightRecipeSegue" {
-            for recipe in setRightRecipes{
-                if recipe.1 == true{
-                    let vc = segue.destination as! RecipeDataViewController
-                    vc.setRecipeID(id: recipe.0.recipeID())
-                }
-            }
-        }
-        
-    }*/
     }
     
     
