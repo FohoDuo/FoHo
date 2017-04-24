@@ -77,25 +77,11 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         return 1
     }
     
-    func checkCounter(prev: Int, current: Int){
-        if prev > current + 1{
-            counter = prev - 2
-        }
-        else if current > prev + 1{
-            counter = current + 2
-        }
-       else{
-            counter = current
-        }
-        
-        
-    }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TwoRecipes", for: indexPath) as! RecipeSearchTableViewCell
         if recipes != nil {
-            checkCounter(prev: counter, current: indexPath.row)
+            counter = indexPath.row * 2
             cell.setRecipes(recipe1: (recipes?.at(counter))!,
                             recipe2:(recipes?.at(counter + 1))!)
             cell.leftButton()?.removeTarget(nil, action: nil, for: .allEvents)
@@ -104,9 +90,10 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             cell.rightButton()?.addTarget(self, action: #selector(buttonAction(sender:)), for: UIControlEvents.touchUpInside)
             cell.leftButton()?.tag = counter
             cell.rightButton()?.tag = counter + 1
-            //counter = indexPath.row + 1
-            //let customIndexPath = NSIndexPath(row: indexPath.row + 1, section: indexPath.section)
-            //let routine = NSFetchedResultsController.objectAtIndexPath(customIndexPath) as! SavedRoutines
+            print("\nIteration")
+            print("Index:", indexPath.row)
+            print("Counters:", counter, ", ", counter + 1, "\n")
+
         }
         else{
             print("Waiting")
