@@ -40,7 +40,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     func apiCall() {
         
         //construct the url
-        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&maxResult=50&start=50"
+        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&maxResult=50&start=0"
         
         print(url)
         Alamofire.request(url).responseJSON { response in
