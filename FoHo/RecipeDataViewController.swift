@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FaveButton
 import Alamofire
 
 //View Controller that displays more detailed information regarding a specific recipe.
@@ -19,11 +20,16 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     var recipeKey: String? //"Buddha-Bowl-1238769"
     var recipe: RecipeSearchData?
     
+    @IBOutlet var heartButton: FaveButton!
 
     @IBOutlet var ingredients: UITableView!
     @IBOutlet weak var instructionButton: UIButton!
-
     @IBOutlet weak var recipeImage: UIImageView!
+    
+    @IBAction func didTapHeartButton(_ sender: Any) {
+        print("Tapped the heart")
+    }
+    
   
     
     override func viewDidLoad() {
@@ -32,6 +38,9 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         //initialize tableview delegates
         ingredients.delegate = self
         ingredients.dataSource = self
+        heartButton.delegate = self
+        heartButton.frame(forAlignmentRect: CGRect(x: 290, y: 200, width: 33, height: 33))
+
         print(recipeKey)
         let url = "http://api.yummly.com/v1/api/recipe/\(recipeKey!)?_app_id=\(appID)&_app_key=\(appKey)"
         

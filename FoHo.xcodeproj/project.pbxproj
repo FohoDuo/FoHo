@@ -10,15 +10,15 @@
 		465CC2BE1EA1D0F300D864E6 /* IngredientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465CC2BD1EA1D0F300D864E6 /* IngredientsTableViewCell.swift */; };
 		46C5E38E1EA347D000284E80 /* RecipeSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5E38D1EA347D000284E80 /* RecipeSearchTableViewController.swift */; };
 		46C5E3901EA3481D00284E80 /* RecipeSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5E38F1EA3481D00284E80 /* RecipeSearchTableViewCell.swift */; };
+		46D58E731EADC0C200881ED5 /* forkknife.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D58E701EADC0C200881ED5 /* forkknife.png */; };
+		46D58E741EADC0C200881ED5 /* forkspoonknife.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D58E711EADC0C200881ED5 /* forkspoonknife.png */; };
+		46D58E751EADC0C200881ED5 /* spoon-fork-knife-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D58E721EADC0C200881ED5 /* spoon-fork-knife-heart.png */; };
 		46FE719F1EABF84900604B7C /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FE71991EABF84900604B7C /* plus.png */; };
 		46FE71A01EABF84900604B7C /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FE719A1EABF84900604B7C /* search.png */; };
 		46FE71A11EABF84900604B7C /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FE719B1EABF84900604B7C /* settings.png */; };
 		46FE71A21EABF84900604B7C /* shopping_cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FE719C1EABF84900604B7C /* shopping_cart.png */; };
 		46FE71A31EABF8A400604B7C /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FE71A51EABF8A400604B7C /* home.png */; };
 		46FE71A61EABF8AC00604B7C /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FE71A81EABF8AC00604B7C /* person.png */; };
-		46FE71AE1EAC042100604B7C /* forkspoonknife.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FE71AD1EAC042100604B7C /* forkspoonknife.png */; };
-		46FE71B01EAC06A400604B7C /* spoon-fork-knife-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FE71AF1EAC06A400604B7C /* spoon-fork-knife-heart.png */; };
-		46FE71B21EAC084900604B7C /* forkknife.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FE71B11EAC084900604B7C /* forkknife.png */; };
 		840226817A7B121687E7DFFB /* Pods_FoHoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FFAFA5632EDCA02E3BB5A58 /* Pods_FoHoUITests.framework */; };
 		892174D71EA1A8A2003A9889 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 892174D61EA1A8A2003A9889 /* loading.png */; };
 		892174D91EA1AC16003A9889 /* RecipeDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892174D81EA1AC16003A9889 /* RecipeDataViewController.swift */; };
@@ -79,15 +79,15 @@
 		465CC2BD1EA1D0F300D864E6 /* IngredientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewCell.swift; sourceTree = "<group>"; };
 		46C5E38D1EA347D000284E80 /* RecipeSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewController.swift; sourceTree = "<group>"; };
 		46C5E38F1EA3481D00284E80 /* RecipeSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewCell.swift; sourceTree = "<group>"; };
+		46D58E701EADC0C200881ED5 /* forkknife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forkknife.png; sourceTree = SOURCE_ROOT; };
+		46D58E711EADC0C200881ED5 /* forkspoonknife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forkspoonknife.png; sourceTree = SOURCE_ROOT; };
+		46D58E721EADC0C200881ED5 /* spoon-fork-knife-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spoon-fork-knife-heart.png"; sourceTree = SOURCE_ROOT; };
 		46FE71991EABF84900604B7C /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus.png; path = ../plus.png; sourceTree = "<group>"; };
 		46FE719A1EABF84900604B7C /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = ../search.png; sourceTree = "<group>"; };
 		46FE719B1EABF84900604B7C /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../settings.png; sourceTree = "<group>"; };
 		46FE719C1EABF84900604B7C /* shopping_cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shopping_cart.png; path = ../shopping_cart.png; sourceTree = "<group>"; };
 		46FE71A41EABF8A400604B7C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/home.png; sourceTree = "<group>"; };
 		46FE71A71EABF8AC00604B7C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/person.png; sourceTree = "<group>"; };
-		46FE71AD1EAC042100604B7C /* forkspoonknife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forkspoonknife.png; path = ../../../../forkspoonknife.png; sourceTree = "<group>"; };
-		46FE71AF1EAC06A400604B7C /* spoon-fork-knife-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spoon-fork-knife-heart.png"; path = "../../../../spoon-fork-knife-heart.png"; sourceTree = "<group>"; };
-		46FE71B11EAC084900604B7C /* forkknife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forkknife.png; path = ../../../../forkknife.png; sourceTree = "<group>"; };
 		4928BD11CA424939A8577260 /* Pods_FoHo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoHo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB91AD463A5EB6C0B0D69EC /* Pods-FoHoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoHoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoHoUITests/Pods-FoHoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		892174D61EA1A8A2003A9889 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
@@ -194,9 +194,9 @@
 		46FE71AC1EABFF8800604B7C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
-				46FE71B11EAC084900604B7C /* forkknife.png */,
-				46FE71AD1EAC042100604B7C /* forkspoonknife.png */,
-				46FE71AF1EAC06A400604B7C /* spoon-fork-knife-heart.png */,
+				46D58E701EADC0C200881ED5 /* forkknife.png */,
+				46D58E711EADC0C200881ED5 /* forkspoonknife.png */,
+				46D58E721EADC0C200881ED5 /* spoon-fork-knife-heart.png */,
 				892174D61EA1A8A2003A9889 /* loading.png */,
 				46FE71A51EABF8A400604B7C /* home.png */,
 				46FE71A81EABF8AC00604B7C /* person.png */,
@@ -412,14 +412,14 @@
 				892174D71EA1A8A2003A9889 /* loading.png in Resources */,
 				46FE71A21EABF84900604B7C /* shopping_cart.png in Resources */,
 				46FE71A01EABF84900604B7C /* search.png in Resources */,
-				46FE71B01EAC06A400604B7C /* spoon-fork-knife-heart.png in Resources */,
+				46D58E741EADC0C200881ED5 /* forkspoonknife.png in Resources */,
 				895A067B1E99C29400B3C4D3 /* heart.png in Resources */,
-				46FE71B21EAC084900604B7C /* forkknife.png in Resources */,
 				46FE71A31EABF8A400604B7C /* home.png in Resources */,
 				89FDA1FC1E99BBB600043820 /* LaunchScreen.storyboard in Resources */,
 				89FDA1F91E99BBB600043820 /* Assets.xcassets in Resources */,
-				46FE71AE1EAC042100604B7C /* forkspoonknife.png in Resources */,
+				46D58E731EADC0C200881ED5 /* forkknife.png in Resources */,
 				46FE71A11EABF84900604B7C /* settings.png in Resources */,
+				46D58E751EADC0C200881ED5 /* spoon-fork-knife-heart.png in Resources */,
 				89FDA1F41E99BBB600043820 /* Main.storyboard in Resources */,
 				46FE71A61EABF8AC00604B7C /* person.png in Resources */,
 				46FE719F1EABF84900604B7C /* plus.png in Resources */,
