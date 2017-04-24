@@ -31,7 +31,10 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.delegate = self
-        
+        //searchController.searchBar.searchBarStyle = UISearchBarStyle.minimal
+        searchController.searchBar.tintColor = #colorLiteral(red: 0.2219267856, green: 0.5662676973, blue: 0.6493632515, alpha: 1)
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0.7758994699, green: 0.9258515835, blue: 0.9391316175, alpha: 1)
+        searchController.searchBar.isTranslucent = true
     }
     
     func apiCall() {
