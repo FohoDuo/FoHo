@@ -8,42 +8,51 @@
 import UIKit
 import Alamofire
 
-class RecipeSearchTableViewController: UITableViewController {
+class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegate  {
     let appID = "42432972"
     let appKey = "ec024a2414433825635ad1d304916ee2"
     let query = "buddha+bowl"
     var recipes: Recipes?
     var clickedRecipe: Int?
+    var counter: Int = 0
+    
+    var searchParameters: String?
+    var searchActive: Bool = false
+    
+    //By initializing UISearchController without a searchResultsController, you are telling the search controller that you want use the same view that you’re searching to display the results. If you specify a different view controller here, that will be used to display the results instead.
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(query)&maxResult=50&start=50"
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.delegate = self
         
-        //Magically calls the API and gets the data
+    }
+    
+    func apiCall() {
+        
+        //construct the url
+        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&maxResult=50&start=50"
+        
+        print(url)
         Alamofire.request(url).responseJSON { response in
-            //print(response.request)  // original URL request
-            //print(response.response) // HTTP URL response
-            //print(response.data)     // server data
-            //print(response.result)   // result of response serialization
             
             if let JSON = response.result.value {
-                //print("JSON: \(JSON)")
+                print("JSON: \(JSON)")
                 
                 //might need this here dunno...?
-                self.tableView?.reloadData()
+                self.tableView.reloadData()
                 
                 //Populate our recipes instance with the data from the API call
                 self.recipes = Recipes(dataSource: JSON)
-                self.tableView?.reloadData()
+                self.tableView.reloadData()
             }
         }
-        self.tableView?.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,27 +77,42 @@ class RecipeSearchTableViewController: UITableViewController {
         return 1
     }
     
+    func checkCounter(prev: Int, current: Int){
+        if prev > current + 1{
+            counter = prev - 2
+        }
+        else if current > prev + 1{
+            counter = current + 2
+        }
+       else{
+            counter = current
+        }
+        
+        
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TwoRecipes", for: indexPath) as! RecipeSearchTableViewCell
         if recipes != nil {
-            cell.setRecipes(recipe1: (recipes?.at(indexPath.row))!,
-                            recipe2:(recipes?.at(indexPath.row + 1))!)
+            checkCounter(prev: counter, current: indexPath.row)
+            cell.setRecipes(recipe1: (recipes?.at(counter))!,
+                            recipe2:(recipes?.at(counter + 1))!)
             cell.leftButton()?.removeTarget(nil, action: nil, for: .allEvents)
             cell.leftButton()?.addTarget(self, action: #selector(buttonAction(sender:)), for: UIControlEvents.touchUpInside)
            cell.rightButton()?.removeTarget(nil, action: nil, for: .allEvents)
             cell.rightButton()?.addTarget(self, action: #selector(buttonAction(sender:)), for: UIControlEvents.touchUpInside)
-            cell.leftButton()?.tag = indexPath.row
-            cell.rightButton()?.tag = indexPath.row + 1
-           // cell.leftButton().
-            
-            
+            cell.leftButton()?.tag = counter
+            cell.rightButton()?.tag = counter + 1
+            //counter = indexPath.row + 1
+            //let customIndexPath = NSIndexPath(row: indexPath.row + 1, section: indexPath.section)
+            //let routine = NSFetchedResultsController.objectAtIndexPath(customIndexPath) as! SavedRoutines
         }
         else{
             print("Waiting")
         }
-        
-        cell.backgroundColor = UIColor.purple
+      //  let nextIndexPath:NSIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+        //cell.backgroundColor = UIColor.purple
 
         // Configure the cell...
         return cell
@@ -149,4 +173,47 @@ class RecipeSearchTableViewController: UITableViewController {
     }
     
     
+    //delegates for searching
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //assign string here i think
+        print("activated")
+        
+        apiCall()
+        //self.viewDidLoad()
+        self.tableView?.reloadData()
+        searchActive = false
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.tableView?.reloadData()
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "ALL") {
+        // do something to change white spaces in the string to "+"
+        //assign searchParameters the modified string
+        searchParameters = searchText.replacingOccurrences(of: " ", with: "+")
+        print("search text", searchParameters)
+        tableView.reloadData()
+    }
+    
+    
+}
+
+
+extension RecipeSearchTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
 }

@@ -16,6 +16,7 @@ class RecipeSearchTableViewCell: UITableViewCell {
     @IBOutlet var leftImage: UIButton!
     @IBOutlet var rightImage: UIButton!
     
+    
     var tappedLeft: Bool = false
     var tappedRight: Bool = false
     
@@ -35,11 +36,13 @@ class RecipeSearchTableViewCell: UITableViewCell {
        leftImage.backgroundRect(forBounds: CGRect(x: 0, y: 0, width: 186, height: 158))
     
         leftImage.imageView?.contentMode = .scaleAspectFit
-        leftImage.setImage(recipe1.recipeImage(), for: UIControlState.normal)
+       // leftImage.setImage(recipe1.recipeImage(), for: UIControlState.normal)
        
+        leftImage.setBackgroundImage(recipe1.recipeImage(), for: UIControlState.normal)
         leftImage.imageView?.contentMode = .scaleAspectFit
         rightImage.imageView?.contentMode = .scaleAspectFit
-        rightImage.setImage(recipe2.recipeImage(), for: UIControlState.normal)
+        //rightImage.setImage(recipe2.recipeImage(), for: UIControlState.normal)
+        rightImage.setBackgroundImage(recipe2.recipeImage(), for: UIControlState.normal)
         
     }
     

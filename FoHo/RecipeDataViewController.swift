@@ -103,6 +103,8 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         else{
             cell.setCell(item: "")
         }
+    
+        cell.selectionStyle = .none
         return cell
     }
 
