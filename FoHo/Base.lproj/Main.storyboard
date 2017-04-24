@@ -276,7 +276,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="tZU-LU-tcC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="K6N-5Q-kby"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="K6N-5Q-kby">
+                            <connections>
+                                <action selector="addItem:" destination="Q0I-1p-0cY" id="Bhs-tc-cIg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYM-uG-bAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
