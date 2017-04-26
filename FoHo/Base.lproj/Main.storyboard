@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Llu-1P-Hwp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Llu-1P-Hwp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,7 +54,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o0t-cn-bUx">
-                                        <rect key="frame" x="0.0" y="332" width="341" height="174"/>
+                                        <rect key="frame" x="2" y="332" width="341" height="174"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -62,11 +62,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="341" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MQ8-XK-khH" id="Kgc-1E-sUH" customClass="IngredientsTableViewCell" customModule="FoHo" customModuleProvider="target">
-<<<<<<< HEAD
                                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
-=======
-                                                    <rect key="frame" x="0.0" y="0.0" width="327" height="43"/>
->>>>>>> origin/bobBranch3
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcg-JW-pYT">
@@ -222,7 +218,7 @@
                     <tabBarItem key="tabBarItem" title="" image="search.png" id="m68-wv-BsQ">
                         <inset key="imageInsets" minX="23" minY="31" maxX="26" maxY="15"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R4Q-hL-ksE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="R4Q-hL-ksE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -295,7 +291,7 @@
         <scene sceneID="Vfg-Vm-mzN">
             <objects>
                 <navigationController id="Nze-OH-HUp" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kaY-2D-5Oa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kaY-2D-5Oa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -363,7 +359,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yxP-aq-Yyg" id="jH7-g2-dnp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -390,7 +386,7 @@
             <objects>
                 <navigationController id="I9y-3Q-ohY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="OVM-z9-RO1"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pYw-Qh-dFx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pYw-Qh-dFx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -503,7 +499,7 @@
                     <tabBarItem key="tabBarItem" title="" image="search.png" id="eGn-xv-oL3">
                         <inset key="imageInsets" minX="23" minY="31" maxX="26" maxY="15"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fdc-8s-1dr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fdc-8s-1dr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
