@@ -62,11 +62,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="341" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MQ8-XK-khH" id="Kgc-1E-sUH" customClass="IngredientsTableViewCell" customModule="FoHo" customModuleProvider="target">
-<<<<<<< HEAD
                                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
-=======
-                                                    <rect key="frame" x="0.0" y="0.0" width="327" height="43"/>
->>>>>>> origin/bobBranch3
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcg-JW-pYT">
