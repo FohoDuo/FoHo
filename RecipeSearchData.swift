@@ -45,6 +45,16 @@ class RecipeSearchData: NSObject {
         return nil
     }
     
+    //gets time needed to total time
+    func totalTime() -> String? {
+        //print(recipe["totalTime"])
+        if let time = recipe["totalTime"] {
+            return time as? String
+        }
+        return nil
+    }
+
+    
     //gets cook time
     func cookTime() -> String? {
         if let time = recipe["cookTime"] {
