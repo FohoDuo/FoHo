@@ -8,7 +8,7 @@ target 'FoHo' do
   # Pods for FoHo
     pod 'FaveButton', '~> 2.0.3'
     pod 'Alamofire', '~> 4.4'
-    pod 'MGSwipeTableCell'
+    pod 'MGSwipeTableCell', '~> 1.5.1'
 
   target 'FoHoTests' do
     inherit! :search_paths

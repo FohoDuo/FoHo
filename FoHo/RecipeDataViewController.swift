@@ -20,7 +20,10 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     var recipeKey: String? //"Buddha-Bowl-1238769"
     var recipe: RecipeSearchData?
     
+
     @IBOutlet var heartButton: FaveButton!
+    @IBOutlet var timeCook: UILabel!
+    @IBOutlet var numberOfServings: UILabel!
 
     @IBOutlet var ingredients: UITableView!
     @IBOutlet weak var instructionButton: UIButton!
@@ -54,17 +57,16 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
                 //set up the view outlets
              //   self.recipeName.text = self.recipe?.recipeName()
                 self.recipeImage.image = self.recipe?.recipeImage()
+                self.timeCook.text = self.recipe?.totalTime()
+                self.numberOfServings.text = self.recipe?.numberOfServings()?.description
+                print("CookTime: ", self.recipe?.totalTime())
             }
             //self.instructionButton.layer.borderColor = UIColor.darkGray as! CGColor
         }
        
         ingredients.reloadData()
         self.view.addSubview(ingredients)
-      //  navBar.items.Title = recipe?.recipeName()
-        //navBar.titleTextAttributes = recipe?.recipeName()
-
-        //self.title = recipe?.recipeName()
-       // self.navigationItem.title = recipe?.recipeName()
+        
     }
     
     //set recipe key here with old data
