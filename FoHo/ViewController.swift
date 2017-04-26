@@ -9,6 +9,12 @@
 import UIKit
 import FaveButton
 import Alamofire
+import SideMenu
+
+
+
+
+
 
 class ViewControllerTEST: UIViewController {
 
@@ -24,6 +30,14 @@ class ViewControllerTEST: UIViewController {
         )
         faveButton.delegate = self
         view.addSubview(faveButton)
+        
+        
+        
+        
+        
+        
+        
+        
         
     //sample get JSON
         let url = "http://api.yummly.com/v1/api/recipes?_app_id=42432972&_app_key=ec024a2414433825635ad1d304916ee2&q=buddha+bowl&maxResult=10&start=10"
