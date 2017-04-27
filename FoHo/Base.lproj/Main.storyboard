@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Llu-1P-Hwp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fzz-Yg-58E">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -194,20 +194,40 @@
         <!--Some Side Bar Thing-->
         <scene sceneID="C9Q-24-gUE">
             <objects>
-                <tableViewController id="aNu-XQ-hZS" sceneMemberID="viewController">
+                <tableViewController id="aNu-XQ-hZS" customClass="SideBarTableViewController" customModule="FoHo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RyK-UL-j80">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ebc-GC-5Rb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sideBarCell" id="ebc-GC-5Rb" customClass="SideBarTableViewCell" customModule="FoHo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ebc-GC-5Rb" id="o6r-Yc-dmI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKS-qQ-Ebl">
+                                            <rect key="frame" x="8" y="8" width="200" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Am-PS-wKR">
+                                            <rect key="frame" x="250" y="7" width="51" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="switchTouched:" destination="ebc-GC-5Rb" eventType="valueChanged" id="MRE-rY-BMo"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.13082351996648389" green="0.74575025202865519" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="sideBarLabel" destination="RKS-qQ-Ebl" id="D5V-tr-XPY"/>
+                                    <outlet property="switch" destination="5Am-PS-wKR" id="mKG-fY-s55"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -219,7 +239,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nzU-bZ-qi6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6239" y="5"/>
+            <point key="canvasLocation" x="-919.20000000000005" y="2405.8470764617691"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="S18-Na-dYl">
@@ -234,19 +254,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Ezm-Nf-PwU" appends="YES" id="KRF-56-YFf"/>
-                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7Q-EM-u35" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="Ezm-Nf-PwU">
-                    <connections>
-                        <segue destination="Nze-OH-HUp" kind="presentation" id="1sw-I3-KH2"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-8132" y="49.925037481259373"/>
+            <point key="canvasLocation" x="-6058" y="-208"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="Vfg-Vm-mzN">
@@ -265,7 +277,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hW7-u9-ugF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7190" y="5"/>
+            <point key="canvasLocation" x="-1714" y="2406"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="W88-ht-e1h">
@@ -320,7 +332,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yxP-aq-Yyg" id="jH7-g2-dnp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -446,7 +458,13 @@
                             <outlet property="delegate" destination="x9W-WV-Cf3" id="uee-Jx-nzJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Yxo-zu-Aa6"/>
+                    <navigationItem key="navigationItem" id="Yxo-zu-Aa6">
+                        <barButtonItem key="rightBarButtonItem" title="Click me!" id="T2l-US-5Jc">
+                            <connections>
+                                <segue destination="Nze-OH-HUp" kind="presentation" identifier="sideBar" id="xww-Vi-KOG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylb-fB-U0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -535,7 +553,7 @@
         <image name="search.png" width="121" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="j6o-Sa-5wn"/>
+        <segue reference="hb1-Qm-74D"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.86279246215594896" green="0.19591015981358961" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

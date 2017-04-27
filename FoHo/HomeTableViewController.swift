@@ -27,7 +27,7 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startingIndex = String(arc4random_uniform(1614838 - 50))
+        startingIndex = String(arc4random_uniform(1016582 - 50))
         print(startingIndex)
         apiCall()
 
@@ -41,13 +41,13 @@ class HomeTableViewController: UITableViewController {
     func apiCall() {
         
         //construct the url
-        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=&maxResult=50&start=\(startingIndex)"
+        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=&maxResult=50&start=\(startingIndex)&requirePictures=true"
         
         print(url)
         Alamofire.request(url).responseJSON { response in
             
             if let JSON = response.result.value {
-                print("JSON: \(JSON)")
+                //print("JSON: \(JSON)")
                 
                 //might need this here dunno...?
                 self.tableView.reloadData()

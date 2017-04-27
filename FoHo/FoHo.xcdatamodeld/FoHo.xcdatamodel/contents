@@ -4,13 +4,17 @@
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Options" representedClassName="Options" syncable="YES" codeGenerationType="class">
+        <attribute name="on" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="ingredients" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="recipeName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="Item" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Options" positionX="-63" positionY="9" width="128" height="60"/>
     </elements>
 </model>

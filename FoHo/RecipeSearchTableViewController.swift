@@ -7,6 +7,7 @@
 //
 import UIKit
 import Alamofire
+import CoreData
 
 class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegate  {
     let appID = "42432972"
@@ -16,15 +17,73 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     var clickedRecipe: Int?
     var counter: Int = 0
     
+    var optionsList: [Bool] = []
+    
     var searchParameters: String?
     var searchActive: Bool = false
     
     //By initializing UISearchController without a searchResultsController, you are telling the search controller that you want use the same view that you’re searching to display the results. If you specify a different view controller here, that will be used to display the results instead.
     let searchController = UISearchController(searchResultsController: nil)
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //debug code to kill all objects from a specific entity
+        /*
+        // create the delete request for the specified entity
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Options")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
+        // get reference to the persistent container
+        let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        
+        // perform the delete
+        do {
+            try persistentContainer.viewContext.execute(deleteRequest)
+        } catch let error as NSError {
+            print(error)
+        }
+        */
+        
+        
+        
+        
+        
+        
+        if isEmpty {
+            //currently 42 options, so insert 42 false values to the DB
+            var counter = 0
+            while counter < 42 {
+                save(onValue: false)
+                counter += 1
+            }
+            print("nothing in options array")
+        }
+            
+        //populate the options array with values from the DB
+        else {
+            print("grabbing shit from DB")
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+            }
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Options")
+            do {
+                let items = try managedContext.fetch(fetchRequest)
+                for option in items {
+                    optionsList.append((option.value(forKeyPath: "on") != nil))
+                }
+                
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+
+            
+        }
+        print(optionsList.count)
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -37,10 +96,50 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         searchController.searchBar.isTranslucent = true
     }
     
+    //make url based on values in optionsLists
+    func makeURL() {
+        
+    }
+    
+    //check if the options entity has been populated or not
+    var isEmpty : Bool {
+        do{
+            //1
+            let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate
+            let managedContext = appDelegate?.persistentContainer.viewContext
+            
+            //2
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Options")
+            let count = try managedContext?.count(for: fetchRequest)
+            
+            return count == 0 ? true : false
+        }catch{
+            return true
+        }
+    }
+    
+    func save(onValue: Bool) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Options", in: managedContext)!
+        let item = NSManagedObject(entity: entity, insertInto: managedContext)
+        item.setValue(onValue, forKeyPath: "on")
+        do {
+            try managedContext.save()
+            optionsList.append(onValue)
+            print(optionsList.count)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
     func apiCall() {
         
         //construct the url
-        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&maxResult=50&start=50"
+        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&maxResult=50&start=50&requirePictures=true"
         
         print(url)
         Alamofire.request(url).responseJSON { response in
@@ -76,8 +175,8 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         if recipes != nil {
             return (recipes?.numRecipes())! / 2
         }
-        //else just give it a default value of 1
-        return 1
+        //else just give it a default value of 0
+        return 0
     }
     
     
@@ -157,8 +256,13 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
      // MARK: - Navigation
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! RecipeDataViewController
-        vc.setRecipeID(id: recipes?.at((clickedRecipe)!).recipeID())
+        if segue.identifier == "sideBar" {
+            //idk
+        }
+        else {
+            let vc = segue.destination as! RecipeDataViewController
+            vc.setRecipeID(id: recipes?.at((clickedRecipe)!).recipeID())
+        }
         
     }
     
