@@ -16,7 +16,11 @@ class RecipeSearchTableViewCell: UITableViewCell {
     @IBOutlet var leftImage: UIButton!
     @IBOutlet var rightImage: UIButton!
     
+    @IBOutlet var leftImageSquare: UIView!
+    @IBOutlet var rightImageSquare: UIView!
     
+    @IBOutlet var rightImageName: UILabel!
+    @IBOutlet var leftImageName: UILabel!
     var tappedLeft: Bool = false
     var tappedRight: Bool = false
     
@@ -33,16 +37,30 @@ class RecipeSearchTableViewCell: UITableViewCell {
     
     
     func setRecipes(recipe1: RecipeSearchModel, recipe2: RecipeSearchModel){
+        leftImageSquare.layer.borderWidth = 0.23
+        leftImageSquare.layer.borderColor = UIColor.black.cgColor
+        leftImageSquare.layer.cornerRadius = 2
        leftImage.backgroundRect(forBounds: CGRect(x: 0, y: 0, width: 186, height: 158))
-    
+        leftImage.layer.cornerRadius = 2
+        leftImage.layer.borderWidth = 0.1
+        leftImage.layer.borderColor = UIColor.black.cgColor
         leftImage.imageView?.contentMode = .scaleAspectFit
-       // leftImage.setImage(recipe1.recipeImage(), for: UIControlState.normal)
-       
+        leftImageName.text = recipe1.recipeName()
         leftImage.setBackgroundImage(recipe1.recipeImage(), for: UIControlState.normal)
         leftImage.imageView?.contentMode = .scaleAspectFit
+        
+        
+        rightImageSquare.layer.borderWidth = 0.23
+        rightImageSquare.layer.borderColor = UIColor.black.cgColor
+        rightImageSquare.layer.cornerRadius = 2
+
         rightImage.imageView?.contentMode = .scaleAspectFit
+        rightImage.layer.cornerRadius = 2
+        rightImage.layer.borderWidth = 0.1
+        rightImage.layer.borderColor = UIColor.black.cgColor
         //rightImage.setImage(recipe2.recipeImage(), for: UIControlState.normal)
         rightImage.setBackgroundImage(recipe2.recipeImage(), for: UIControlState.normal)
+        rightImageName.text = recipe2.recipeName()
         
     }
     

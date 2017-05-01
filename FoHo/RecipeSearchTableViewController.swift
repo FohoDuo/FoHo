@@ -35,12 +35,18 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         searchController.searchBar.tintColor = #colorLiteral(red: 0.2219267856, green: 0.5662676973, blue: 0.6493632515, alpha: 1)
         searchController.searchBar.barTintColor = #colorLiteral(red: 0.7758994699, green: 0.9258515835, blue: 0.9391316175, alpha: 1)
         searchController.searchBar.isTranslucent = true
+        
+      //  let fixed = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: self, action: nil)
+       // fixed.width = 10
+       // self.tabBarItem.
+        
+        
     }
     
     func apiCall() {
         
         //construct the url
-        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&maxResult=50&start=0"
+        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&maxResult=50&start=0&requirePictures=true"
         
         print(url)
         Alamofire.request(url).responseJSON { response in
@@ -77,7 +83,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             return (recipes?.numRecipes())! / 2
         }
         //else just give it a default value of 1
-        return 1
+        return 0
     }
     
     

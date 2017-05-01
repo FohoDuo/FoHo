@@ -18,10 +18,11 @@ class ShoppingCartTableViewController: UITableViewController{
     var items: [NSManagedObject] = []
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Shopping Cart"
+        //title = "Shopping Cart"
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "Cell")
     }
@@ -100,9 +101,9 @@ class ShoppingCartTableViewController: UITableViewController{
     //some crazy function to set up the "+" item button
 
     @IBAction func addItem(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "New Item", message: "Add a new item to the cart", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Item", message: "to shopping cart", preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Save", style: .default) {
+        let saveAction = UIAlertAction(title: "Add", style: .default) {
             [unowned self] action in
             guard let textField = alert.textFields?.first,
                 let itemToSave = textField.text else {
@@ -165,14 +166,14 @@ class ShoppingCartTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        if cell?.backgroundColor == UIColor.green {
+        if cell?.backgroundColor == #colorLiteral(red: 0.2187472284, green: 0.7748631835, blue: 0.3660549819, alpha: 1) {
             print("change to green")
-            cell?.backgroundColor = UIColor.white
+            cell?.backgroundColor = #colorLiteral(red: 0.2810869217, green: 0.3669615388, blue: 0.7158250213, alpha: 1)
             //cell?.textLabel?.layer.backgroundColor = UIColor.green.cgColor
         }
         else {
             print("change back")
-            cell?.backgroundColor = UIColor.green
+            cell?.backgroundColor = #colorLiteral(red: 0.2187472284, green: 0.7748631835, blue: 0.3660549819, alpha: 1)
         }
         //tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.purple
         print("section: \(indexPath.section)")

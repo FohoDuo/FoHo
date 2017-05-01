@@ -19,6 +19,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     let appKey = "ec024a2414433825635ad1d304916ee2"
     var recipeKey: String? //"Buddha-Bowl-1238769"
     var recipe: RecipeSearchData?
+    var info: String = ""
     
 
     @IBOutlet var heartButton: FaveButton!
@@ -28,6 +29,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var ingredients: UITableView!
     @IBOutlet weak var instructionButton: UIButton!
     @IBOutlet weak var recipeImage: UIImageView!
+
     
     @IBAction func didTapHeartButton(_ sender: Any) {
         print("Tapped the heart")
@@ -57,9 +59,17 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
                 //set up the view outlets
              //   self.recipeName.text = self.recipe?.recipeName()
                 self.recipeImage.image = self.recipe?.recipeImage()
-                self.timeCook.text = self.recipe?.totalTime()
-                self.numberOfServings.text = self.recipe?.numberOfServings()?.description
-                print("CookTime: ", self.recipe?.totalTime())
+               // self.timeCook.text = self.recipe?.totalTime()
+             //   self.numberOfServings.text = self.recipe?.numberOfServings()?.description
+               // print("CookTime: ", self.recipe?.totalTime())
+                self.title = self.recipe?.recipeName()
+               
+                self.info = (self.recipe?.totalTime())! + " | " + (self.recipe?.numberOfServings()?.description)! + " servings"
+                self.timeCook.text = self.info
+                let attributes = [NSFontAttributeName : UIFont(name: "futura", size: 16)!, NSForegroundColorAttributeName : #colorLiteral(red: 0.1520104086, green: 0.4011090714, blue: 0.4621073921, alpha: 1)] as [String : Any]
+                self.navigationController?.navigationBar.titleTextAttributes = attributes
+                 self.navigationItem.title = self.recipe?.recipeName()
+                //navigationController?.navigationBar.titleTextAttributes =               // self.navigationItem.titleView?.laye
             }
             //self.instructionButton.layer.borderColor = UIColor.darkGray as! CGColor
         }

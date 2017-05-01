@@ -41,7 +41,7 @@ class HomeTableViewController: UITableViewController {
     func apiCall() {
         
         //construct the url
-        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=&maxResult=50&start=\(startingIndex)"
+        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=&maxResult=50&start=\(startingIndex)&requirePictures=true"
         
         print(url)
         Alamofire.request(url).responseJSON { response in
