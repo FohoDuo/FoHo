@@ -16,14 +16,28 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     var recipes: Recipes?
     var clickedRecipe: Int?
     var counter: Int = 0
+    var dietParameter: String = ""
+    var courseParameter: String = ""
+    var cuisineParameter: String = ""
     
-    var optionsList: [Bool] = []
+    
     
     var searchParameters: String?
     var searchActive: Bool = false
     
     //By initializing UISearchController without a searchResultsController, you are telling the search controller that you want use the same view that you’re searching to display the results. If you specify a different view controller here, that will be used to display the results instead.
     let searchController = UISearchController(searchResultsController: nil)
+    
+    
+    //containers for object parameters
+    let catagories: [String] = ["Diet options", "Course options", "Cuisine options"]
+    let dietOptions: [String] =         ["388%5ELacto%20vegetarian", "389%5EOvo%20vegetarian", "390%5EPescetarian", "386%5EVegan", "403%5EPaleo"]
+    let courseOptions: [String] = ["Main%20Dishes", "Desserts", "Side%20Dishes", "Lunch%20and%20Snacks", "Appetizers", "Salads", "Breads", "Breakfast%20and%20Brunch", "Soups", "Beverages", "Condiments%20and%20Sauces", "Cocktails"]
+    let cuisineOptions: [String] = ["american", "italian", "asian", "mexican", "southern", "french", "southwestern", "barbecue", "indian", "chinese", "cajun", "english", "mediterranean", "greek", "spanish", "german", "thai", "moroccan", "irish", "japanese", "cuban", "hawaiin", "swedish", "hungarian", "portugese"]
+    var optionsList: [Bool] = []
+    var catagory1List: [Bool] = []
+    var catagory2List: [Bool] = []
+    var catagory3List: [Bool] = []
     
 
     
@@ -46,10 +60,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             print(error)
         }
  */
-        
-        
-        
-        
+    
         
         //essentially, if this is the first time running the app, we need to
         //initialize an object in the database with all search options disabled
@@ -63,35 +74,10 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             }
             print("nothing in options array")
         }
-            
-        //populate the options array with values from the DB
-        //These values will be responcible for created a 
-        //parameterized search url
-        else {
-            print("grabbing shit from DB")
-            guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return
-            }
-            let managedContext = appDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Options")
-            do {
-                let items = try managedContext.fetch(fetchRequest)
-                for option in items {
-                    optionsList.append(option.value(forKeyPath: "on") as! Bool)
-                }
-            } catch let error as NSError {
-                print("Could not fetch. \(error), \(error.userInfo)")
-            }
-        }
-        print("number of options: ", optionsList.count)
-        
-        for i in optionsList {
-            print("starting array index: ", i )
-        }
+
         
         
-        
+        //search bar setup and delegates
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -103,10 +89,10 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         searchController.searchBar.isTranslucent = true
     }
     
-    //make url based on values in optionsLists
-    func makeURL() {
-        
-    }
+
+    
+    
+
     
     //check if the options entity has been populated or not
     var isEmpty : Bool {
@@ -126,6 +112,8 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         }
     }
     
+    
+    
     //saves a value to the DB
     func save(onValue: Bool) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -144,10 +132,65 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         }
     }
     
+    
+    
+    //make url based on values in optionsLists
+    func makeURLOptions() {
+        
+        //&allowedCuisine[]=cuisine^cuisine-american
+        //&allowedDiet[]=390^Pescetarian&allowedDiet[]=388^Lacto vegetarian
+
+        //set the diet parameters given search preferences
+        
+        //must manually code in "[", "]", and "^"
+        
+        var counter = 0
+        for i in catagory1List {
+            if i == true {
+                dietParameter += "&allowedDiet%5B%5D=" + dietOptions[counter]
+            }
+            counter += 1
+        }
+        
+        counter = 0
+        for i in catagory2List {
+            if i == true {
+                courseParameter += "&allowedCourse%5B%5D=course%5Ecourse-" + courseOptions[counter]
+            }
+            counter += 1
+        }
+        
+        counter = 0
+        for i in catagory3List {
+            if i == true {
+                cuisineParameter += "&allowedCuisine%5B%5D=cuisine%5Ecuisine-" + cuisineOptions[counter]
+            }
+            counter += 1
+        }
+        
+        
+        
+        //http://api.yummly.com/v1/api/metadata/course?_app_id=42432972&_app_key=ec024a2414433825635ad1d304916ee2
+    }
+    
+    
+    
+    
+    
     func apiCall() {
+      //  \(dietParameter)
         
         //construct the url
-        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&maxResult=50&start=50&requirePictures=true"
+        let url = "https://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&q=&maxResult=50&start=0&requirePictures=true\(dietParameter)"
+        
+        //reset the parameters for the next search
+        dietParameter = ""
+        courseParameter = ""
+        cuisineParameter = ""
+        catagory1List = []
+        catagory2List = []
+        catagory3List = []
+        optionsList = []
         
         print(url)
         Alamofire.request(url).responseJSON { response in
@@ -161,6 +204,10 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
                 //Populate our recipes instance with the data from the API call
                 self.recipes = Recipes(dataSource: JSON)
                 self.tableView.reloadData()
+            }
+            else {
+                print("its dead jim")
+                print(response)
             }
         }
     }
@@ -277,21 +324,64 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     
     //delegates for searching
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //When the search bar is first clicked, this means the user is ready
+        //to search, thus now is the best time to fetch search options
+        
+        //fetch the search options from the database
+        print("grabbing shit from DB")
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Options")
+        do {
+            let items = try managedContext.fetch(fetchRequest)
+            for option in items {
+                optionsList.append(option.value(forKeyPath: "on") as! Bool)
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        //populate the subcontainers to make accessing the options easier
+        counter = 0
+        for _ in dietOptions {
+            catagory1List.append(optionsList[counter])
+            counter += 1
+        }
+        for _ in courseOptions {
+            catagory2List.append(optionsList[counter])
+            counter += 1
+        }
+        for _ in cuisineOptions {
+            catagory3List.append(optionsList[counter])
+            counter += 1
+        }
+        print(counter,catagory1List.count,catagory2List.count,catagory3List.count)
+    
+    
+    
+        print("fetched ", optionsList.count, " options from DB")
         searchActive = true
     }
-    
+
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        catagory1List = []
+        catagory2List = []
+        catagory3List = []
+        optionsList = []
         searchActive = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //assign string here i think
         print("activated")
-        
+        makeURLOptions()
         apiCall()
         //self.viewDidLoad()
         self.tableView?.reloadData()
