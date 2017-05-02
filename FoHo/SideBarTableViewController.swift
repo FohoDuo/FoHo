@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SideBarTableViewController: UITableViewController {
 
@@ -17,17 +18,28 @@ class SideBarTableViewController: UITableViewController {
     
     //these need to be saved in order to know what is turned off and on
     //all off by default
-    var switchStates1: [Bool] = []
-    var switchStates2: [Bool] = []
-    var switchStates3: [Bool] = []
+                                    //size
+   // var switchStates1: [Bool] = []  //5
+    //var switchStates2: [Bool] = []  //12
+   // var switchStates3: [Bool] = []  //25
     var optionsList: [Bool] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("number of options: ", courseOptions.count + dietOptions.count + cuisineOptions.count)
-        var counter = 0
         
+        //load options
+        fetch()
+        print(optionsList.count)
+        for i in optionsList {
+            print(i)
+        }
+        
+        
+        
+        print("number of options: ",  courseOptions.count)
+        var counter = 0
+        /*
         while counter < dietOptions.count {
             switchStates1.append(false)
             counter += 1
@@ -42,7 +54,7 @@ class SideBarTableViewController: UITableViewController {
             switchStates3.append(false)
             counter += 1
         }
-        
+        */
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -55,17 +67,110 @@ class SideBarTableViewController: UITableViewController {
         
     }
     
-    /*
+    func fetch() {
+        print("fetching shit from DB")
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Options")
+        do {
+            let items = try managedContext.fetch(fetchRequest)
+            for option in items {
+                optionsList.append((option.value(forKeyPath: "on") as! Bool))
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+
     func updateSwitchStates(index: Int) {
-        if switchStates[index] == false {
-            switchStates[index] = true
+        if optionsList[index] == false {
+            print("setting to true at ", index)
+            optionsList[index] = true
+            saveOption(toEdit: true, index: index)
         }
         else {
-            switchStates[index] = false
+            optionsList[index] = false
+            saveOption(toEdit: false, index: index)
         }
         
     }
+    
+    func saveOption(toEdit: Bool, index: Int) {
+        /*
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Options", in: managedContext)!
  */
+        
+        
+        
+        print("trying to update shit from DB")
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Options")
+        do {
+            let items = try managedContext.fetch(fetchRequest)
+            /*
+            for option in items {
+            
+                if counter == index {
+                    print("saving... at: ", index )
+                    option.setValue(toEdit, forKey: "on")
+                    optionsList[index] = toEdit
+                    break
+                }
+                counter += 1
+                
+                try managedContext.save()
+            }
+ */         items[index].setValue(toEdit, forKey: "on")
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        tableView.reloadData()
+        for i in 0...optionsList.count - 1 {
+            print("index ", i, " holds: ", optionsList[i])
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*
+        
+        
+        let batchUpdateRequest = NSBatchUpdateRequest(entity: entity)
+        batchUpdateRequest.resultType = NSBatchUpdateRequestResultType.updatedObjectIDsResultType
+        batchUpdateRequest.propertiesToUpdate = ["on": option]
+        do {
+            try managedContext.execute(batchUpdateRequest)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+ */
+    }
+
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -103,16 +208,20 @@ class SideBarTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sideBarCell", for: indexPath) as! SideBarTableViewCell
         if(indexPath.section == 0) {
             cell.setCell(text: dietOptions[indexPath.row], index: indexPath, sender: self)
-            cell.switch.isOn = switchStates1[indexPath.row]
+            //cell.switch.isOn = switchStates1[indexPath.row]
+            print(cell.switch.isOn = optionsList[indexPath.row])
+            cell.switch.isOn = optionsList[indexPath.row]
         }
         else if indexPath.section == 1 {
             cell.setCell(text: courseOptions[indexPath.row], index: indexPath, sender: self)
-            print(switchStates2.count,indexPath.row)
-            cell.switch.isOn = switchStates2[indexPath.row]
+           // print(switchStates2.count,indexPath.row)
+           // cell.switch.isOn = switchStates2[indexPath.row]
+            cell.switch.isOn = optionsList[indexPath.row + dietOptions.count]
         }
         else {
             cell.setCell(text: cuisineOptions[indexPath.row], index: indexPath,sender: self)
-            cell.switch.isOn = switchStates3[indexPath.row]
+            //cell.switch.isOn = switchStates3[indexPath.row]
+            cell.switch.isOn = optionsList[indexPath.row + dietOptions.count + courseOptions.count]
         }
         // Configure the cell...
         

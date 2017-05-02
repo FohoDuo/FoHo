@@ -46,7 +46,18 @@ class SideBarTableViewCell: UITableViewCell {
         else {
             print("is off")
         }
+        
+        if index.section == 0 {
+            source?.updateSwitchStates(index: index.row)
+        }
+        else if index.section == 1 {
+            source?.updateSwitchStates(index: index.row + (source?.dietOptions.count)!)
+        }
+        else {
+          source?.updateSwitchStates(index: index.row + (source?.dietOptions.count)! + (source?.courseOptions.count)!)
+        }
         //source?.updateSwitchStates(index: index)
+        /*
         if index.section == 0 {
             if source?.switchStates1[index.row] == true {
                 source?.switchStates1[index.row] = false
@@ -71,6 +82,7 @@ class SideBarTableViewCell: UITableViewCell {
                 source?.switchStates3[index.row] = true
             }
         }
+ */
         
     }
 

@@ -45,13 +45,15 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         } catch let error as NSError {
             print(error)
         }
-        */
+ */
         
         
         
         
         
-        
+        //essentially, if this is the first time running the app, we need to
+        //initialize an object in the database with all search options disabled
+        //these can be changed and save via switches in the SideBarTVC
         if isEmpty {
             //currently 42 options, so insert 42 false values to the DB
             var counter = 0
@@ -63,6 +65,8 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         }
             
         //populate the options array with values from the DB
+        //These values will be responcible for created a 
+        //parameterized search url
         else {
             print("grabbing shit from DB")
             guard let appDelegate =
@@ -74,16 +78,19 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             do {
                 let items = try managedContext.fetch(fetchRequest)
                 for option in items {
-                    optionsList.append((option.value(forKeyPath: "on") != nil))
+                    optionsList.append(option.value(forKeyPath: "on") as! Bool)
                 }
-                
             } catch let error as NSError {
                 print("Could not fetch. \(error), \(error.userInfo)")
             }
-
-            
         }
-        print(optionsList.count)
+        print("number of options: ", optionsList.count)
+        
+        for i in optionsList {
+            print("starting array index: ", i )
+        }
+        
+        
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -119,6 +126,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         }
     }
     
+    //saves a value to the DB
     func save(onValue: Bool) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
