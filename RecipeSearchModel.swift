@@ -45,7 +45,6 @@ class RecipeSearchModel: NSObject {
     }
     
     //gets the recipe image
-    //TO-DO test if this actually works
     func recipeImage() -> UIImage? {
         var urls = (recipe["smallImageUrls"] as! NSArray) as Array
         let uriString = urls[0]

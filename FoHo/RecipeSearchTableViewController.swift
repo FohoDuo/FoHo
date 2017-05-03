@@ -26,11 +26,13 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     //By initializing UISearchController without a searchResultsController, you are telling the search controller that you want use the same view that you’re searching to display the results. If you specify a different view controller here, that will be used to display the results instead.
     let searchController = UISearchController(searchResultsController: nil)
     
-    //containers for object parameters
+    //containers for url string parameters
     let catagories: [String] = ["Diet options", "Course options", "Cuisine options"]
     let dietOptions: [String] =         ["388%5ELacto%20vegetarian", "389%5EOvo%20vegetarian", "390%5EPescetarian", "386%5EVegan", "403%5EPaleo"]
     let courseOptions: [String] = ["Main%20Dishes", "Desserts", "Side%20Dishes", "Lunch%20and%20Snacks", "Appetizers", "Salads", "Breads", "Breakfast%20and%20Brunch", "Soups", "Beverages", "Condiments%20and%20Sauces", "Cocktails"]
     let cuisineOptions: [String] = ["american", "italian", "asian", "mexican", "southern", "french", "southwestern", "barbecue", "indian", "chinese", "cajun", "english", "mediterranean", "greek", "spanish", "german", "thai", "moroccan", "irish", "japanese", "cuban", "hawaiin", "swedish", "hungarian", "portugese"]
+    
+    //containers for which search options are enabled and disabled
     var optionsList: [Bool] = []
     var catagory1List: [Bool] = []
     var catagory2List: [Bool] = []
@@ -94,33 +96,44 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     //check if the options entity has been populated or not
     var isEmpty : Bool {
         do{
-            //1
+            //1) Set app delegate
             let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate
+            
+            //2) Set managed context
             let managedContext = appDelegate?.persistentContainer.viewContext
             
-            //2
+            //3) Set fetch request
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Options")
             let count = try managedContext?.count(for: fetchRequest)
             
+            //4) Checks the number of items fetched
             return count == 0 ? true : false
-        }catch{
+        } catch{
             return true
         }
     }
     
     
-    
-    //saves a value to the DB
+    //saves a value to the database. Used to set up the default options
     func save(onValue: Bool) {
+        
+        //1) Set app delegate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
+        
+        //2) Set managed context
         let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //3) Grab the desired entity
         let entity = NSEntityDescription.entity(forEntityName: "Options", in: managedContext)!
         let item = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        //4) Saves a new record into the entity
         item.setValue(onValue, forKeyPath: "on")
         do {
+            //5) Save the entity
             try managedContext.save()
             optionsList.append(onValue)
             print(optionsList.count)
@@ -130,17 +143,11 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     
-    
     //make url based on values in optionsLists
     func makeURLOptions() {
-        
-        //&allowedCuisine[]=cuisine^cuisine-american
-        //&allowedDiet[]=390^Pescetarian&allowedDiet[]=388^Lacto vegetarian
-        
-        //set the diet parameters given search preferences
-        
-        //must manually code in "[", "]", and "^"
-        
+
+        //iterate through each list of options, appending appropriate strings
+        //to the url as needed
         var counter = 0
         for i in catagory1List {
             if i == true {
@@ -148,7 +155,6 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             }
             counter += 1
         }
-        
         counter = 0
         for i in catagory2List {
             if i == true {
@@ -156,7 +162,6 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             }
             counter += 1
         }
-        
         counter = 0
         for i in catagory3List {
             if i == true {
@@ -167,16 +172,9 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     
-    
-    
-    
-    func apiCall() {
-        //  \(dietParameter)
+    //reset the parameters for the next search
+    func resetParameters() {
         
-        //construct the url
-        let url = "https://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&q=&maxResult=50&start=0&requirePictures=true\(dietParameter)"
-        
-        //reset the parameters for the next search
         dietParameter = ""
         courseParameter = ""
         cuisineParameter = ""
@@ -184,6 +182,18 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         catagory2List = []
         catagory3List = []
         optionsList = []
+    }
+    
+    
+    
+    
+    //Finishes putting the URL together and makes an api call via alamofire
+    func apiCall() {
+        
+        //construct the url
+        let url = "https://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&q=&maxResult=50&start=0&requirePictures=true\(dietParameter)"
+        
+        resetParameters()
         
         print(url)
         Alamofire.request(url).responseJSON { response in
@@ -199,36 +209,28 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
                 self.tableView.reloadData()
             }
             else {
-                print("its dead jim")
+                print("It's dead jim")
                 print(response)
             }
         }
     }
 
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-     
-
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if recipes != nil {
             return (recipes?.numRecipes())! / 2
         }
-        //else just give it a default value of 1
+        //else just give it a default value of 0
         return 0
     }
     
-    
+//***Some magic Brittney came up with, her job to document lol***
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TwoRecipes", for: indexPath) as! RecipeSearchTableViewCell
         if recipes != nil {
@@ -265,41 +267,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         
         //}
     }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
+
     
     
      // MARK: - Navigation
@@ -318,21 +286,28 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     
     
     //delegates for searching
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         //When the search bar is first clicked, this means the user is ready
         //to search, thus now is the best time to fetch search options
         
         //fetch the search options from the database
-        print("grabbing shit from DB")
+        //1) Set app delegate
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
         }
+        
+        //2) Set managed context
         let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //3) Set fetch request
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Options")
         do {
             let items = try managedContext.fetch(fetchRequest)
             for option in items {
+                
+                //4) Grab each value from the fetch and put into optionsList
                 optionsList.append(option.value(forKeyPath: "on") as! Bool)
             }
         } catch let error as NSError {
@@ -353,11 +328,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             catagory3List.append(optionsList[counter])
             counter += 1
         }
-        print(counter,catagory1List.count,catagory2List.count,catagory3List.count)
-        
-        
-        
-        print("fetched ", optionsList.count, " options from DB")
+
         searchActive = true
     }
     
@@ -366,6 +337,8 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        //Resets the options since the user may change them before the next search
         catagory1List = []
         catagory2List = []
         catagory3List = []
