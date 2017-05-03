@@ -31,7 +31,7 @@ Recipe application built off of Yummly's API
 #### - Shopping Cart
   - Users may add ingredients found from searching by clicking the button next to the ingredient
   - Users may also manually enter items on the shopping cart page by clicking Add bar button
-  - Users can tap an item on the list to "check it off"
+  - Users can tap an item on the list to "check it off" (*These persist if you change views but are lost on app reset*)
   - Users can delete items by swiping right on a cell and clicking the delete button
 
 #### - Favorites List (**in progress**)
