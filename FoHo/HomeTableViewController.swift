@@ -27,7 +27,7 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startingIndex = String(arc4random_uniform(1614838 - 50))
+        startingIndex = String(arc4random_uniform(1000000))
         print(startingIndex)
         apiCall()
 
@@ -53,8 +53,14 @@ class HomeTableViewController: UITableViewController {
                 self.tableView.reloadData()
                 
                 //Populate our recipes instance with the data from the API call
+                
                 self.recipes = Recipes(dataSource: JSON)
+                print(self.recipes?.numRecipes())
                 self.tableView.reloadData()
+            }
+            else {
+                print("It's dead jim")
+                print(response)
             }
         }
     }
@@ -77,8 +83,8 @@ class HomeTableViewController: UITableViewController {
         if recipes != nil {
             return (recipes?.numRecipes())! / 2
         }
-        //else just give it a default value of 1
-        return 1
+        //else just give it a default value of 0
+        return 0
     }
     
     

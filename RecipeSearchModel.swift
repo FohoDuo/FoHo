@@ -56,7 +56,7 @@ class RecipeSearchModel: NSObject {
             image.stretchableImage(withLeftCapWidth: 186, topCapHeight: 155)
             return image
         }
-        return nil
+        return UIImage(contentsOfFile: "forkknife")
     }
     
 
