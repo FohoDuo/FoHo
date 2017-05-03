@@ -2,20 +2,23 @@ PODS:
   - Alamofire (4.4.0)
   - FaveButton (2.0.3)
   - MGSwipeTableCell (1.5.6)
+  - RAMAnimatedTabBarController (2.0.13)
   - SideMenu (2.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - FaveButton (~> 2.0.3)
   - MGSwipeTableCell (~> 1.5.1)
+  - RAMAnimatedTabBarController (~> 2.0.13)
   - SideMenu
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   FaveButton: cfcbc5e73da159c4f916613da5687357b5bb4783
   MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
+  RAMAnimatedTabBarController: 2510f3b66954c3f77ea1042a35d34df8f5f3b604
   SideMenu: 43d092cf615cf472f105c5b9867a21beff9fc269
 
-PODFILE CHECKSUM: 410d3915970f06ad33d2fad8383b2a18133ee070
+PODFILE CHECKSUM: 6d1476a5c0603f74dbf8481eef09f1a3158c32a4
 
 COCOAPODS: 1.2.0

@@ -7,6 +7,7 @@
 //
 import UIKit
 import Alamofire
+import CoreData
 
 class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegate  {
     let appID = "42432972"
@@ -15,6 +16,9 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     var recipes: Recipes?
     var clickedRecipe: Int?
     var counter: Int = 0
+    var dietParameter: String = ""
+    var courseParameter: String = ""
+    var cuisineParameter: String = ""
     
     var searchParameters: String?
     var searchActive: Bool = false
@@ -22,8 +26,52 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     //By initializing UISearchController without a searchResultsController, you are telling the search controller that you want use the same view that you’re searching to display the results. If you specify a different view controller here, that will be used to display the results instead.
     let searchController = UISearchController(searchResultsController: nil)
     
+    //containers for object parameters
+    let catagories: [String] = ["Diet options", "Course options", "Cuisine options"]
+    let dietOptions: [String] =         ["388%5ELacto%20vegetarian", "389%5EOvo%20vegetarian", "390%5EPescetarian", "386%5EVegan", "403%5EPaleo"]
+    let courseOptions: [String] = ["Main%20Dishes", "Desserts", "Side%20Dishes", "Lunch%20and%20Snacks", "Appetizers", "Salads", "Breads", "Breakfast%20and%20Brunch", "Soups", "Beverages", "Condiments%20and%20Sauces", "Cocktails"]
+    let cuisineOptions: [String] = ["american", "italian", "asian", "mexican", "southern", "french", "southwestern", "barbecue", "indian", "chinese", "cajun", "english", "mediterranean", "greek", "spanish", "german", "thai", "moroccan", "irish", "japanese", "cuban", "hawaiin", "swedish", "hungarian", "portugese"]
+    var optionsList: [Bool] = []
+    var catagory1List: [Bool] = []
+    var catagory2List: [Bool] = []
+    var catagory3List: [Bool] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //debug code to kill all objects from a specific entity
+        /*
+         // create the delete request for the specified entity
+         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Options")
+         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+         
+         // get reference to the persistent container
+         let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+         
+         // perform the delete
+         do {
+         try persistentContainer.viewContext.execute(deleteRequest)
+         } catch let error as NSError {
+         print(error)
+         }
+         */
+        
+        
+        //essentially, if this is the first time running the app, we need to
+        //initialize an object in the database with all search options disabled
+        //these can be changed and save via switches in the SideBarTVC
+        if isEmpty {
+            //currently 42 options, so insert 42 false values to the DB
+            var counter = 0
+            while counter < 42 {
+                save(onValue: false)
+                counter += 1
+            }
+            print("nothing in options array")
+        }
+        else {
+            print("here")
+        }
         
         
         searchController.searchResultsUpdater = self
@@ -43,10 +91,99 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         
     }
     
+    //check if the options entity has been populated or not
+    var isEmpty : Bool {
+        do{
+            //1
+            let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate
+            let managedContext = appDelegate?.persistentContainer.viewContext
+            
+            //2
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Options")
+            let count = try managedContext?.count(for: fetchRequest)
+            
+            return count == 0 ? true : false
+        }catch{
+            return true
+        }
+    }
+    
+    
+    
+    //saves a value to the DB
+    func save(onValue: Bool) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Options", in: managedContext)!
+        let item = NSManagedObject(entity: entity, insertInto: managedContext)
+        item.setValue(onValue, forKeyPath: "on")
+        do {
+            try managedContext.save()
+            optionsList.append(onValue)
+            print(optionsList.count)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+    
+    //make url based on values in optionsLists
+    func makeURLOptions() {
+        
+        //&allowedCuisine[]=cuisine^cuisine-american
+        //&allowedDiet[]=390^Pescetarian&allowedDiet[]=388^Lacto vegetarian
+        
+        //set the diet parameters given search preferences
+        
+        //must manually code in "[", "]", and "^"
+        
+        var counter = 0
+        for i in catagory1List {
+            if i == true {
+                dietParameter += "&allowedDiet%5B%5D=" + dietOptions[counter]
+            }
+            counter += 1
+        }
+        
+        counter = 0
+        for i in catagory2List {
+            if i == true {
+                courseParameter += "&allowedCourse%5B%5D=course%5Ecourse-" + courseOptions[counter]
+            }
+            counter += 1
+        }
+        
+        counter = 0
+        for i in catagory3List {
+            if i == true {
+                cuisineParameter += "&allowedCuisine%5B%5D=cuisine%5Ecuisine-" + cuisineOptions[counter]
+            }
+            counter += 1
+        }
+    }
+    
+    
+    
+    
+    
     func apiCall() {
+        //  \(dietParameter)
         
         //construct the url
-        let url = "http://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&maxResult=50&start=0&requirePictures=true"
+        let url = "https://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&q=&maxResult=50&start=0&requirePictures=true\(dietParameter)"
+        
+        //reset the parameters for the next search
+        dietParameter = ""
+        courseParameter = ""
+        cuisineParameter = ""
+        catagory1List = []
+        catagory2List = []
+        catagory3List = []
+        optionsList = []
         
         print(url)
         Alamofire.request(url).responseJSON { response in
@@ -61,8 +198,13 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
                 self.recipes = Recipes(dataSource: JSON)
                 self.tableView.reloadData()
             }
+            else {
+                print("its dead jim")
+                print(response)
+            }
         }
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -162,15 +304,60 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     
      // MARK: - Navigation
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! RecipeDataViewController
-        vc.setRecipeID(id: recipes?.at((clickedRecipe)!).recipeID())
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(segue.identifier)
+        if segue.identifier == "sideBar" {
+            //idk
+        }
+        else {
+            let vc = segue.destination as! RecipeDataViewController
+            vc.setRecipeID(id: recipes?.at((clickedRecipe)!).recipeID())
+        }
         
     }
     
     
     //delegates for searching
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        //When the search bar is first clicked, this means the user is ready
+        //to search, thus now is the best time to fetch search options
+        
+        //fetch the search options from the database
+        print("grabbing shit from DB")
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Options")
+        do {
+            let items = try managedContext.fetch(fetchRequest)
+            for option in items {
+                optionsList.append(option.value(forKeyPath: "on") as! Bool)
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        //populate the subcontainers to make accessing the options easier
+        counter = 0
+        for _ in dietOptions {
+            catagory1List.append(optionsList[counter])
+            counter += 1
+        }
+        for _ in courseOptions {
+            catagory2List.append(optionsList[counter])
+            counter += 1
+        }
+        for _ in cuisineOptions {
+            catagory3List.append(optionsList[counter])
+            counter += 1
+        }
+        print(counter,catagory1List.count,catagory2List.count,catagory3List.count)
+        
+        
+        
+        print("fetched ", optionsList.count, " options from DB")
         searchActive = true
     }
     
@@ -179,13 +366,17 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        catagory1List = []
+        catagory2List = []
+        catagory3List = []
+        optionsList = []
         searchActive = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //assign string here i think
         print("activated")
-        
+        makeURLOptions()
         apiCall()
         //self.viewDidLoad()
         self.tableView?.reloadData()

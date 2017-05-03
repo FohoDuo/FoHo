@@ -26,6 +26,9 @@
 		892174D91EA1AC16003A9889 /* RecipeDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892174D81EA1AC16003A9889 /* RecipeDataViewController.swift */; };
 		892174DB1EA1AC5B003A9889 /* RecipeWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892174DA1EA1AC5B003A9889 /* RecipeWebViewController.swift */; };
 		893889211EAAB92200777BE0 /* ShoppingCartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893889201EAAB92200777BE0 /* ShoppingCartTableViewController.swift */; };
+		894115561EB98E1700EDBEC9 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894115551EB98E1700EDBEC9 /* RAMBounceAnimation.swift */; };
+		894115581EB9929100EDBEC9 /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894115571EB9929100EDBEC9 /* SideBarTableViewController.swift */; };
+		8941155A1EB992DF00EDBEC9 /* SideBarTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894115591EB992DF00EDBEC9 /* SideBarTabelViewCell.swift */; };
 		895A067B1E99C29400B3C4D3 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 895A067A1E99C29400B3C4D3 /* heart.png */; };
 		8983A9F61E9ED7C700E0B790 /* RecipeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */; };
 		8983A9F81E9EE09B00E0B790 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9F71E9EE09B00E0B790 /* Recipes.swift */; };
@@ -98,6 +101,9 @@
 		892174D81EA1AC16003A9889 /* RecipeDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDataViewController.swift; sourceTree = "<group>"; };
 		892174DA1EA1AC5B003A9889 /* RecipeWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeWebViewController.swift; sourceTree = "<group>"; };
 		893889201EAAB92200777BE0 /* ShoppingCartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewController.swift; sourceTree = "<group>"; };
+		894115551EB98E1700EDBEC9 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
+		894115571EB9929100EDBEC9 /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
+		894115591EB992DF00EDBEC9 /* SideBarTabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTabelViewCell.swift; sourceTree = "<group>"; };
 		895A067A1E99C29400B3C4D3 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = SOURCE_ROOT; };
 		8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeSearchModel.swift; path = ../RecipeSearchModel.swift; sourceTree = "<group>"; };
 		8983A9F71E9EE09B00E0B790 /* Recipes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 				892174D81EA1AC16003A9889 /* RecipeDataViewController.swift */,
 				465CC2BD1EA1D0F300D864E6 /* IngredientsTableViewCell.swift */,
 				892174DA1EA1AC5B003A9889 /* RecipeWebViewController.swift */,
+				894115571EB9929100EDBEC9 /* SideBarTableViewController.swift */,
+				894115591EB992DF00EDBEC9 /* SideBarTabelViewCell.swift */,
 			);
 			name = RecipeSearch;
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 				4662BD941E99FAAF00899F25 /* RecipeSearch */,
 				460462AA1EA0393D007707F2 /* Models */,
 				89FDA1F21E99BBB600043820 /* Main.storyboard */,
+				894115551EB98E1700EDBEC9 /* RAMBounceAnimation.swift */,
 				89FDA1FA1E99BBB600043820 /* LaunchScreen.storyboard */,
 				46FE71AC1EABFF8800604B7C /* Pictures */,
 				89FDA1F81E99BBB600043820 /* Assets.xcassets */,
@@ -593,16 +602,19 @@
 			files = (
 				89FDA1F11E99BBB600043820 /* ViewController.swift in Sources */,
 				893889211EAAB92200777BE0 /* ShoppingCartTableViewController.swift in Sources */,
+				8941155A1EB992DF00EDBEC9 /* SideBarTabelViewCell.swift in Sources */,
 				892174D91EA1AC16003A9889 /* RecipeDataViewController.swift in Sources */,
 				8983A9FC1E9EE3EA00E0B790 /* RecipeSearchData.swift in Sources */,
 				8983A9F61E9ED7C700E0B790 /* RecipeSearchModel.swift in Sources */,
 				46C5E3901EA3481D00284E80 /* RecipeSearchTableViewCell.swift in Sources */,
 				892174DB1EA1AC5B003A9889 /* RecipeWebViewController.swift in Sources */,
 				8983A9F81E9EE09B00E0B790 /* Recipes.swift in Sources */,
+				894115581EB9929100EDBEC9 /* SideBarTableViewController.swift in Sources */,
 				891ACA931EAEC6C4007C1D2B /* HomeTableViewController.swift in Sources */,
 				89FDA1EF1E99BBB600043820 /* AppDelegate.swift in Sources */,
 				89FDA1F71E99BBB600043820 /* FoHo.xcdatamodeld in Sources */,
 				46C5E38E1EA347D000284E80 /* RecipeSearchTableViewController.swift in Sources */,
+				894115561EB98E1700EDBEC9 /* RAMBounceAnimation.swift in Sources */,
 				891ACA951EAEC6E1007C1D2B /* HomeTableViewCell.swift in Sources */,
 				465CC2BE1EA1D0F300D864E6 /* IngredientsTableViewCell.swift in Sources */,
 			);

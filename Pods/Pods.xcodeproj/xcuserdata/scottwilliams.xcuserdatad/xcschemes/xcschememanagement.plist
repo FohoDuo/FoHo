@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RAMAnimatedTabBarController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SideMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,22 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1A54563B46EDDE3AAF69D71E1F41B3F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1CD80321715FDB12A3A31B7BCB09EA28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>360C1DC707DEDAE3FEFCB70F4A89D360</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4395593D467FA723D705AEDDF1753BBB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5807323D3B383DB9A1EC0DEE29461474</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -73,6 +73,16 @@
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A243F92973E8460E275532D92F589E56</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E708093FE669B09647E9D4C25E905169</key>
 		<dict>
 			<key>primary</key>
 			<true/>

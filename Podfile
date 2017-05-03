@@ -10,6 +10,7 @@ target 'FoHo' do
     pod 'Alamofire', '~> 4.4'
     pod 'MGSwipeTableCell', '~> 1.5.1'
     pod 'SideMenu'
+    pod 'RAMAnimatedTabBarController', '~> 2.0.13'
 
   target 'FoHoTests' do
     inherit! :search_paths
