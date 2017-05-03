@@ -61,19 +61,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="0.22192678560000001" green="0.56626769730000004" blue="0.64936325149999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
-                                    <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="U3B-ak-E80" customClass="FaveButton" customModule="FaveButton">
-                                        <rect key="frame" x="306" y="190" width="29" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="heart.png"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="circleFromColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="didTapHeartButton:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="THi-lY-4cG"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cud-F9-pke">
                                         <rect key="frame" x="111" y="194" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -153,6 +140,19 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="U3B-ak-E80" customClass="FaveButton" customModule="FaveButton">
+                                <rect key="frame" x="358" y="277" width="29" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="heart.png"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="circleFromColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapHeartButton:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="THi-lY-4cG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -423,8 +423,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" image="person.png" selectedImage="person.png" id="HG3-LA-DJD" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" tag="3" image="person.png" selectedImage="forkknife.png" id="HG3-LA-DJD" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <inset key="imageInsets" minX="75" minY="66" maxX="67" maxY="58"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                <color key="value" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="yOffSet">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="K33-ny-9gH" id="6eR-8t-zVO"/>
                         </connections>
@@ -602,37 +610,93 @@
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="-3" maxX="0.0" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="157" id="Vj5-Qf-G0M" customClass="HomeTableViewCell" customModule="FoHo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="157"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="166" id="Vj5-Qf-G0M" customClass="HomeTableViewCell" customModule="FoHo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="166"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vj5-Qf-G0M" id="gBq-ab-i4i">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjb-7a-yNb">
-                                            <rect key="frame" x="15" y="11" width="165" height="135"/>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4dU-PD-phw">
+                                            <rect key="frame" x="8" y="0.0" width="175" height="160"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                            <connections>
-                                                <action selector="didTapLeftButton:" destination="Vj5-Qf-G0M" eventType="touchUpInside" id="YeC-4u-Fai"/>
-                                                <segue destination="lr5-VV-MUZ" kind="show" identifier="HomeRightButtonImage" id="j6o-Sa-5wn"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn0-KN-Ztc">
-                                            <rect key="frame" x="192" y="11" width="165" height="135"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXf-7W-KY6" customClass="FaveButton" customModule="FaveButton">
+                                                    <rect key="frame" x="169" y="122" width="15" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="heart.png"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="dotFirstColor">
+                                                            <color key="value" red="0.4588753418" green="0.3886536672" blue="0.82223494760000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
+                                                            <color key="value" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjb-7a-yNb">
+                                                    <rect key="frame" x="5" y="8" width="165" height="131"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <connections>
+                                                        <action selector="didTapLeftButton:" destination="Vj5-Qf-G0M" eventType="touchUpInside" id="YeC-4u-Fai"/>
+                                                        <segue destination="lr5-VV-MUZ" kind="show" identifier="HomeRightButtonImage" id="j6o-Sa-5wn"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPp-mY-u4q">
+                                                    <rect key="frame" x="8" y="138" width="161" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4vu-or-2HR">
+                                            <rect key="frame" x="192" y="0.0" width="175" height="160"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <connections>
-                                                <action selector="didTapRightButton:" destination="Vj5-Qf-G0M" eventType="touchUpInside" id="55I-w7-fsJ"/>
-                                                <segue destination="lr5-VV-MUZ" kind="show" identifier="HomeLeftButtonImage" id="sfR-Fh-F0G"/>
-                                            </connections>
-                                        </button>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn0-KN-Ztc">
+                                                    <rect key="frame" x="5" y="8" width="165" height="131"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="didTapRightButton:" destination="Vj5-Qf-G0M" eventType="touchUpInside" id="55I-w7-fsJ"/>
+                                                        <segue destination="lr5-VV-MUZ" kind="show" identifier="HomeLeftButtonImage" id="sfR-Fh-F0G"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F49-aO-jbH">
+                                                    <rect key="frame" x="8" y="138" width="161" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JS-iP-99M" customClass="FaveButton" customModule="FaveButton">
+                                                    <rect key="frame" x="169" y="122" width="15" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="heart.png"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="dotFirstColor">
+                                                            <color key="value" red="0.4588753418" green="0.3886536672" blue="0.82223494760000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
+                                                            <color key="value" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="leftImage" destination="mjb-7a-yNb" id="upQ-ad-Uoa"/>
+                                    <outlet property="leftRecipeName" destination="QPp-mY-u4q" id="Jzk-JM-Pzg"/>
                                     <outlet property="rightImage" destination="mn0-KN-Ztc" id="qt1-Dd-hz7"/>
+                                    <outlet property="rightRecipeName" destination="F49-aO-jbH" id="zMU-Aa-dJe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -646,7 +710,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmf-4L-Pwt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2578" y="404"/>
+            <point key="canvasLocation" x="-2578.4000000000001" y="403.44827586206901"/>
         </scene>
     </scenes>
     <resources>
@@ -5777,6 +5841,7 @@ xAAAAMYAAADIAASufAAEroEABK6MAASulQAErqgABK6sAASutwAErsAABK7FAASuzQAErtAABK7VAASu
 QgAEr0cAAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAASvSQ
 </mutableData>
         </image>
+        <image name="forkknife.png" width="600" height="579"/>
         <image name="heart.png" width="350" height="315"/>
         <image name="home.png" width="46" height="46"/>
         <image name="person.png" width="200" height="200"/>

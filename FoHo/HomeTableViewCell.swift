@@ -13,6 +13,8 @@ class HomeTableViewCell: UITableViewCell {
     var tappedLeft: Bool = false
     var tappedRight: Bool = false
     
+    @IBOutlet var rightRecipeName: UILabel!
+    @IBOutlet var leftRecipeName: UILabel!
     @IBOutlet weak var rightImage: UIButton!
     @IBOutlet weak var leftImage: UIButton!
     override func awakeFromNib() {
@@ -30,14 +32,14 @@ class HomeTableViewCell: UITableViewCell {
     func setRecipes(recipe1: RecipeSearchModel, recipe2: RecipeSearchModel){
         leftImage.backgroundRect(forBounds: CGRect(x: 0, y: 0, width: 186, height: 158))
         
-        leftImage.imageView?.contentMode = .scaleAspectFit
-        // leftImage.setImage(recipe1.recipeImage(), for: UIControlState.normal)
-        
         leftImage.setBackgroundImage(recipe1.recipeImage(), for: UIControlState.normal)
         leftImage.imageView?.contentMode = .scaleAspectFit
+        leftRecipeName.text = recipe1.recipeName()
+        
         rightImage.imageView?.contentMode = .scaleAspectFit
         //rightImage.setImage(recipe2.recipeImage(), for: UIControlState.normal)
         rightImage.setBackgroundImage(recipe2.recipeImage(), for: UIControlState.normal)
+        rightRecipeName.text = recipe2.recipeName()
         
     }
     

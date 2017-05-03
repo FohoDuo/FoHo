@@ -141,6 +141,10 @@ class ShoppingCartTableViewController: UITableViewController{
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
+        for item in items{
+            print(item)
+        }
+
     }
     
     

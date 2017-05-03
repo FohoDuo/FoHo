@@ -22,7 +22,7 @@ class HomeTableViewController: UITableViewController {
     
     
     
-    
+
     var startingIndex: String = "0"
     override func viewDidLoad() {
         super.viewDidLoad()

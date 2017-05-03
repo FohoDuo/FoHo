@@ -8,6 +8,7 @@
 
 import UIKit
 import FaveButton
+import CoreData
 import Alamofire
 
 //View Controller that displays more detailed information regarding a specific recipe.
@@ -33,6 +34,43 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func didTapHeartButton(_ sender: Any) {
         print("Tapped the heart")
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        //1
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //2
+        let entity = NSEntityDescription.entity(forEntityName: "Favorite", in: managedContext)!
+        let item = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        //3
+        item.setValue(recipe?.recipeName(), forKeyPath: "recipeName")
+        item.setValue(recipeKey, forKey: "id")
+        
+        //4
+        do {
+            try managedContext.save()
+            //items.append(item)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        do{
+             let items = try managedContext.fetch(fetchRequest)
+         //   for item in items{
+                //print(item)
+                
+           // }
+            print(items[0].value(forKey: "id"))
+
+             //try managedContext.save()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+             }
+        
+        
     }
     
   
