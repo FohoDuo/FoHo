@@ -14,8 +14,9 @@ import CoreData
 class SideBarTableViewController: UITableViewController {
     
     //Strings to be used to fill in the cell options
-    let catagories: [String] = ["Diet options", "Course options", "Cuisine options"]
+    let catagories: [String] = ["Diet options", "Allergy options", "Course options", "Cuisine options"]
     let dietOptions: [String] = ["Lacto vegetarian","Ovo vegetarian","Pescetarian","Vegan","Vegetarian"]
+    let allergyOptions: [String] = ["Dairy", "Egg", "Gluten", "Peanut", "Seafood", "Sesame", "Soy", "Sulfite", "Tree Nut", "Wheat"]
     let courseOptions: [String] = ["Main Dishes", "Desserts", "Side Dishes", "Lunch and Snacks", "Appetizers", "Salads", "Breads", "Breakfast and Brunch", "Soups", "Beverages", "Condiments and Sauces", "Cocktails"]
     let cuisineOptions: [String] = ["American", "Italian", "Asian", "Mexican", "Southern & Soul Food", "French", "Southwestern", "Barbecue", "Indian", "Chinese", "Cajun & Creole", "English", "Mediterranean", "Greek", "Spanish", "German", "Thai", "Moroccan", "Irish", "Japanese", "Cuban", "Hawaiin", "Swedish", "Hungarian", "Portugese"]
     
@@ -23,9 +24,23 @@ class SideBarTableViewController: UITableViewController {
     var optionsList: [Bool] = []
     
     
+    @IBOutlet weak var timeSwitch: UISwitch!
+    
+    @IBOutlet weak var timeSlider: UISlider!
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if timeSwitch.isOn {
+            timeLabel.text = String(Int(timeSlider.value)) + " minutes"
+        }
+        else {
+            timeLabel.text = "None"
+        }
 
+        
         //load options from the database
         fetch()
     }
@@ -115,9 +130,12 @@ class SideBarTableViewController: UITableViewController {
             return dietOptions.count
         }
         if section == 1 {
-            return courseOptions.count
+            return allergyOptions.count
         }
         if section == 2 {
+            return courseOptions.count
+        }
+        if section == 3 {
             return cuisineOptions.count
         }
         return 0
@@ -136,19 +154,52 @@ class SideBarTableViewController: UITableViewController {
             
             //set the cell and its switch, noting that the switch values
             //are after diet's switch values
-            cell.setCell(text: courseOptions[indexPath.row], index: indexPath, sender: self)
+            cell.setCell(text: allergyOptions[indexPath.row], index: indexPath, sender: self)
             cell.switch.isOn = optionsList[indexPath.row + dietOptions.count]
+        }
+        else if indexPath.section == 2 {
+            
+            //set the cell and its switch, noting that the switch values
+            //are after diet's switch values
+            cell.setCell(text: courseOptions[indexPath.row], index: indexPath, sender: self)
+            cell.switch.isOn = optionsList[indexPath.row + dietOptions.count + allergyOptions.count]
         }
         else {
             
             //set the cell and its switch, noting that the switch values
             //are after diet's and course's switch values
             cell.setCell(text: cuisineOptions[indexPath.row], index: indexPath,sender: self)
-            cell.switch.isOn = optionsList[indexPath.row + dietOptions.count + courseOptions.count]
+            cell.switch.isOn = optionsList[indexPath.row + dietOptions.count + allergyOptions.count + courseOptions.count]
         }
 
         //disable clicking on a cell to highlight it
         cell.selectionStyle = .none
         return cell
     }
+    
+    @IBAction func timeOn(_ sender: UISwitch) {
+        if timeSwitch.isOn {
+            timeLabel.text = String(Int(timeSlider.value)) + " minutes"
+        }
+        else {
+            timeLabel.text = "None"
+        }
+        tableView.reloadData()
+    }
+    
+    
+    @IBAction func sliderChange(_ sender: UISlider) {
+        
+        if timeSwitch.isOn {
+            timeLabel.text = String(Int(timeSlider.value)) + " minutes"
+        }
+        else {
+            timeLabel.text = "None"
+        }
+        tableView.reloadData()
+    }
+    
+    
+    
+    
 }

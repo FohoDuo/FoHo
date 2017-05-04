@@ -44,14 +44,20 @@ class SideBarTableViewCell: UITableViewCell {
             source?.updateSwitchStates(index: index.row)
         }
             
-        //section 1 contains course options
+        //section 1 contains allergy options
         else if index.section == 1 {
             source?.updateSwitchStates(index: index.row + (source?.dietOptions.count)!)
         }
+         
+        //section 2 contains course options
+        else if index.section == 1 {
+            source?.updateSwitchStates(index: index.row + (source?.dietOptions.count)! + (source?.allergyOptions.count)!)
+        }
+        
         
         //section 2 contains cuisine options
         else {
-            source?.updateSwitchStates(index: index.row + (source?.dietOptions.count)! + (source?.courseOptions.count)!)
+            source?.updateSwitchStates(index: index.row + (source?.dietOptions.count)! + (source?.allergyOptions.count)! + (source?.courseOptions.count)!)
         }
     }
 }

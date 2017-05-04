@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16B2657" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Favorite" representedClassName="Favorite" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recipeName" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,10 +16,15 @@
         <attribute name="ingredients" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="recipeName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Time" representedClassName="Time" syncable="YES" codeGenerationType="class">
+        <attribute name="on" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="timeValue" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="9" width="128" height="75"/>
-        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Options" positionX="-63" positionY="9" width="128" height="60"/>
         <element name="Favorite" positionX="-54" positionY="18" width="128" height="75"/>
+        <element name="Item" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="Options" positionX="-63" positionY="9" width="128" height="60"/>
+        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Time" positionX="-54" positionY="18" width="128" height="75"/>
     </elements>
 </model>

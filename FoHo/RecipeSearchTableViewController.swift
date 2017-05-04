@@ -17,6 +17,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     var clickedRecipe: Int?
     var counter: Int = 0
     var dietParameter: String = ""
+    var allergyParameter: String = ""
     var courseParameter: String = ""
     var cuisineParameter: String = ""
     
@@ -29,6 +30,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     //containers for url string parameters
     let catagories: [String] = ["Diet options", "Course options", "Cuisine options"]
     let dietOptions: [String] =         ["388%5ELacto%20vegetarian", "389%5EOvo%20vegetarian", "390%5EPescetarian", "386%5EVegan", "403%5EPaleo"]
+    let allergyOptions: [String] = ["396%5EDairy-Free", "397%5EEgg-Free", "393%5EGluten-Free", "394%5EPeanut-Free", "398%5ESeafood-Free", "399%5ESesame-Free", "400%5ESoy-Free", "401%5ESulfite-Free", "395%5ETree%20Nut-Free", "392%5EWheat-Free"]
     let courseOptions: [String] = ["Main%20Dishes", "Desserts", "Side%20Dishes", "Lunch%20and%20Snacks", "Appetizers", "Salads", "Breads", "Breakfast%20and%20Brunch", "Soups", "Beverages", "Condiments%20and%20Sauces", "Cocktails"]
     let cuisineOptions: [String] = ["american", "italian", "asian", "mexican", "southern", "french", "southwestern", "barbecue", "indian", "chinese", "cajun", "english", "mediterranean", "greek", "spanish", "german", "thai", "moroccan", "irish", "japanese", "cuban", "hawaiin", "swedish", "hungarian", "portugese"]
     
@@ -37,10 +39,12 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     var catagory1List: [Bool] = []
     var catagory2List: [Bool] = []
     var catagory3List: [Bool] = []
+    var catagory4List: [Bool] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(allergyOptions.count)
         //debug code to kill all objects from a specific entity
         /*
          // create the delete request for the specified entity
@@ -63,9 +67,9 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         //initialize an object in the database with all search options disabled
         //these can be changed and save via switches in the SideBarTVC
         if isEmpty {
-            //currently 42 options, so insert 42 false values to the DB
+            //currently 52 options, so insert 52 false values to the DB
             var counter = 0
-            while counter < 42 {
+            while counter < 52 {
                 save(onValue: false)
                 counter += 1
             }
@@ -155,15 +159,28 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             }
             counter += 1
         }
+        
         counter = 0
         for i in catagory2List {
             if i == true {
+                allergyParameter += "&allowedAllergy%5B%5D=" + allergyOptions[counter]
+            }
+            counter += 1
+        }
+        
+        counter = 0
+        print(counter)
+        for i in catagory3List {
+            if i == true {
+                print(counter)
+                print(courseOptions.count)
                 courseParameter += "&allowedCourse%5B%5D=course%5Ecourse-" + courseOptions[counter]
             }
             counter += 1
         }
+        
         counter = 0
-        for i in catagory3List {
+        for i in catagory4List {
             if i == true {
                 cuisineParameter += "&allowedCuisine%5B%5D=cuisine%5Ecuisine-" + cuisineOptions[counter]
             }
@@ -176,11 +193,13 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     func resetParameters() {
         
         dietParameter = ""
+        allergyParameter = ""
         courseParameter = ""
         cuisineParameter = ""
         catagory1List = []
         catagory2List = []
         catagory3List = []
+        catagory4List = []
         optionsList = []
     }
     
@@ -320,12 +339,16 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             catagory1List.append(optionsList[counter])
             counter += 1
         }
-        for _ in courseOptions {
+        for _ in allergyOptions {
             catagory2List.append(optionsList[counter])
             counter += 1
         }
-        for _ in cuisineOptions {
+        for _ in courseOptions {
             catagory3List.append(optionsList[counter])
+            counter += 1
+        }
+        for _ in cuisineOptions {
+            catagory4List.append(optionsList[counter])
             counter += 1
         }
 
@@ -342,6 +365,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         catagory1List = []
         catagory2List = []
         catagory3List = []
+        catagory4List = []
         optionsList = []
         searchActive = false
     }
