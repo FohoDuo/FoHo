@@ -30,8 +30,19 @@ class SideBarTableViewController: UITableViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    //Switch variables
+    var timeOn = Bool()
+    var timeValue: Int = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchTime()
+        
+        
+        timeSwitch.isOn = timeOn
+        timeSlider.value = Float(timeValue)
         
         if timeSwitch.isOn {
             timeLabel.text = String(Int(timeSlider.value)) + " minutes"
@@ -180,10 +191,13 @@ class SideBarTableViewController: UITableViewController {
     @IBAction func timeOn(_ sender: UISwitch) {
         if timeSwitch.isOn {
             timeLabel.text = String(Int(timeSlider.value)) + " minutes"
+            timeOn = true
         }
         else {
             timeLabel.text = "None"
+            timeOn = false
         }
+        saveTime()
         tableView.reloadData()
     }
     
@@ -192,12 +206,70 @@ class SideBarTableViewController: UITableViewController {
         
         if timeSwitch.isOn {
             timeLabel.text = String(Int(timeSlider.value)) + " minutes"
+            timeValue = Int(timeSlider.value)
         }
         else {
             timeLabel.text = "None"
+            timeValue = Int(timeSlider.value)
         }
+        saveTime()
         tableView.reloadData()
     }
+    
+    
+//Database functions for max time slider
+
+    func fetchTime() {
+        
+        //1) Set app delegate
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        //2) Set managed context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //3) Set fetch request
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Time")
+        do {
+            let items = try managedContext.fetch(fetchRequest)
+            for option in items {
+                
+                //4) Grab each item from the fetch
+                timeOn = ((option.value(forKeyPath: "on") as! Bool))
+                timeValue = ((option.value(forKeyPath: "timeValue") as! Int))
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func saveTime() {
+        
+        //1) Set app delegate
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        //2) Set managed context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //3) Grab the desired entity
+        let entity = NSEntityDescription.entity(forEntityName: "Time", in: managedContext)!
+        let item = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        //4) Saves a new record into the entity
+        item.setValue(timeOn, forKeyPath: "on")
+        item.setValue(timeValue, forKeyPath: "timeValue")
+        do {
+            //5) Save the entity
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
     
     
     

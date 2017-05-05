@@ -20,6 +20,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     var allergyParameter: String = ""
     var courseParameter: String = ""
     var cuisineParameter: String = ""
+    var timeParameter: String = ""
     
     var searchParameters: String?
     var searchActive: Bool = false
@@ -33,6 +34,8 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     let allergyOptions: [String] = ["396%5EDairy-Free", "397%5EEgg-Free", "393%5EGluten-Free", "394%5EPeanut-Free", "398%5ESeafood-Free", "399%5ESesame-Free", "400%5ESoy-Free", "401%5ESulfite-Free", "395%5ETree%20Nut-Free", "392%5EWheat-Free"]
     let courseOptions: [String] = ["Main%20Dishes", "Desserts", "Side%20Dishes", "Lunch%20and%20Snacks", "Appetizers", "Salads", "Breads", "Breakfast%20and%20Brunch", "Soups", "Beverages", "Condiments%20and%20Sauces", "Cocktails"]
     let cuisineOptions: [String] = ["american", "italian", "asian", "mexican", "southern", "french", "southwestern", "barbecue", "indian", "chinese", "cajun", "english", "mediterranean", "greek", "spanish", "german", "thai", "moroccan", "irish", "japanese", "cuban", "hawaiin", "swedish", "hungarian", "portugese"]
+    var timeValue: Int = 0
+    var timeOn = Bool()
     
     //containers for which search options are enabled and disabled
     var optionsList: [Bool] = []
@@ -44,7 +47,6 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(allergyOptions.count)
         //debug code to kill all objects from a specific entity
         /*
          // create the delete request for the specified entity
@@ -186,6 +188,11 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
             }
             counter += 1
         }
+        if timeOn {
+            timeParameter += "&maxTotalTimeInSeconds=" + String(60 * Int(timeValue))
+        }
+        
+        
     }
     
     
@@ -196,6 +203,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         allergyParameter = ""
         courseParameter = ""
         cuisineParameter = ""
+        timeParameter = ""
         catagory1List = []
         catagory2List = []
         catagory3List = []
@@ -210,7 +218,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
     func apiCall() {
         
         //construct the url
-        let url = "https://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&q=&maxResult=50&start=0&requirePictures=true\(dietParameter)"
+        let url = "https://api.yummly.com/v1/api/recipes?_app_id=\(appID)&_app_key=\(appKey)&q=\(searchParameters!)&q=&maxResult=50&start=0&requirePictures=true\(dietParameter)\(timeParameter)"
         
         resetParameters()
         
@@ -292,7 +300,6 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
      // MARK: - Navigation
      // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(segue.identifier)
         if segue.identifier == "sideBar" {
             //idk
         }
@@ -321,7 +328,7 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         let managedContext = appDelegate.persistentContainer.viewContext
         
         //3) Set fetch request
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Options")
+        var fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Options")
         do {
             let items = try managedContext.fetch(fetchRequest)
             for option in items {
@@ -332,6 +339,21 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+        
+        fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Time")
+        do {
+            let items = try managedContext.fetch(fetchRequest)
+            for option in items {
+                
+                //4) Grab each value from the fetch
+                timeOn = ((option.value(forKeyPath: "on") as! Bool))
+                timeValue = ((option.value(forKeyPath: "timeValue") as! Int))
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+
+        
         
         //populate the subcontainers to make accessing the options easier
         counter = 0
