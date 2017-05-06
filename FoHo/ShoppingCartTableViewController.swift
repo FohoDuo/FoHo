@@ -101,7 +101,7 @@ class ShoppingCartTableViewController: UITableViewController{
     //some crazy function to set up the "+" item button
 
     @IBAction func addItem(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Add New Item", message: "to shopping cart", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Add", style: .default) {
             [unowned self] action in

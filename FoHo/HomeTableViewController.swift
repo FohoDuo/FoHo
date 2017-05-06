@@ -54,7 +54,9 @@ class HomeTableViewController: UITableViewController {
                 
                 //Populate our recipes instance with the data from the API call
                 self.recipes = Recipes(dataSource: JSON)
+                print("Before reloadData in viewDidLoad()")
                 self.tableView.reloadData()
+                print("After reloadData in viewDidLoad()")
             }
         }
     }
@@ -74,16 +76,19 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print("Number of rows...")
         if recipes != nil {
+            print("Number of rows: ", (recipes?.numRecipes())!/2)
             return (recipes?.numRecipes())! / 2
         }
         //else just give it a default value of 1
-        return 1
+        return 0
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HomeTableViewCell
+        print("Setting Cells in Table View")
         if recipes != nil {
             counter = indexPath.row * 2
             cell.setRecipes(recipe1: (recipes?.at(counter))!,

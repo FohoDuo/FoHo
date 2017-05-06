@@ -210,7 +210,7 @@
                             <outlet property="animation" destination="ZPE-y7-JpZ" id="oJe-0F-Pit"/>
                         </connections>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R4Q-hL-ksE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="R4Q-hL-ksE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.22192678560000001" green="0.56626769730000004" blue="0.64936325149999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -220,7 +220,16 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAf-4l-beV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="ZPE-y7-JpZ" customClass="RAMBounceAnimation" customModule="FoHo" customModuleProvider="target"/>
+                <customObject id="ZPE-y7-JpZ" customClass="RAMRotationAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-3558" y="1145"/>
         </scene>
@@ -285,7 +294,7 @@
         <scene sceneID="Vfg-Vm-mzN">
             <objects>
                 <navigationController id="Nze-OH-HUp" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kaY-2D-5Oa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kaY-2D-5Oa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -314,7 +323,7 @@
                         <segue destination="p2u-aq-iCD" kind="relationship" relationship="viewControllers" id="fBj-8k-2eU"/>
                         <segue destination="muk-si-6RT" kind="relationship" relationship="viewControllers" id="6GT-LN-git"/>
                         <segue destination="I9y-3Q-ohY" kind="relationship" relationship="viewControllers" id="vzo-7V-fen"/>
-                        <segue destination="biM-WN-93s" kind="relationship" relationship="viewControllers" id="58x-FS-7c9"/>
+                        <segue destination="SgC-Ef-auY" kind="relationship" relationship="viewControllers" id="OJA-ar-myx"/>
                         <segue destination="doL-vz-pLM" kind="relationship" relationship="viewControllers" id="YcW-dV-sDp"/>
                     </connections>
                 </tabBarController>
@@ -333,25 +342,41 @@
                     <view key="view" contentMode="scaleToFill" id="KvL-XE-phf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FqO-Hj-zET">
+                                <rect key="frame" x="44" y="245" width="301" height="272"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="4" image="settings.png" selectedImage="settings.png" id="Xiy-B4-zNE" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
-                        <inset key="imageInsets" minX="30" minY="30" maxX="12" maxY="14"/>
+                        <inset key="imageInsets" minX="20" minY="23" maxX="30" maxY="24"/>
                         <connections>
                             <outlet property="animation" destination="G9c-79-7YD" id="rtH-Pq-tg7"/>
                         </connections>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOB-CH-JRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="G9c-79-7YD" customClass="RAMBounceAnimation" customModule="FoHo" customModuleProvider="target"/>
+                <customObject id="G9c-79-7YD" customClass="RAMRightRotationAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="-4303" y="-372"/>
+            <point key="canvasLocation" x="-4303.1999999999998" y="-372.86356821589209"/>
         </scene>
         <!--Shopping Cart-->
         <scene sceneID="8b4-UN-5xj">
             <objects>
                 <tableViewController id="Q0I-1p-0cY" customClass="ShoppingCartTableViewController" customModule="FoHo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" id="3nF-QW-3QR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" id="3nF-QW-3QR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -397,7 +422,7 @@
                             <outlet property="animation" destination="WBK-20-5AL" id="Hdh-LH-Ddz"/>
                         </connections>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pYw-Qh-dFx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pYw-Qh-dFx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -406,7 +431,16 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mB-XC-DVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="WBK-20-5AL" customClass="RAMBounceAnimation" customModule="FoHo" customModuleProvider="target"/>
+                <customObject id="WBK-20-5AL" customClass="RAMRotationAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-6697" y="2466"/>
         </scene>
@@ -423,7 +457,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" image="person.png" selectedImage="forkknife.png" id="HG3-LA-DJD" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" tag="3" image="person.png" selectedImage="person.png" id="HG3-LA-DJD" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <inset key="imageInsets" minX="75" minY="66" maxX="67" maxY="58"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
@@ -433,15 +467,106 @@
                                 <real key="value" value="0.0"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
-                        <connections>
-                            <outlet property="animation" destination="K33-ny-9gH" id="6eR-8t-zVO"/>
-                        </connections>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBh-81-hLb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="K33-ny-9gH" customClass="RAMBounceAnimation" customModule="FoHo" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-4910" y="2439"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="YN9-fR-IFt">
+            <objects>
+                <navigationController id="SgC-Ef-auY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="person.png" id="6cc-RX-SfY" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                        <connections>
+                            <outlet property="animation" destination="7Z4-Ut-8yl" id="zfc-Zt-DOY"/>
+                        </connections>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7ef-fj-KWv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FN8-HC-j5k" kind="relationship" relationship="rootViewController" id="dg4-0s-2qh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HGa-ck-I6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="7Z4-Ut-8yl" customClass="RAMRightRotationAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="-3766" y="2331"/>
+        </scene>
+        <!--Favorites Table View Controller-->
+        <scene sceneID="YUM-fo-s1h">
+            <objects>
+                <tableViewController id="FN8-HC-j5k" customClass="FavoritesTableViewController" customModule="FoHo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="208" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wia-kB-Cny">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoritesCell" rowHeight="208" id="2i8-6T-lbW" customClass="FavoritesTableViewCell" customModule="FoHo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="208"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2i8-6T-lbW" id="IKr-GU-Ff3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="207.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cX9-oE-4hv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWI-tn-fbb">
+                                            <rect key="frame" x="100" y="178" width="226" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="recipeImage" destination="cX9-oE-4hv" id="fNR-f2-2uL"/>
+                                    <outlet property="recipeName" destination="pWI-tn-fbb" id="5Lo-bV-PTd"/>
+                                    <segue destination="lr5-VV-MUZ" kind="show" identifier="favToRecipeData" id="FaW-0u-0pG"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FN8-HC-j5k" id="qVf-Mb-p0V"/>
+                            <outlet property="delegate" destination="FN8-HC-j5k" id="o77-RL-zO9"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="person.png" id="NH7-xE-wda" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                        <connections>
+                            <outlet property="animation" destination="2zb-pm-P6V" id="aNB-ju-5Or"/>
+                        </connections>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="rOq-QI-PEp"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vH5-ed-kbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="2zb-pm-P6V" customClass="RAMRotationAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="-2884" y="2307.7961019490258"/>
         </scene>
         <!--View ControllerTEST-->
         <scene sceneID="TVS-Uy-UgK">
@@ -492,25 +617,12 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnf-cU-F5a">
-                                                    <rect key="frame" x="8" y="139" width="159" height="21"/>
+                                                    <rect key="frame" x="7" y="138" width="161" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJH-ro-Zxe" customClass="FaveButton" customModule="FaveButton">
-                                                    <rect key="frame" x="169" y="122" width="15" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="heart.png"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="dotFirstColor">
-                                                            <color key="value" red="0.4588753418" green="0.3886536672" blue="0.82223494760000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
-                                                            <color key="value" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
@@ -526,19 +638,6 @@
                                                         <action selector="didTapLeftButton:" destination="6qj-IG-17d" eventType="touchUpInside" id="Aeu-Xt-MG1"/>
                                                         <segue destination="lr5-VV-MUZ" kind="show" identifier="leftRecipeSegue" id="hb1-Qm-74D"/>
                                                     </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mF5-eL-zpy" customClass="FaveButton" customModule="FaveButton">
-                                                    <rect key="frame" x="169" y="122" width="15" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="heart.png"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="dotFirstColor">
-                                                            <color key="value" red="0.4588753418" green="0.3886536672" blue="0.82223494760000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
-                                                            <color key="value" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zs-OL-C4v">
                                                     <rect key="frame" x="7" y="138" width="161" height="21"/>
@@ -586,7 +685,7 @@
                             <outlet property="animation" destination="HN3-oj-Exp" id="r1T-ic-BG9"/>
                         </connections>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fdc-8s-1dr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fdc-8s-1dr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -595,7 +694,16 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GcZ-rQ-RB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="HN3-oj-Exp" customClass="RAMBounceAnimation" customModule="FoHo" customModuleProvider="target"/>
+                <customObject id="HN3-oj-Exp" customClass="RAMRotationAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-4054" y="404"/>
         </scene>
@@ -621,19 +729,6 @@
                                             <rect key="frame" x="8" y="0.0" width="175" height="160"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXf-7W-KY6" customClass="FaveButton" customModule="FaveButton">
-                                                    <rect key="frame" x="169" y="122" width="15" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="heart.png"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="dotFirstColor">
-                                                            <color key="value" red="0.4588753418" green="0.3886536672" blue="0.82223494760000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
-                                                            <color key="value" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjb-7a-yNb">
                                                     <rect key="frame" x="5" y="8" width="165" height="131"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -644,8 +739,8 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPp-mY-u4q">
-                                                    <rect key="frame" x="8" y="138" width="161" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <rect key="frame" x="7" y="138" width="161" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -666,25 +761,12 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F49-aO-jbH">
-                                                    <rect key="frame" x="8" y="138" width="161" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <rect key="frame" x="7" y="138" width="161" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JS-iP-99M" customClass="FaveButton" customModule="FaveButton">
-                                                    <rect key="frame" x="169" y="122" width="15" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="heart.png"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="dotFirstColor">
-                                                            <color key="value" red="0.4588753418" green="0.3886536672" blue="0.82223494760000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="normalColor">
-                                                            <color key="value" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
@@ -694,8 +776,10 @@
                                 <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="leftImage" destination="mjb-7a-yNb" id="upQ-ad-Uoa"/>
+                                    <outlet property="leftImageSquare" destination="4dU-PD-phw" id="mw1-Yf-zdB"/>
                                     <outlet property="leftRecipeName" destination="QPp-mY-u4q" id="Jzk-JM-Pzg"/>
                                     <outlet property="rightImage" destination="mn0-KN-Ztc" id="qt1-Dd-hz7"/>
+                                    <outlet property="rightImageSquare" destination="4vu-or-2HR" id="0dD-Wf-H9v"/>
                                     <outlet property="rightRecipeName" destination="F49-aO-jbH" id="zMU-Aa-dJe"/>
                                 </connections>
                             </tableViewCell>
@@ -5841,7 +5925,6 @@ xAAAAMYAAADIAASufAAEroEABK6MAASulQAErqgABK6sAASutwAErsAABK7FAASuzQAErtAABK7VAASu
 QgAEr0cAAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAASvSQ
 </mutableData>
         </image>
-        <image name="forkknife.png" width="600" height="579"/>
         <image name="heart.png" width="350" height="315"/>
         <image name="home.png" width="46" height="46"/>
         <image name="person.png" width="200" height="200"/>
@@ -5849,7 +5932,7 @@ QgAEr0cAAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAASvSQ
         <image name="settings.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sfR-Fh-F0G"/>
+        <segue reference="FaW-0u-0pG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

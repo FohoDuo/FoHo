@@ -2,7 +2,7 @@
 //  FavoritesTableViewController.swift
 //  FoHo
 //
-//  Created by Brittney Ryn on 5/2/17.
+//  Created by Brittney Ryn on 5/5/17.
 //  Copyright © 2017 FohoDuo. All rights reserved.
 //
 

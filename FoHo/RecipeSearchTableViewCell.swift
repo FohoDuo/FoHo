@@ -40,7 +40,7 @@ class RecipeSearchTableViewCell: UITableViewCell {
         leftImageSquare.layer.borderWidth = 0.23
         leftImageSquare.layer.borderColor = UIColor.black.cgColor
         leftImageSquare.layer.cornerRadius = 2
-       leftImage.backgroundRect(forBounds: CGRect(x: 0, y: 0, width: 186, height: 158))
+       //leftImage.backgroundRect(forBounds: CGRect(x: 0, y: 0, width: 186, height: 158))
         leftImage.layer.cornerRadius = 2
         leftImage.layer.borderWidth = 0.1
         leftImage.layer.borderColor = UIColor.black.cgColor

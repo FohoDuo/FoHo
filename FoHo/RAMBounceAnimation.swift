@@ -13,6 +13,7 @@ class RAMBounceAnimation : RAMItemAnimation {
     override func playAnimation(_ icon: UIImageView, textLabel: UILabel) {
         playBounceAnimation(icon)
         textLabel.textColor = textSelectedColor
+
     }
     
     override func deselectAnimation(_ icon: UIImageView, textLabel: UILabel, defaultTextColor: UIColor, defaultIconColor: UIColor) {
@@ -33,3 +34,6 @@ class RAMBounceAnimation : RAMItemAnimation {
         icon.layer.add(bounceAnimation, forKey: "bounceAnimation")
     }
 }
+
+
+
