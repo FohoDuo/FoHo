@@ -473,11 +473,11 @@
             </objects>
             <point key="canvasLocation" x="-4910" y="2439"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="YN9-fR-IFt">
             <objects>
                 <navigationController id="SgC-Ef-auY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="person.png" id="6cc-RX-SfY" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="" image="person.png" id="6cc-RX-SfY" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <connections>
                             <outlet property="animation" destination="7Z4-Ut-8yl" id="zfc-Zt-DOY"/>
                         </connections>
