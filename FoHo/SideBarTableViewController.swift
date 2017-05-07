@@ -23,6 +23,7 @@ class SideBarTableViewController: UITableViewController {
     //contains the truth value for each option
     var optionsList: [Bool] = []
     
+    var colors = [#colorLiteral(red: 0.2871333339, green: 0.6674844371, blue: 0.7044274964, alpha: 1), #colorLiteral(red: 0.2219267856, green: 0.5662676973, blue: 0.6493632515, alpha: 1)]
     
     @IBOutlet weak var timeSwitch: UISwitch!
     
@@ -136,6 +137,22 @@ class SideBarTableViewController: UITableViewController {
         return catagories[section]
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = UIColor.black
+        header.textLabel?.font = UIFont(name: "Futura", size: 18)
+        header.textLabel?.frame = header.frame
+        header.textLabel?.textAlignment = .center
+        header.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+    
+   /* override func tableView(_ tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!{
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+        headerView.backgroundColor = UIColor.white
+        return headerView
+    }*/
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return dietOptions.count
@@ -182,7 +199,12 @@ class SideBarTableViewController: UITableViewController {
             cell.setCell(text: cuisineOptions[indexPath.row], index: indexPath,sender: self)
             cell.switch.isOn = optionsList[indexPath.row + dietOptions.count + allergyOptions.count + courseOptions.count]
         }
-
+        if indexPath.row % 2 == 0{
+            cell.backgroundColor = colors[0]
+        }
+        else{
+            cell.backgroundColor = colors[1]
+        }
         //disable clicking on a cell to highlight it
         cell.selectionStyle = .none
         return cell
