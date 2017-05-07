@@ -206,6 +206,11 @@
                 <navigationController id="muk-si-6RT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="" image="search.png" selectedImage="search.png" id="m68-wv-BsQ" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <inset key="imageInsets" minX="26" minY="35" maxX="28" maxY="23"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="ZPE-y7-JpZ" id="oJe-0F-Pit"/>
                         </connections>
@@ -224,6 +229,9 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
                             <color key="value" red="0.21874722839999999" green="0.77486318350000005" blue="0.36605498190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customObject>
@@ -362,13 +370,27 @@
                     </view>
                     <tabBarItem key="tabBarItem" tag="4" image="settings.png" selectedImage="settings.png" id="Xiy-B4-zNE" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <inset key="imageInsets" minX="30" minY="30" maxX="12" maxY="14"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="G9c-79-7YD" id="rtH-Pq-tg7"/>
                         </connections>
                     </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOB-CH-JRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="G9c-79-7YD" customClass="RAMBounceAnimation" customModule="FoHo" customModuleProvider="target"/>
+                <customObject id="G9c-79-7YD" customClass="RAMRotationAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.21874722839999999" green="0.77486318350000005" blue="0.36605498190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-4303.1999999999998" y="-372.86356821589209"/>
         </scene>
@@ -451,14 +473,14 @@
             </objects>
             <point key="canvasLocation" x="-2858.4000000000001" y="2885.307346326837"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="CbQ-Jz-kA6">
             <objects>
                 <navigationController id="8Mi-w3-7a6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="person.png" selectedImage="person.png" id="32D-pt-5zP" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="" image="person.png" selectedImage="person.png" id="32D-pt-5zP" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                <color key="value" red="0.21874722839999999" green="0.77486318350000005" blue="0.36605498190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
@@ -481,6 +503,9 @@
                         <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
                             <color key="value" red="0.21874722839999999" green="0.77486318350000005" blue="0.36605498190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customObject>
             </objects>
@@ -497,7 +522,7 @@
                                 <real key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                <color key="value" red="0.21874722839999999" green="0.77486318350000005" blue="0.36605498190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
@@ -513,10 +538,13 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mB-XC-DVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="WBK-20-5AL" customClass="RAMBounceAnimation" customModule="FoHo" customModuleProvider="target">
+                <customObject id="WBK-20-5AL" customClass="RAMRotationAnimation" customModule="RAMAnimatedTabBarController">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
                             <color key="value" red="0.21874722839999999" green="0.77486318350000005" blue="0.36605498190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </customObject>
@@ -754,8 +782,13 @@
         <scene sceneID="wlk-D2-ABv">
             <objects>
                 <navigationController id="p2u-aq-iCD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="home.png" selectedImage="home.png" id="eGn-xv-oL3" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="" image="homeTab" selectedImage="homeTab" id="eGn-xv-oL3" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
                         <inset key="imageInsets" minX="68" minY="71" maxX="60" maxY="61"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="animation" destination="HN3-oj-Exp" id="r1T-ic-BG9"/>
                         </connections>
@@ -769,7 +802,16 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GcZ-rQ-RB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="HN3-oj-Exp" customClass="RAMRotationAnimation" customModule="RAMAnimatedTabBarController"/>
+                <customObject id="HN3-oj-Exp" customClass="RAMRotationAnimation" customModule="RAMAnimatedTabBarController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" red="0.21874722839999999" green="0.77486318350000005" blue="0.36605498190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-4054" y="404"/>
         </scene>
@@ -5990,7 +6032,7 @@ QgAEr0cAAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAASvSQ
 </mutableData>
         </image>
         <image name="heart.png" width="350" height="315"/>
-        <image name="home.png" width="300" height="300"/>
+        <image name="homeTab" width="23" height="23"/>
         <image name="person.png" width="200" height="200"/>
         <image name="search.png" width="121" height="128"/>
         <image name="settings.png" width="128" height="128"/>
