@@ -10,6 +10,7 @@ import UIKit
 import FaveButton
 import CoreData
 import Alamofire
+import Social
 
 //View Controller that displays more detailed information regarding a specific recipe.
 //Using the recipeID from the first API call in the search view controller, we make
@@ -26,6 +27,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     var items: NSArray?
     
     
+    @IBOutlet weak var shareButton: UIButton!
     
     
     @IBOutlet var heartButton: FaveButton!
@@ -82,7 +84,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        shareView.alpha = 0
         //initialize tableview delegates
         ingredients.delegate = self
         ingredients.dataSource = self
@@ -238,5 +240,64 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
      // Pass the selected object to the new view controller.
      }
      */
+    
+    
+    
+    @IBOutlet weak var shareView: UIView!
+    
+    @IBOutlet weak var fbButton: UIButton!
+    
+    @IBOutlet weak var twButton: UIButton!
+    
+    
+    @IBAction func tappedShare(_ sender: UIButton) {
+        shareView.alpha = 0.9
+        shareView.backgroundColor = UIColor.green
+        /*
+        let shareView = UIView(frame: CGRect(x:10, y: 300, width: 275, height: 147))
+        let fbButton = UIButton(frame: CGRect(x:10, y: 10, width: 50, height: 50))
+        fbButton.backgroundColor = UIColor.black
+        shareView.addSubview(fbButton)
+        shareView.backgroundColor = UIColor.green
+        
+        
+        
+        self.view.addSubview(shareView)
+ */
+    }
+    
+    
+    @IBAction func fbButtonTapped(_ sender: UIButton) {
+        
+        let vc = SLComposeViewController(forServiceType:SLServiceTypeFacebook)
+        vc?.add(recipe?.recipeImage())
+        vc?.add(URL(string: (recipe?.recipeUri())!))
+        vc?.setInitialText("From FoHo: I found a new recipe!    ")
+        self.present(vc!, animated: true, completion: nil)
+        
+        shareView.alpha = 0
+        
+    }
+    
+    
+    @IBAction func twButtonTapped(_ sender: UIButton) {
+        
+        let vc = SLComposeViewController(forServiceType:SLServiceTypeTwitter)
+        vc?.add(recipe?.recipeImage())
+        vc?.add(URL(string: (recipe?.recipeUri())!))
+        vc?.setInitialText("From FoHo: I found a new recipe!    ")
+
+        self.present(vc!, animated: true, completion: nil)
+        
+        shareView.alpha = 0
+        
+        
+    }
+    
+    @IBAction func cancelTapped(_ sender: UIButton) {
+        shareView.alpha = 0
+    }
+    
+    
     
 }

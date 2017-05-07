@@ -227,13 +227,25 @@ class RecipeSearchTableViewController: UITableViewController, UISearchBarDelegat
         Alamofire.request(url).responseJSON { response in
             
             if let JSON = response.result.value {
-                print("JSON: \(JSON)")
+               // print("JSON: \(JSON)")
                 
                 //might need this here dunno...?
                 self.tableView.reloadData()
                 
                 //Populate our recipes instance with the data from the API call
                 self.recipes = Recipes(dataSource: JSON)
+                
+                //if there are under two recipes, display a warning
+                if (self.recipes?.numRecipes())! < 2 {
+                    let alert: UIAlertView = UIAlertView()
+                    alert.title = "Warning"
+                    alert.message = "No results found, try again."
+                    alert.addButton(withTitle: "Continue")
+                    alert.delegate = self  // set the delegate here
+                    alert.show()
+                    
+                    
+                }
                 self.tableView.reloadData()
             }
             else {

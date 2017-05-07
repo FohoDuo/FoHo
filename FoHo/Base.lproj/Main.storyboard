@@ -137,6 +137,45 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ynE-fd-FSG">
+                                        <rect key="frame" x="0.0" y="-65" width="252" height="280"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLM-XJ-6y3">
+                                                <rect key="frame" x="20" y="113" width="76" height="84"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" backgroundImage="fb.jpg"/>
+                                                <connections>
+                                                    <action selector="fbButtonTapped:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="Uk3-lL-OvG"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRi-Cs-hOf">
+                                                <rect key="frame" x="153" y="118" width="77" height="75"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="twitter.png"/>
+                                                <connections>
+                                                    <action selector="twButtonTapped:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="q3l-Jf-6By"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share Your Find!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0B-VI-f7r">
+                                                <rect key="frame" x="60" y="84" width="148" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L21-kt-egH">
+                                                <rect key="frame" x="95" y="242" width="62" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.39970242979999998" green="0.78088372949999996" blue="0.36964565519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelTapped:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="RH1-mR-c4F"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -153,17 +192,29 @@
                                     <action selector="didTapHeartButton:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="THi-lY-4cG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCN-4g-SDL">
+                                <rect key="frame" x="320" y="328" width="75" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="share.png"/>
+                                <connections>
+                                    <action selector="tappedShare:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="TBL-eP-EeC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="fbButton" destination="JLM-XJ-6y3" id="aDf-5I-k5I"/>
                         <outlet property="heartButton" destination="U3B-ak-E80" id="H31-Xh-C13"/>
                         <outlet property="ingredients" destination="o0t-cn-bUx" id="Fda-zj-xVo"/>
                         <outlet property="instructionButton" destination="FoL-zz-bxI" id="RhL-dt-lA6"/>
                         <outlet property="navBar" destination="ygr-aF-zEL" id="nnP-BR-vGz"/>
                         <outlet property="recipeImage" destination="2eJ-xI-orC" id="nyp-xk-CNH"/>
+                        <outlet property="shareButton" destination="GCN-4g-SDL" id="wEL-O6-mFh"/>
+                        <outlet property="shareView" destination="ynE-fd-FSG" id="Lnz-V1-lqd"/>
                         <outlet property="timeCook" destination="Ktw-x9-Ubk" id="zzP-be-PsL"/>
+                        <outlet property="twButton" destination="KRi-Cs-hOf" id="Bxz-tc-ota"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCe-BG-Fz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -471,7 +522,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="228"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4O6-Ob-49b" id="M8W-qu-QlQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-af-SdW">
@@ -6057,10 +6108,13 @@ xAAAAMYAAADIAASufAAEroEABK6MAASulQAErqgABK6sAASutwAErsAABK7FAASuzQAErtAABK7VAASu
 QgAEr0cAAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAASvSQ
 </mutableData>
         </image>
+        <image name="fb.jpg" width="225" height="225"/>
         <image name="heart.png" width="350" height="315"/>
         <image name="home.png" width="300" height="300"/>
         <image name="search.png" width="121" height="128"/>
         <image name="settings.png" width="128" height="128"/>
+        <image name="share.png" width="512" height="512"/>
+        <image name="twitter.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1k8-J8-4VK"/>
