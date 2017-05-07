@@ -361,13 +361,19 @@
                                 <rect key="frame" x="63" y="246" width="249" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.39970242979999998" green="0.78088372949999996" blue="0.36964565519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Delete Shopping Cart Data"/>
+                                <connections>
+                                    <action selector="tappedDeleteCart:" destination="doL-vz-pLM" eventType="touchUpInside" id="ygx-Ec-nh2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNR-st-5OF">
                                 <rect key="frame" x="63" y="371" width="249" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.39970242979999998" green="0.78088372949999996" blue="0.36964565519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Delete Favorites"/>
+                                <connections>
+                                    <action selector="tappedDeleteFavs:" destination="doL-vz-pLM" eventType="touchUpInside" id="Qmv-oN-j27"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbh-Mh-qjF">
                                 <rect key="frame" x="63" y="28" width="249" height="65"/>
@@ -393,6 +399,8 @@
                         </connections>
                     </tabBarItem>
                     <connections>
+                        <outlet property="deleteCartButton" destination="C71-Mq-MV4" id="DM7-bU-crt"/>
+                        <outlet property="deleteFavButton" destination="jNR-st-5OF" id="vta-PT-nWd"/>
                         <outlet property="resetSearchButton" destination="36e-TL-Uze" id="ZOv-af-Saf"/>
                     </connections>
                 </viewController>
@@ -463,11 +471,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="228"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4O6-Ob-49b" id="M8W-qu-QlQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-af-SdW">
-                                            <rect key="frame" x="8" y="8" width="359" height="212"/>
+                                            <rect key="frame" x="8" y="9" width="359" height="212"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>

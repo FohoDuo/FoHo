@@ -13,7 +13,9 @@ class OptionsViewController: UIViewController, UIAlertViewDelegate {
 
     @IBOutlet weak var resetSearchButton: UIButton!
     
+    @IBOutlet weak var deleteCartButton: UIButton!
     
+    @IBOutlet weak var deleteFavButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,30 @@ class OptionsViewController: UIViewController, UIAlertViewDelegate {
         alert.tag = 10
         alert.show()
     }
+    
+    @IBAction func tappedDeleteCart(_ sender: UIButton) {
+        let alert: UIAlertView = UIAlertView()
+        alert.title = "Warning"
+        alert.message = "Are you sure you want to delete all items from the shopping cart?"
+        alert.addButton(withTitle: "Yes")
+        alert.addButton(withTitle: "No")
+        alert.delegate = self  // set the delegate here
+        alert.tag = 11
+        alert.show()
+    }
+    
+    @IBAction func tappedDeleteFavs(_ sender: UIButton) {
+        let alert: UIAlertView = UIAlertView()
+        alert.title = "Warning"
+        alert.message = "Are you sure you want to delete all recipes saved in favorites?"
+        alert.addButton(withTitle: "Yes")
+        alert.addButton(withTitle: "No")
+        alert.delegate = self  // set the delegate here
+        alert.tag = 12
+        alert.show()
+    }
+    
+    
     
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         
@@ -88,6 +114,45 @@ class OptionsViewController: UIViewController, UIAlertViewDelegate {
                 
             }
         }
+        
+        //remove all items from the shopping cart
+        if alertView.tag == 11 {
+            if buttonIndex == 0 {
+                // create the delete request for the specified entity
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                
+                // get reference to the persistent container
+                let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+                
+                // perform the delete
+                do {
+                    try persistentContainer.viewContext.execute(deleteRequest)
+                } catch let error as NSError {
+                    print(error)
+                }
+            }
+        }
+        
+        //if the user clicked to delete all recipes from favorites
+        if alertView.tag == 12 {
+            if buttonIndex == 0 {
+                // create the delete request for the specified entity
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorite")
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                
+                // get reference to the persistent container
+                let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+                
+                // perform the delete
+                do {
+                    try persistentContainer.viewContext.execute(deleteRequest)
+                } catch let error as NSError {
+                    print(error)
+                }
+            }
+        }
+        
     }
     
     

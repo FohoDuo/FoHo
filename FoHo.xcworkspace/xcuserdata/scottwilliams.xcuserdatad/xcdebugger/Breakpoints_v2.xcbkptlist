@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoHo/OptionsViewController.swift"
-            timestampString = "515819975.568271"
+            timestampString = "515821000.663431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "tappedResetSearch(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FoHo/OptionsViewController.swift"
-            timestampString = "515820086.174528"
+            timestampString = "515821000.663431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "alertView(_:clickedButtonAt:)"
             landmarkType = "7">
          </BreakpointContent>
