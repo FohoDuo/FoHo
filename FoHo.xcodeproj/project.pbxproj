@@ -11,6 +11,8 @@
 		46B5EE261EBEA3E9003DDE31 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B5EE251EBEA3E9003DDE31 /* FavoritesTableViewCell.swift */; };
 		46B5EE281EBEA448003DDE31 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B5EE271EBEA448003DDE31 /* FavoritesTableViewController.swift */; };
 		46B5EE2E1EBF19EB003DDE31 /* favorites-icon-27728.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B5EE2D1EBF19EB003DDE31 /* favorites-icon-27728.png */; };
+		46B5EE3C1EBFD493003DDE31 /* search-35.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B5EE3B1EBFD493003DDE31 /* search-35.png */; };
+		46B5EE441EBFD6EA003DDE31 /* settings-35.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B5EE431EBFD6EA003DDE31 /* settings-35.png */; };
 		46C5E38E1EA347D000284E80 /* RecipeSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5E38D1EA347D000284E80 /* RecipeSearchTableViewController.swift */; };
 		46C5E3901EA3481D00284E80 /* RecipeSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5E38F1EA3481D00284E80 /* RecipeSearchTableViewCell.swift */; };
 		46D58E731EADC0C200881ED5 /* forkknife.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D58E701EADC0C200881ED5 /* forkknife.png */; };
@@ -88,6 +90,8 @@
 		46B5EE251EBEA3E9003DDE31 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesTableViewCell.swift; path = FoHo/FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		46B5EE271EBEA448003DDE31 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		46B5EE2D1EBF19EB003DDE31 /* favorites-icon-27728.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-icon-27728.png"; sourceTree = SOURCE_ROOT; };
+		46B5EE3B1EBFD493003DDE31 /* search-35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search-35.png"; path = "../../search-35.png"; sourceTree = "<group>"; };
+		46B5EE431EBFD6EA003DDE31 /* settings-35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-35.png"; path = "../../settings-35.png"; sourceTree = "<group>"; };
 		46C5E38D1EA347D000284E80 /* RecipeSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewController.swift; sourceTree = "<group>"; };
 		46C5E38F1EA3481D00284E80 /* RecipeSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewCell.swift; sourceTree = "<group>"; };
 		46D58E701EADC0C200881ED5 /* forkknife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forkknife.png; sourceTree = SOURCE_ROOT; };
@@ -101,8 +105,8 @@
 		46FE71A71EABF8AC00604B7C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/person.png; sourceTree = "<group>"; };
 		4928BD11CA424939A8577260 /* Pods_FoHo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoHo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB91AD463A5EB6C0B0D69EC /* Pods-FoHoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoHoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoHoUITests/Pods-FoHoUITests.release.xcconfig"; sourceTree = "<group>"; };
-		891ACA921EAEC6C4007C1D2B /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
-		891ACA941EAEC6E1007C1D2B /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		891ACA921EAEC6C4007C1D2B /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewController.swift; path = FoHo/HomeTableViewController.swift; sourceTree = "<group>"; };
+		891ACA941EAEC6E1007C1D2B /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = FoHo/HomeTableViewCell.swift; sourceTree = "<group>"; };
 		892174D61EA1A8A2003A9889 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		892174D81EA1AC16003A9889 /* RecipeDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDataViewController.swift; sourceTree = "<group>"; };
 		892174DA1EA1AC5B003A9889 /* RecipeWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeWebViewController.swift; sourceTree = "<group>"; };
@@ -203,17 +207,21 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		46FE71AB1EABFF5200604B7C /* Profile */ = {
+		46FE71AB1EABFF5200604B7C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				891ACA921EAEC6C4007C1D2B /* HomeTableViewController.swift */,
+				891ACA941EAEC6E1007C1D2B /* HomeTableViewCell.swift */,
 			);
-			name = Profile;
+			name = Home;
 			path = ..;
 			sourceTree = "<group>";
 		};
 		46FE71AC1EABFF8800604B7C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				46B5EE431EBFD6EA003DDE31 /* settings-35.png */,
+				46B5EE3B1EBFD493003DDE31 /* search-35.png */,
 				46B5EE2D1EBF19EB003DDE31 /* favorites-icon-27728.png */,
 				46D58E701EADC0C200881ED5 /* forkknife.png */,
 				46D58E711EADC0C200881ED5 /* forkspoonknife.png */,
@@ -255,9 +263,7 @@
 		89FDA1ED1E99BBB600043820 /* FoHo */ = {
 			isa = PBXGroup;
 			children = (
-				891ACA921EAEC6C4007C1D2B /* HomeTableViewController.swift */,
-				891ACA941EAEC6E1007C1D2B /* HomeTableViewCell.swift */,
-				46FE71AB1EABFF5200604B7C /* Profile */,
+				46FE71AB1EABFF5200604B7C /* Home */,
 				46FE71AA1EABFF3F00604B7C /* Favorites */,
 				46FE71A91EABFF0C00604B7C /* ShoppingCart */,
 				89FDA1EE1E99BBB600043820 /* AppDelegate.swift */,
@@ -442,11 +448,13 @@
 				89FDA1FC1E99BBB600043820 /* LaunchScreen.storyboard in Resources */,
 				89FDA1F91E99BBB600043820 /* Assets.xcassets in Resources */,
 				46D58E731EADC0C200881ED5 /* forkknife.png in Resources */,
+				46B5EE3C1EBFD493003DDE31 /* search-35.png in Resources */,
 				46FE71A11EABF84900604B7C /* settings.png in Resources */,
 				46B5EE2E1EBF19EB003DDE31 /* favorites-icon-27728.png in Resources */,
 				46D58E751EADC0C200881ED5 /* spoon-fork-knife-heart.png in Resources */,
 				89FDA1F41E99BBB600043820 /* Main.storyboard in Resources */,
 				46FE71A61EABF8AC00604B7C /* person.png in Resources */,
+				46B5EE441EBFD6EA003DDE31 /* settings-35.png in Resources */,
 				46FE719F1EABF84900604B7C /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

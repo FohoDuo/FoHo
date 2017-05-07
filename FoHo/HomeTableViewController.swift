@@ -29,7 +29,7 @@ class HomeTableViewController: UITableViewController {
         
         startingIndex = String(arc4random_uniform(1000000))
         print(startingIndex)
-        //apiCall()
+        apiCall()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

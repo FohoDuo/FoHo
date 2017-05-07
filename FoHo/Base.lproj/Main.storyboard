@@ -69,7 +69,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmS-2S-P4S">
-                                        <rect key="frame" x="0.0" y="274" width="343" height="28"/>
+                                        <rect key="frame" x="0.0" y="270" width="343" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -82,7 +82,7 @@
                                             <fragment content="prep">
                                                 <attributes>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="19" name="Futura-MediumItalic"/>
+                                                    <font key="NSFont" size="21" name="Futura-MediumItalic"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -90,15 +90,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o0t-cn-bUx">
-                                        <rect key="frame" x="0.0" y="329" width="351" height="214"/>
+                                        <rect key="frame" x="0.0" y="340" width="343" height="219"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredients" id="MQ8-XK-khH" customClass="IngredientsTableViewCell" customModule="FoHo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="351" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MQ8-XK-khH" id="Kgc-1E-sUH" customClass="IngredientsTableViewCell" customModule="FoHo" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" layoutMarginsFollowReadableWidth="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcg-JW-pYT">
@@ -108,8 +108,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b6t-tY-hlA">
-                                                            <rect key="frame" x="15" y="5" width="28" height="30"/>
+                                                        <button clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b6t-tY-hlA">
+                                                            <rect key="frame" x="15" y="5" width="30" height="30"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="backgroundColor" red="0.21874722838401794" green="0.77486318349838257" blue="0.36605498194694519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,7 +118,7 @@
                                                                     <fragment content="+">
                                                                         <attributes>
                                                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                            <font key="NSFont" metaFont="system" size="27"/>
+                                                                            <font key="NSFont" size="27" name="Futura-Bold"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
@@ -205,7 +205,7 @@
             <objects>
                 <navigationController id="muk-si-6RT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="" image="searchTab" selectedImage="searchTab" id="m68-wv-BsQ" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
-                        <inset key="imageInsets" minX="26" minY="35" maxX="28" maxY="23"/>
+                        <inset key="imageInsets" minX="35" minY="48" maxX="35" maxY="32"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
                                 <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -357,13 +357,17 @@
                                 <rect key="frame" x="16" y="28" width="117" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.39970242977142334" green="0.78088372945785522" blue="0.36964565515518188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36e-TL-Uze">
                                 <rect key="frame" x="16" y="101" width="117" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.39970242979999998" green="0.78088372949999996" blue="0.36964565519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -434,14 +438,15 @@
             </objects>
             <point key="canvasLocation" x="-5746.3999999999996" y="2465.217391304348"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Favorites-->
         <scene sceneID="ZFx-Jm-msF">
             <objects>
                 <tableViewController id="Jul-PR-h3Z" customClass="FavoritesTableViewController" customModule="FoHo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="228" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y0k-FZ-PLm">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="228" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y0k-FZ-PLm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoritesCell" rowHeight="228" id="4O6-Ob-49b" customClass="FavoritesTableViewCell" customModule="FoHo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="228"/>
@@ -467,7 +472,7 @@
                             <outlet property="delegate" destination="Jul-PR-h3Z" id="9EQ-NP-Wdt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="VFk-mj-OuW"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="VFk-mj-OuW"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IMa-3a-Ak4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -821,7 +826,7 @@
             </objects>
             <point key="canvasLocation" x="-4054" y="404"/>
         </scene>
-        <!--Home Table View Controller-->
+        <!--Featured -->
         <scene sceneID="THF-8g-Kav">
             <objects>
                 <tableViewController id="jeh-nK-YeU" customClass="HomeTableViewController" customModule="FoHo" customModuleProvider="target" sceneMemberID="viewController">
@@ -890,8 +895,10 @@
                                 <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="leftImage" destination="mjb-7a-yNb" id="upQ-ad-Uoa"/>
+                                    <outlet property="leftImageSquare" destination="4dU-PD-phw" id="8vl-ge-rz4"/>
                                     <outlet property="leftRecipeName" destination="QPp-mY-u4q" id="Jzk-JM-Pzg"/>
                                     <outlet property="rightImage" destination="mn0-KN-Ztc" id="qt1-Dd-hz7"/>
+                                    <outlet property="rightImageSquare" destination="4vu-or-2HR" id="Zlo-DN-DOM"/>
                                     <outlet property="rightRecipeName" destination="F49-aO-jbH" id="zMU-Aa-dJe"/>
                                 </connections>
                             </tableViewCell>
@@ -901,7 +908,7 @@
                             <outlet property="delegate" destination="jeh-nK-YeU" id="nfi-Pw-34c"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="vtY-T3-3DL"/>
+                    <navigationItem key="navigationItem" title="Featured " id="vtY-T3-3DL"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmf-4L-Pwt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6040,11 +6047,11 @@ QgAEr0cAAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAASvSQ
         <image name="favorites" width="35" height="35"/>
         <image name="heart.png" width="350" height="315"/>
         <image name="homeTab" width="46" height="46"/>
-        <image name="searchTab" width="121" height="128"/>
-        <image name="settingTab" width="128" height="128"/>
+        <image name="searchTab" width="35" height="35"/>
+        <image name="settingTab" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1k8-J8-4VK"/>
+        <segue reference="sfR-Fh-F0G"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -13,6 +13,7 @@ class FavoritesTableViewController: UITableViewController {
     
     var Favorited: [NSManagedObject] = []
     var mealType: [String] = ["Main Dishes", "Desserts", "Side Dishes", "Lunch and Snacks", "Appetizers", "Salads", "Breads", "Breakfast and Brunch", "Soups", "Beverages", "Condiments and Sauces", "Cocktails"]
+    var colors = [#colorLiteral(red: 0.2871333339, green: 0.6674844371, blue: 0.7044274964, alpha: 1), #colorLiteral(red: 0.2219267856, green: 0.5662676973, blue: 0.6493632515, alpha: 1)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,11 +77,46 @@ class FavoritesTableViewController: UITableViewController {
         // cell.recipeName.text = "Cookie"//item.value(forKeyPath: "recipeName") as? String
         cell.setCell(object: item)
         
-        cell.backgroundColor = #colorLiteral(red: 0.2810869217, green: 0.3669615388, blue: 0.7158250213, alpha: 1)
-        // Configure the cell...
+        if indexPath.row % 2 == 0{
+            cell.backgroundColor = colors[0]
+        }
+        else{
+            cell.backgroundColor = colors[1]
+        }
+
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("hi mom")
+            
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            let managedContext = appDelegate?.persistentContainer.viewContext
+            managedContext?.delete(Favorited[indexPath.row] as NSManagedObject)
+            do {
+                try managedContext?.save()
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            }
+            
+            tableView.beginUpdates()
+            Favorited.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
+        
+        if editingStyle == .insert {
+            print("cmon")
+        }
+        
+    }
+    func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+        return true
+    }
+    
+    
     
     
     /*
