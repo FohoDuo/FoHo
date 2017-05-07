@@ -27,7 +27,7 @@ class OptionsViewController: UIViewController, UIAlertViewDelegate {
     }
     
 
-
+//
     
     //user clicked the reset options button
     @IBAction func tappedResetSearch(_ sender: UIButton) {
