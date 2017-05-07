@@ -23,6 +23,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     var favRecipe: NSManagedObject? // Comes From Favorites
     var fromFavorites: Bool = false
     var info: String = ""
+    var items: NSArray?
     
     
     
@@ -131,11 +132,11 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
             
             self.info = time! + " | " + numServings!.description + " servings"
             self.timeCook.text = self.info
+            self.items = favRecipe?.value(forKeyPath: "ingredients") as! NSArray
             
             let attributes = [NSFontAttributeName : UIFont(name: "futura", size: 16)!, NSForegroundColorAttributeName : #colorLiteral(red: 0.1520104086, green: 0.4011090714, blue: 0.4621073921, alpha: 1)] as [String : Any]
             self.navigationController?.navigationBar.titleTextAttributes = attributes
             self.navigationItem.title = name
-            ingredients.reloadData()
         }
         
         ingredients.reloadData()
@@ -173,8 +174,13 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //if the API call has returned, give this the number of ingredients
-        if recipe != nil {
-            return recipe!.ingredients().count
+        if recipe != nil || favRecipe != nil {
+            if fromFavorites{
+                return items!.count
+            }
+            else{
+                return recipe!.ingredients().count
+            }
         }
         
         //else just let it be 1 for now
@@ -189,8 +195,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         print("Here")
         if fromFavorites{
             print("Faved")
-            let ingredientList = favRecipe?.value(forKeyPath: "ingredients") as! NSArray
-            cell.setCell(item: (ingredientList[indexPath.row] as! String))
+            cell.setCell(item: (items?[indexPath.row] as! String))
             print(indexPath.row)
             fromFavorites = true
 
