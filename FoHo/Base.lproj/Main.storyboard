@@ -328,8 +328,8 @@
                         <segue destination="p2u-aq-iCD" kind="relationship" relationship="viewControllers" id="fBj-8k-2eU"/>
                         <segue destination="muk-si-6RT" kind="relationship" relationship="viewControllers" id="6GT-LN-git"/>
                         <segue destination="I9y-3Q-ohY" kind="relationship" relationship="viewControllers" id="vzo-7V-fen"/>
-                        <segue destination="doL-vz-pLM" kind="relationship" relationship="viewControllers" id="YcW-dV-sDp"/>
                         <segue destination="8Mi-w3-7a6" kind="relationship" relationship="viewControllers" id="bQh-1A-YkS"/>
+                        <segue destination="doL-vz-pLM" kind="relationship" relationship="viewControllers" id="YcW-dV-sDp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1t5-H9-e1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -441,7 +441,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="228" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y0k-FZ-PLm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoritesCell" rowHeight="228" id="4O6-Ob-49b" customClass="FavoritesTableViewCell" customModule="FoHo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="228"/>
@@ -451,8 +451,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-af-SdW">
-                                            <rect key="frame" x="0.0" y="-21" width="375" height="249"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="212"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -477,7 +477,8 @@
         <scene sceneID="CbQ-Jz-kA6">
             <objects>
                 <navigationController id="8Mi-w3-7a6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person.png" selectedImage="person.png" id="32D-pt-5zP" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="" image="Fav" selectedImage="Fav" id="32D-pt-5zP" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                        <inset key="imageInsets" minX="13" minY="17" maxX="11" maxY="10"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
                                 <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -782,8 +783,8 @@
         <scene sceneID="wlk-D2-ABv">
             <objects>
                 <navigationController id="p2u-aq-iCD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="homeTab" selectedImage="homeTab" id="eGn-xv-oL3" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
-                        <inset key="imageInsets" minX="68" minY="71" maxX="60" maxY="61"/>
+                    <tabBarItem key="tabBarItem" title="" image="home.png" selectedImage="home.png" id="eGn-xv-oL3" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                        <inset key="imageInsets" minX="62" minY="73" maxX="62" maxY="54"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
                                 <color key="value" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -904,6 +905,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Fav" width="65" height="65"/>
         <image name="ShoppingCartTab" width="46" height="46"/>
         <image name="button:b6t-tY-hlA:image" width="266" height="285">
             <mutableData key="keyedArchiveRepresentation">
@@ -6032,8 +6034,7 @@ QgAEr0cAAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAASvSQ
 </mutableData>
         </image>
         <image name="heart.png" width="350" height="315"/>
-        <image name="homeTab" width="23" height="23"/>
-        <image name="person.png" width="200" height="200"/>
+        <image name="home.png" width="300" height="300"/>
         <image name="search.png" width="121" height="128"/>
         <image name="settings.png" width="128" height="128"/>
     </resources>
