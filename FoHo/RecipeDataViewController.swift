@@ -70,13 +70,6 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
         do{
              let items = try managedContext.fetch(fetchRequest)
-         //   for item in items{
-                //print(item)
-                
-           // }
-            print(items[0].value(forKey: "id"))
-
-             //try managedContext.save()
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
              }
@@ -114,17 +107,14 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
                 let attributes = [NSFontAttributeName : UIFont(name: "futura", size: 16)!, NSForegroundColorAttributeName : #colorLiteral(red: 0.1520104086, green: 0.4011090714, blue: 0.4621073921, alpha: 1)] as [String : Any]
                 self.navigationController?.navigationBar.titleTextAttributes = attributes
                  self.navigationItem.title = self.recipe?.recipeName()
-                //navigationController?.navigationBar.titleTextAttributes =               // self.navigationItem.titleView?.laye
+                }
             }
-            //self.instructionButton.layer.borderColor = UIColor.darkGray as! CGColor
-        }
        
-        ingredients.reloadData()
-        self.view.addSubview(ingredients)
+     
         }
         
         else{
-            
+            print("From Favorites, setting information for detail view")
             if let imageData = favRecipe?.value(forKey: "recipeImage") as? String{
                 if let url = URL(string: imageData),
                     let data = try? Data(contentsOf: url),
@@ -145,11 +135,14 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
             let attributes = [NSFontAttributeName : UIFont(name: "futura", size: 16)!, NSForegroundColorAttributeName : #colorLiteral(red: 0.1520104086, green: 0.4011090714, blue: 0.4621073921, alpha: 1)] as [String : Any]
             self.navigationController?.navigationBar.titleTextAttributes = attributes
             self.navigationItem.title = name
-
-            
+            ingredients.reloadData()
         }
+        
+        ingredients.reloadData()
+        self.view.addSubview(ingredients)
     }
     func setFavorited(recipe: NSManagedObject){
+        print("Setting")
         favRecipe = recipe
         fromFavorites = true
     }
@@ -190,21 +183,30 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath) as! IngredientsTableViewCell
-        var ingredientList = recipe?.ingredients()
+    //if the API call has returned, we can populate the tableview with ear=ch ingredient
+    print("Checking if nil")
+    if recipe != nil || favRecipe != nil{
+        print("Here")
         if fromFavorites{
-            ingredientList = favRecipe?.value(forKeyPath: "ingredients") as! NSArray as? [String]
+            print("Faved")
+            let ingredientList = favRecipe?.value(forKeyPath: "ingredients") as! NSArray
+            cell.setCell(item: (ingredientList[indexPath.row] as! String))
+            print(indexPath.row)
+            fromFavorites = true
+
         }
-        //if the API call has returned, we can populate the tableview with ear=ch ingredient
-        if recipe != nil{
-            cell.setCell(item: (ingredientList?[indexPath.row] as! String))
-        }
-            
-        //use come empty value of hardcoded loading string otherwise
         else{
-            cell.setCell(item: "")
+            let ingredientList = recipe?.ingredients()
+            cell.setCell(item: (ingredientList?[indexPath.row])!)
+            }
         }
-    
-        cell.selectionStyle = .none
+        
+        //use come empty value of hardcoded loading string otherwise
+    else{
+        cell.setCell(item: "")
+    }
+
+              cell.selectionStyle = .none
         return cell
     }
 
