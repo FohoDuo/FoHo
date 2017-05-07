@@ -271,7 +271,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let vc = SLComposeViewController(forServiceType:SLServiceTypeFacebook)
         vc?.add(recipe?.recipeImage())
-        vc?.add(URL(string: (recipe?.recipeUri())!))
+        vc?.add(URL(string: (recipe?.webUrl())!))
         vc?.setInitialText("From FoHo: I found a new recipe!    ")
         self.present(vc!, animated: true, completion: nil)
         
@@ -284,7 +284,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let vc = SLComposeViewController(forServiceType:SLServiceTypeTwitter)
         vc?.add(recipe?.recipeImage())
-        vc?.add(URL(string: (recipe?.recipeUri())!))
+        vc?.add(URL(string: (recipe?.webUrl())!))
         vc?.setInitialText("From FoHo: I found a new recipe!    ")
 
         self.present(vc!, animated: true, completion: nil)
