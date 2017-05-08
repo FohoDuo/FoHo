@@ -11,6 +11,7 @@
 		46B5EE261EBEA3E9003DDE31 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B5EE251EBEA3E9003DDE31 /* FavoritesTableViewCell.swift */; };
 		46B5EE281EBEA448003DDE31 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B5EE271EBEA448003DDE31 /* FavoritesTableViewController.swift */; };
 		46B5EE2E1EBF19EB003DDE31 /* favorites-icon-27728.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B5EE2D1EBF19EB003DDE31 /* favorites-icon-27728.png */; };
+		46B5EE461EC12209003DDE31 /* facebook-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B5EE451EC12209003DDE31 /* facebook-logo.png */; };
 		46C5E38E1EA347D000284E80 /* RecipeSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5E38D1EA347D000284E80 /* RecipeSearchTableViewController.swift */; };
 		46C5E3901EA3481D00284E80 /* RecipeSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5E38F1EA3481D00284E80 /* RecipeSearchTableViewCell.swift */; };
 		46D58E731EADC0C200881ED5 /* forkknife.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D58E701EADC0C200881ED5 /* forkknife.png */; };
@@ -92,6 +93,7 @@
 		46B5EE251EBEA3E9003DDE31 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesTableViewCell.swift; path = FoHo/FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		46B5EE271EBEA448003DDE31 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		46B5EE2D1EBF19EB003DDE31 /* favorites-icon-27728.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-icon-27728.png"; sourceTree = SOURCE_ROOT; };
+		46B5EE451EC12209003DDE31 /* facebook-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facebook-logo.png"; path = "../../../../../Downloads/facebook-logo.png"; sourceTree = "<group>"; };
 		46C5E38D1EA347D000284E80 /* RecipeSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewController.swift; sourceTree = "<group>"; };
 		46C5E38F1EA3481D00284E80 /* RecipeSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewCell.swift; sourceTree = "<group>"; };
 		46D58E701EADC0C200881ED5 /* forkknife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forkknife.png; sourceTree = SOURCE_ROOT; };
@@ -225,6 +227,7 @@
 		46FE71AC1EABFF8800604B7C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				46B5EE451EC12209003DDE31 /* facebook-logo.png */,
 				46B5EE2D1EBF19EB003DDE31 /* favorites-icon-27728.png */,
 				46D58E701EADC0C200881ED5 /* forkknife.png */,
 				46D58E711EADC0C200881ED5 /* forkspoonknife.png */,
@@ -464,6 +467,7 @@
 				8982044F1EC108F900F38202 /* twitter.png in Resources */,
 				46FE71A61EABF8AC00604B7C /* person.png in Resources */,
 				46FE719F1EABF84900604B7C /* plus.png in Resources */,
+				46B5EE461EC12209003DDE31 /* facebook-logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

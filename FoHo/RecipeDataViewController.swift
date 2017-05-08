@@ -160,6 +160,8 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         shareView.alpha = 0
         //initialize tableview delegates
         ingredients.delegate = self
@@ -312,8 +314,11 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func touchedShare(_ sender: UIButton) {
         
-        shareView.alpha = 0.9
-        shareView.backgroundColor = UIColor.blue
+        shareView.alpha = 1
+        shareView.layer.cornerRadius = 2
+        shareView.layer.borderWidth = 0.23
+        shareView.layer.borderColor = UIColor.black.cgColor
+        shareView.backgroundColor = #colorLiteral(red: 0.2810869217, green: 0.3669615388, blue: 0.7158250213, alpha: 1)
     }
     
     
