@@ -5,7 +5,6 @@
 //  Created by Scott Williams on 4/14/17.
 //  Copyright © 2017 FohoDuo. All rights reserved.
 //
-
 import UIKit
 import FaveButton
 import CoreData
@@ -27,8 +26,6 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     var items: NSArray?
     
     
-    
-    
     @IBOutlet var heartButton: FaveButton!
     @IBOutlet var timeCook: UILabel!
     @IBOutlet var numberOfServings: UILabel!
@@ -42,18 +39,17 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         if !fromFavorites{
             
             if heartButton.isSelected == true {
-                print("Tapped the heart")
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                     return
                 }
-            
+                
                 //1
                 let managedContext = appDelegate.persistentContainer.viewContext
-            
+                
                 //2
                 let entity = NSEntityDescription.entity(forEntityName: "Favorite", in: managedContext)!
                 let item = NSManagedObject(entity: entity, insertInto: managedContext)
-            
+                
                 //3
                 item.setValue(recipe?.recipeName(), forKeyPath: "recipeName")
                 item.setValue(recipeKey, forKey: "id")
@@ -62,8 +58,8 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
                 item.setValue(recipe?.ingredients(), forKey: "ingredients")
                 item.setValue(recipe?.numberOfServings(), forKey: "numServings")
                 item.setValue(recipe?.webUrl(), forKey: "webUrl")
-            
-            
+                
+                
                 //4
                 do {
                     try managedContext.save()
@@ -78,6 +74,10 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
                     print("Could not fetch. \(error), \(error.userInfo)")
                 }
             }
+                
+                
+                //We remove the favorite by parsing the database string so it matches
+                //the recipeKey
             else {
                 //1) Set app delegate
                 guard let appDelegate =
@@ -98,30 +98,25 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
                         var temp: String = String(describing: item.value(forKey: "id"))
                         
                         var index = 0
+                        
+                        var temp2: String = ""
+                        var insert = false
+                        
                         for c in temp.characters {
+                            if c == ")" {
+                                insert = false
+                            }
+                            if insert {
+                                temp2 += String(c)
+                            }
                             if c == "(" {
-                                //temp.insert("\"", at: temp.index(temp.characters.start)))
-                                temp.insert("\"", at: temp.index(temp.startIndex, offsetBy: index + 1))
-
-                                break
+                                insert = true
                             }
                             index += 1
                         }
                         
-
-                        
-                        
-                        
-                        
-                        
-                        var test = temp.components(separatedBy: "(")
-                        print(test)
-                        print(item.value(forKey: "id"))
-                      //  temp = "\"" + temp! + "\""
-                        print("key ", recipeKey)
-                        print("database ", temp)
-                        
-                        if String(describing: item.value(forKey: "id")) == recipeKey! {                            print("hit")
+                        if temp2 == recipeKey! {
+                            print("hit")
                             managedContext.delete(item)
                         }
                     }
@@ -131,28 +126,8 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
                 } catch let error as NSError {
                     print("Could not fetch. \(error), \(error.userInfo)")
                 }
-                
-                
-                /*
-                 
-                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                 let managedContext = appDelegate?.persistentContainer.viewContext
-                 managedContext?.delete(Favorited[indexPath.row] as NSManagedObject)
-                 do {
-                 try managedContext?.save()
-                 } catch let error as NSError  {
-                 print("Could not save \(error), \(error.userInfo)")
-                 }
-                 
-                 tableView.beginUpdates()
-                 Favorited.remove(at: indexPath.row)
-                 tableView.deleteRows(at: [indexPath], with: .fade)
-                 tableView.endUpdates()
-                
-                */
             }
         }
-        
     }
     
     
@@ -160,16 +135,14 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         shareView.alpha = 0
+        
         //initialize tableview delegates
         ingredients.delegate = self
         ingredients.dataSource = self
         heartButton.delegate = self
         heartButton.frame(forAlignmentRect: CGRect(x: 290, y: 200, width: 33, height: 33))
         if(!fromFavorites){
-            print(recipeKey)
             let url = "http://api.yummly.com/v1/api/recipe/\(recipeKey!)?_app_id=\(appID)&_app_key=\(appKey)"
             
             //Magically calls the API and gets the data
@@ -188,14 +161,13 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
                     let attributes = [NSFontAttributeName : UIFont(name: "futura", size: 16)!, NSForegroundColorAttributeName : #colorLiteral(red: 0.1520104086, green: 0.4011090714, blue: 0.4621073921, alpha: 1)] as [String : Any]
                     self.navigationController?.navigationBar.titleTextAttributes = attributes
                     self.navigationItem.title = self.recipe?.recipeName()
+                    self.setFavButton()
+                    
                 }
             }
-            
-            
         }
             
-        else{
-            print("From Favorites, setting information for detail view")
+        else {
             if let imageData = favRecipe?.value(forKey: "recipeImage") as? String{
                 if let url = URL(string: imageData),
                     let data = try? Data(contentsOf: url),
@@ -217,20 +189,71 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
             let attributes = [NSFontAttributeName : UIFont(name: "futura", size: 16)!, NSForegroundColorAttributeName : #colorLiteral(red: 0.1520104086, green: 0.4011090714, blue: 0.4621073921, alpha: 1)] as [String : Any]
             self.navigationController?.navigationBar.titleTextAttributes = attributes
             self.navigationItem.title = name
+            self.recipeKey = favRecipe?.value(forKey: "id") as? String
+            setFavButton()
         }
         
         ingredients.reloadData()
         self.view.addSubview(ingredients)
     }
+    
+    
     func setFavorited(recipe: NSManagedObject){
-        print("Setting")
         favRecipe = recipe
         fromFavorites = true
     }
     
+    //Code to preset the favorite button should the recipe already be favorited
+    func setFavButton() {
+        
+        
+        //1) Set app delegate
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        //2) Set managed context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //3) Set fetch request
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        do {
+            let items = try managedContext.fetch(fetchRequest)
+            for item in items {
+                
+                var temp: String = String(describing: item.value(forKey: "id"))
+                
+                var index = 0
+                
+                var temp2: String = ""
+                var insert = false
+                
+                for c in temp.characters {
+                    if c == ")" {
+                        insert = false
+                    }
+                    if insert {
+                        temp2 += String(c)
+                    }
+                    if c == "(" {
+                        insert = true
+                    }
+                    index += 1
+                }
+                if temp2 == recipeKey! {
+                    heartButton.isSelected = true
+                }
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+    
     //set recipe key here with old data
     func setRecipeID(id: String?) {
-        print("passed id is: ", id)
         recipeKey = id
         fromFavorites = false
     }
@@ -238,7 +261,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     //probably not needed, just keeping in case we want something to happen
     //on click besides segueing
     @IBAction func didTabButton(_ sender: UIButton) {
-        print("YAYYAYAY")
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -269,16 +292,13 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredients", for: indexPath) as! IngredientsTableViewCell
+        
         //if the API call has returned, we can populate the tableview with ear=ch ingredient
-        print("Checking if nil")
         if recipe != nil || favRecipe != nil{
-            print("Here")
             if fromFavorites{
-                print("Faved")
                 cell.setCell(item: (items?[indexPath.row] as! String))
                 print(indexPath.row)
                 fromFavorites = true
-                
             }
             else{
                 let ingredientList = recipe?.ingredients()
@@ -311,7 +331,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var shareView: UIView!
     
     
-    
+    //brings up the share recipe view
     @IBAction func touchedShare(_ sender: UIButton) {
         
         shareView.alpha = 1
@@ -321,7 +341,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         shareView.backgroundColor = #colorLiteral(red: 0.2810869217, green: 0.3669615388, blue: 0.7158250213, alpha: 1)
     }
     
-    
+    //code to share to facebook
     @IBAction func fbTapped(_ sender: UIButton) {
         let vc = SLComposeViewController(forServiceType:SLServiceTypeFacebook)
         vc?.add(recipe?.recipeImage())
@@ -332,7 +352,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         shareView.alpha = 0
     }
     
-    
+    //code to share to twitter
     @IBAction func twTapped(_ sender: UIButton) {
         let vc = SLComposeViewController(forServiceType:SLServiceTypeTwitter)
         vc?.add(recipe?.recipeImage())
@@ -344,20 +364,9 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         shareView.alpha = 0
     }
     
+    //code to not share and go back
     @IBAction func cancelTapped(_ sender: UIButton) {
         shareView.alpha = 0
     }
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
