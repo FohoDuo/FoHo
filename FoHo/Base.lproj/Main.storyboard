@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fzz-Yg-58E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fzz-Yg-58E">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -137,6 +137,45 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSs-mi-8A1">
+                                        <rect key="frame" x="0.0" y="-12" width="340" height="238"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKq-9c-doF">
+                                                <rect key="frame" x="20" y="65" width="118" height="109"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="fb.jpg"/>
+                                                <connections>
+                                                    <action selector="fbTapped:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="gGy-vV-u8U"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7J-MK-GZh">
+                                                <rect key="frame" x="147" y="189" width="73" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.39970242979999998" green="0.78088372949999996" blue="0.36964565519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelTapped:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="Meb-QX-STS"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share Your Find!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEd-Bv-NRf">
+                                                <rect key="frame" x="71" y="19" width="238" height="38"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSp-Bm-PfZ">
+                                                <rect key="frame" x="200" y="65" width="109" height="109"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="twitter.png"/>
+                                                <connections>
+                                                    <action selector="twTapped:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="ynt-5Q-zc1"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -153,6 +192,14 @@
                                     <action selector="didTapHeartButton:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="THi-lY-4cG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogi-EO-TQb">
+                                <rect key="frame" x="325" y="328" width="62" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="share.png"/>
+                                <connections>
+                                    <action selector="touchedShare:" destination="lr5-VV-MUZ" eventType="touchUpInside" id="TPg-tH-1z7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -163,6 +210,7 @@
                         <outlet property="instructionButton" destination="FoL-zz-bxI" id="RhL-dt-lA6"/>
                         <outlet property="navBar" destination="ygr-aF-zEL" id="nnP-BR-vGz"/>
                         <outlet property="recipeImage" destination="2eJ-xI-orC" id="nyp-xk-CNH"/>
+                        <outlet property="shareView" destination="gSs-mi-8A1" id="ViW-4V-0gn"/>
                         <outlet property="timeCook" destination="Ktw-x9-Ubk" id="zzP-be-PsL"/>
                     </connections>
                 </viewController>
@@ -251,7 +299,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ebc-GC-5Rb" id="o6r-Yc-dmI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.13082351996648389" green="0.74575025202865519" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -336,10 +384,10 @@
             </objects>
             <point key="canvasLocation" x="-5639" y="947"/>
         </scene>
-        <!--View Controller-->
+        <!--Options View Controller-->
         <scene sceneID="UG4-y0-a8V">
             <objects>
-                <viewController id="doL-vz-pLM" sceneMemberID="viewController">
+                <viewController id="doL-vz-pLM" customClass="OptionsViewController" customModule="FoHo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YUU-dW-nmp"/>
                         <viewControllerLayoutGuide type="bottom" id="ABP-te-tcJ"/>
@@ -348,26 +396,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3uT-Gu-tFA">
-                                <rect key="frame" x="16" y="326" width="343" height="275"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbh-Mh-qjF">
-                                <rect key="frame" x="16" y="28" width="117" height="65"/>
+                                <rect key="frame" x="33" y="28" width="308" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.39970242977142334" green="0.78088372945785522" blue="0.36964565515518188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Search Options">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Wjd-E5-tzK" kind="presentation" id="EAc-qs-Eo5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36e-TL-Uze">
-                                <rect key="frame" x="16" y="101" width="117" height="63"/>
+                                <rect key="frame" x="33" y="142" width="308" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.39970242979999998" green="0.78088372949999996" blue="0.36964565519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Reset Search Options">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetOptions:" destination="doL-vz-pLM" eventType="touchUpInside" id="RXy-1v-Q30"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02p-GN-Djb">
+                                <rect key="frame" x="33" y="243" width="308" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.39970242979999998" green="0.78088372949999996" blue="0.36964565519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Delete Shopping Cart Data">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteCart:" destination="doL-vz-pLM" eventType="touchUpInside" id="tMs-xm-gJ3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFB-KW-9tR">
+                                <rect key="frame" x="33" y="343" width="308" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.39970242979999998" green="0.78088372949999996" blue="0.36964565519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Delete Favorites">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteFav:" destination="doL-vz-pLM" eventType="touchUpInside" id="m2c-mF-JoM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.28713333390000001" green="0.66748443710000005" blue="0.70442749640000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -413,7 +484,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yxP-aq-Yyg" id="jH7-g2-dnp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
@@ -452,7 +523,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="228"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4O6-Ob-49b" id="M8W-qu-QlQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="227.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-af-SdW">
@@ -724,7 +795,7 @@
                                 <rect key="frame" x="0.0" y="104" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bW3-xf-4cl" id="ia4-jx-dma">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrU-jh-2VX">
@@ -6045,12 +6116,16 @@ QgAEr0cAAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAASvSQ
 </mutableData>
         </image>
         <image name="favorites" width="35" height="35"/>
+        <image name="fb.jpg" width="225" height="225"/>
         <image name="heart.png" width="350" height="315"/>
         <image name="homeTab" width="46" height="46"/>
         <image name="searchTab" width="35" height="35"/>
         <image name="settingTab" width="35" height="35"/>
+        <image name="share.png" width="512" height="512"/>
+        <image name="twitter.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="EAc-qs-Eo5"/>
         <segue reference="sfR-Fh-F0G"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.28108692169999999" green="0.36696153879999999" blue="0.71582502130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

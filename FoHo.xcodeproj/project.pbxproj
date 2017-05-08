@@ -11,8 +11,6 @@
 		46B5EE261EBEA3E9003DDE31 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B5EE251EBEA3E9003DDE31 /* FavoritesTableViewCell.swift */; };
 		46B5EE281EBEA448003DDE31 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B5EE271EBEA448003DDE31 /* FavoritesTableViewController.swift */; };
 		46B5EE2E1EBF19EB003DDE31 /* favorites-icon-27728.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B5EE2D1EBF19EB003DDE31 /* favorites-icon-27728.png */; };
-		46B5EE3C1EBFD493003DDE31 /* search-35.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B5EE3B1EBFD493003DDE31 /* search-35.png */; };
-		46B5EE441EBFD6EA003DDE31 /* settings-35.png in Resources */ = {isa = PBXBuildFile; fileRef = 46B5EE431EBFD6EA003DDE31 /* settings-35.png */; };
 		46C5E38E1EA347D000284E80 /* RecipeSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5E38D1EA347D000284E80 /* RecipeSearchTableViewController.swift */; };
 		46C5E3901EA3481D00284E80 /* RecipeSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C5E38F1EA3481D00284E80 /* RecipeSearchTableViewCell.swift */; };
 		46D58E731EADC0C200881ED5 /* forkknife.png in Resources */ = {isa = PBXBuildFile; fileRef = 46D58E701EADC0C200881ED5 /* forkknife.png */; };
@@ -35,6 +33,10 @@
 		894115581EB9929100EDBEC9 /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894115571EB9929100EDBEC9 /* SideBarTableViewController.swift */; };
 		8941155A1EB992DF00EDBEC9 /* SideBarTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894115591EB992DF00EDBEC9 /* SideBarTabelViewCell.swift */; };
 		895A067B1E99C29400B3C4D3 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 895A067A1E99C29400B3C4D3 /* heart.png */; };
+		898204491EC1061700F38202 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898204481EC1061700F38202 /* OptionsViewController.swift */; };
+		8982044D1EC108F900F38202 /* fb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8982044A1EC108F900F38202 /* fb.jpg */; };
+		8982044E1EC108F900F38202 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 8982044B1EC108F900F38202 /* share.png */; };
+		8982044F1EC108F900F38202 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 8982044C1EC108F900F38202 /* twitter.png */; };
 		8983A9F61E9ED7C700E0B790 /* RecipeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */; };
 		8983A9F81E9EE09B00E0B790 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9F71E9EE09B00E0B790 /* Recipes.swift */; };
 		8983A9FC1E9EE3EA00E0B790 /* RecipeSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8983A9FB1E9EE3EA00E0B790 /* RecipeSearchData.swift */; };
@@ -90,8 +92,6 @@
 		46B5EE251EBEA3E9003DDE31 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesTableViewCell.swift; path = FoHo/FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		46B5EE271EBEA448003DDE31 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		46B5EE2D1EBF19EB003DDE31 /* favorites-icon-27728.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites-icon-27728.png"; sourceTree = SOURCE_ROOT; };
-		46B5EE3B1EBFD493003DDE31 /* search-35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search-35.png"; path = "../../search-35.png"; sourceTree = "<group>"; };
-		46B5EE431EBFD6EA003DDE31 /* settings-35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings-35.png"; path = "../../settings-35.png"; sourceTree = "<group>"; };
 		46C5E38D1EA347D000284E80 /* RecipeSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewController.swift; sourceTree = "<group>"; };
 		46C5E38F1EA3481D00284E80 /* RecipeSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchTableViewCell.swift; sourceTree = "<group>"; };
 		46D58E701EADC0C200881ED5 /* forkknife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forkknife.png; sourceTree = SOURCE_ROOT; };
@@ -115,6 +115,10 @@
 		894115571EB9929100EDBEC9 /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
 		894115591EB992DF00EDBEC9 /* SideBarTabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTabelViewCell.swift; sourceTree = "<group>"; };
 		895A067A1E99C29400B3C4D3 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = SOURCE_ROOT; };
+		898204481EC1061700F38202 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		8982044A1EC108F900F38202 /* fb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fb.jpg; sourceTree = "<group>"; };
+		8982044B1EC108F900F38202 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		8982044C1EC108F900F38202 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		8983A9F51E9ED7C700E0B790 /* RecipeSearchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeSearchModel.swift; path = ../RecipeSearchModel.swift; sourceTree = "<group>"; };
 		8983A9F71E9EE09B00E0B790 /* Recipes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		8983A9FB1E9EE3EA00E0B790 /* RecipeSearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeSearchData.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			children = (
 				891ACA921EAEC6C4007C1D2B /* HomeTableViewController.swift */,
 				891ACA941EAEC6E1007C1D2B /* HomeTableViewCell.swift */,
+				898204481EC1061700F38202 /* OptionsViewController.swift */,
 			);
 			name = Home;
 			path = ..;
@@ -220,8 +225,6 @@
 		46FE71AC1EABFF8800604B7C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
-				46B5EE431EBFD6EA003DDE31 /* settings-35.png */,
-				46B5EE3B1EBFD493003DDE31 /* search-35.png */,
 				46B5EE2D1EBF19EB003DDE31 /* favorites-icon-27728.png */,
 				46D58E701EADC0C200881ED5 /* forkknife.png */,
 				46D58E711EADC0C200881ED5 /* forkspoonknife.png */,
@@ -229,6 +232,9 @@
 				892174D61EA1A8A2003A9889 /* loading.png */,
 				46FE71A51EABF8A400604B7C /* home.png */,
 				46FE71A81EABF8AC00604B7C /* person.png */,
+				8982044A1EC108F900F38202 /* fb.jpg */,
+				8982044B1EC108F900F38202 /* share.png */,
+				8982044C1EC108F900F38202 /* twitter.png */,
 				46FE71991EABF84900604B7C /* plus.png */,
 				46FE719A1EABF84900604B7C /* search.png */,
 				46FE719B1EABF84900604B7C /* settings.png */,
@@ -400,6 +406,7 @@
 				TargetAttributes = {
 					89FDA1EA1E99BBB600043820 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = XMJ49A838Z;
 						ProvisioningStyle = Automatic;
 					};
 					89FDA2011E99BBB600043820 = {
@@ -448,13 +455,14 @@
 				89FDA1FC1E99BBB600043820 /* LaunchScreen.storyboard in Resources */,
 				89FDA1F91E99BBB600043820 /* Assets.xcassets in Resources */,
 				46D58E731EADC0C200881ED5 /* forkknife.png in Resources */,
-				46B5EE3C1EBFD493003DDE31 /* search-35.png in Resources */,
 				46FE71A11EABF84900604B7C /* settings.png in Resources */,
+				8982044E1EC108F900F38202 /* share.png in Resources */,
 				46B5EE2E1EBF19EB003DDE31 /* favorites-icon-27728.png in Resources */,
 				46D58E751EADC0C200881ED5 /* spoon-fork-knife-heart.png in Resources */,
 				89FDA1F41E99BBB600043820 /* Main.storyboard in Resources */,
+				8982044D1EC108F900F38202 /* fb.jpg in Resources */,
+				8982044F1EC108F900F38202 /* twitter.png in Resources */,
 				46FE71A61EABF8AC00604B7C /* person.png in Resources */,
-				46B5EE441EBFD6EA003DDE31 /* settings-35.png in Resources */,
 				46FE719F1EABF84900604B7C /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,6 +635,7 @@
 				8983A9F61E9ED7C700E0B790 /* RecipeSearchModel.swift in Sources */,
 				46C5E3901EA3481D00284E80 /* RecipeSearchTableViewCell.swift in Sources */,
 				892174DB1EA1AC5B003A9889 /* RecipeWebViewController.swift in Sources */,
+				898204491EC1061700F38202 /* OptionsViewController.swift in Sources */,
 				8983A9F81E9EE09B00E0B790 /* Recipes.swift in Sources */,
 				894115581EB9929100EDBEC9 /* SideBarTableViewController.swift in Sources */,
 				891ACA931EAEC6C4007C1D2B /* HomeTableViewController.swift in Sources */,
@@ -810,6 +819,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XMJ49A838Z;
 				INFOPLIST_FILE = FoHo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FohoDuo.FoHo;
@@ -825,6 +835,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XMJ49A838Z;
 				INFOPLIST_FILE = FoHo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FohoDuo.FoHo;

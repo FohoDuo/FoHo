@@ -10,6 +10,7 @@ import UIKit
 import FaveButton
 import CoreData
 import Alamofire
+import Social
 
 //View Controller that displays more detailed information regarding a specific recipe.
 //Using the recipeID from the first API call in the search view controller, we make
@@ -83,6 +84,7 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        shareView.alpha = 0
         //initialize tableview delegates
         ingredients.delegate = self
         ingredients.dataSource = self
@@ -226,6 +228,44 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
         webPage.setUrl(url: url!)
     }
     
+    
+    
+    @IBOutlet weak var shareView: UIView!
+    
+    
+    
+    @IBAction func touchedShare(_ sender: UIButton) {
+        
+        shareView.alpha = 0.9
+        shareView.backgroundColor = UIColor.blue
+    }
+    
+    
+    @IBAction func fbTapped(_ sender: UIButton) {
+        let vc = SLComposeViewController(forServiceType:SLServiceTypeFacebook)
+        vc?.add(recipe?.recipeImage())
+        vc?.add(URL(string: (recipe?.webUrl())!))
+        vc?.setInitialText("From FoHo: I found a new recipe!    ")
+        self.present(vc!, animated: true, completion: nil)
+        
+        shareView.alpha = 0
+    }
+    
+    
+    @IBAction func twTapped(_ sender: UIButton) {
+        let vc = SLComposeViewController(forServiceType:SLServiceTypeTwitter)
+        vc?.add(recipe?.recipeImage())
+        vc?.add(URL(string: (recipe?.webUrl())!))
+        vc?.setInitialText("From FoHo: I found a new recipe!    ")
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+        shareView.alpha = 0
+    }
+    
+    @IBAction func cancelTapped(_ sender: UIButton) {
+        shareView.alpha = 0
+    }
     
     
     
