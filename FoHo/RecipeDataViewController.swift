@@ -40,40 +40,116 @@ class RecipeDataViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func didTapHeartButton(_ sender: Any) {
         if !fromFavorites{
-            print("Tapped the heart")
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
+            
+            if heartButton.isSelected == true {
+                print("Tapped the heart")
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                    return
+                }
+            
+                //1
+                let managedContext = appDelegate.persistentContainer.viewContext
+            
+                //2
+                let entity = NSEntityDescription.entity(forEntityName: "Favorite", in: managedContext)!
+                let item = NSManagedObject(entity: entity, insertInto: managedContext)
+            
+                //3
+                item.setValue(recipe?.recipeName(), forKeyPath: "recipeName")
+                item.setValue(recipeKey, forKey: "id")
+                item.setValue(recipe?.recipeUri(), forKey: "recipeImage")
+                item.setValue(recipe?.totalTime(), forKeyPath: "totalTime")
+                item.setValue(recipe?.ingredients(), forKey: "ingredients")
+                item.setValue(recipe?.numberOfServings(), forKey: "numServings")
+                item.setValue(recipe?.webUrl(), forKey: "webUrl")
+            
+            
+                //4
+                do {
+                    try managedContext.save()
+                    //items.append(item)
+                } catch let error as NSError {
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
+                let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+                do{
+                    let items = try managedContext.fetch(fetchRequest)
+                } catch let error as NSError {
+                    print("Could not fetch. \(error), \(error.userInfo)")
+                }
             }
-            
-            //1
-            let managedContext = appDelegate.persistentContainer.viewContext
-            
-            //2
-            let entity = NSEntityDescription.entity(forEntityName: "Favorite", in: managedContext)!
-            let item = NSManagedObject(entity: entity, insertInto: managedContext)
-            
-            //3
-            item.setValue(recipe?.recipeName(), forKeyPath: "recipeName")
-            item.setValue(recipeKey, forKey: "id")
-            item.setValue(recipe?.recipeUri(), forKey: "recipeImage")
-            item.setValue(recipe?.totalTime(), forKeyPath: "totalTime")
-            item.setValue(recipe?.ingredients(), forKey: "ingredients")
-            item.setValue(recipe?.numberOfServings(), forKey: "numServings")
-            item.setValue(recipe?.webUrl(), forKey: "webUrl")
-            
-            
-            //4
-            do {
-                try managedContext.save()
-                //items.append(item)
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
-            do{
-                let items = try managedContext.fetch(fetchRequest)
-            } catch let error as NSError {
-                print("Could not fetch. \(error), \(error.userInfo)")
+            else {
+                //1) Set app delegate
+                guard let appDelegate =
+                    UIApplication.shared.delegate as? AppDelegate else {
+                        return
+                }
+                
+                //2) Set managed context
+                let managedContext = appDelegate.persistentContainer.viewContext
+                
+                
+                //3) Set fetch request
+                let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+                do {
+                    let items = try managedContext.fetch(fetchRequest)
+                    for item in items {
+                        
+                        var temp: String = String(describing: item.value(forKey: "id"))
+                        
+                        var index = 0
+                        for c in temp.characters {
+                            if c == "(" {
+                                //temp.insert("\"", at: temp.index(temp.characters.start)))
+                                temp.insert("\"", at: temp.index(temp.startIndex, offsetBy: index + 1))
+
+                                break
+                            }
+                            index += 1
+                        }
+                        
+
+                        
+                        
+                        
+                        
+                        
+                        var test = temp.components(separatedBy: "(")
+                        print(test)
+                        print(item.value(forKey: "id"))
+                      //  temp = "\"" + temp! + "\""
+                        print("key ", recipeKey)
+                        print("database ", temp)
+                        
+                        if String(describing: item.value(forKey: "id")) == recipeKey! {                            print("hit")
+                            managedContext.delete(item)
+                        }
+                    }
+                    
+                    //5) Save the updated entity
+                    try managedContext.save()
+                } catch let error as NSError {
+                    print("Could not fetch. \(error), \(error.userInfo)")
+                }
+                
+                
+                /*
+                 
+                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                 let managedContext = appDelegate?.persistentContainer.viewContext
+                 managedContext?.delete(Favorited[indexPath.row] as NSManagedObject)
+                 do {
+                 try managedContext?.save()
+                 } catch let error as NSError  {
+                 print("Could not save \(error), \(error.userInfo)")
+                 }
+                 
+                 tableView.beginUpdates()
+                 Favorited.remove(at: indexPath.row)
+                 tableView.deleteRows(at: [indexPath], with: .fade)
+                 tableView.endUpdates()
+                
+                */
             }
         }
         

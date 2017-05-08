@@ -172,7 +172,7 @@ class ShoppingCartTableViewController: UITableViewController{
         let cell = tableView.cellForRow(at: indexPath)
         if cell?.backgroundColor == #colorLiteral(red: 0.2187472284, green: 0.7748631835, blue: 0.3660549819, alpha: 1) {
             print("change to green")
-            cell?.backgroundColor = #colorLiteral(red: 0.2810869217, green: 0.3669615388, blue: 0.7158250213, alpha: 1)
+            cell?.backgroundColor = UIColor.white
             //cell?.textLabel?.layer.backgroundColor = UIColor.green.cgColor
         }
         else {
