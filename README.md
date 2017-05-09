@@ -18,7 +18,7 @@ Recipe application built off of Yummly's API
 
 #### - Recipe Search
   - Allows users to search from Yummly's database containing over 1,000,000 recipes
-  - Allow users to specify a maximun completion recipe time (**NOT THERE**)
+  - Allow users to specify a maximun completion recipe time
   - Allows user to filter results to narrow down a search by clicking the options bar button. Included filters:
     - Dietary options
     - Food allergy options
@@ -40,10 +40,11 @@ Recipe application built off of Yummly's API
 #### - Favorites List
   - Users can click the heart (favorite) button after finding a recipe and have it become saved (an animation will occur and the button will become red)
   - Users can remove the favorite by clicking the heart a second time (it will turn grey)
-  - In the favorites view, users can see a list of all favorited items, sorted by course catagory
+  - In the favorites view, users can see a list of all favorited items
   - Users can also remove favorites from this page
 
 #### - Options
+  - Allow users to change their search settings
   - Allow users to delete saved data including favorites and the shopping cart list
   - Allow users to restore filter settings to their default state and modify them
   
